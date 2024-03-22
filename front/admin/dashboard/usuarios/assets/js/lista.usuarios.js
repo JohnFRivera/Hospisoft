@@ -68,7 +68,7 @@ function Buscador() {
   let txtBuscador = document.getElementById("txtBuscador");
   if (txtBuscador.value) {
     txtBuscador.classList.remove("border-danger");
-    getUsuarios("http://localhost:3000/usuarios/listing/"+txtBuscador.value);
+    getUsuarios("http://localhost:3000/usuarios/listingNombre/"+txtBuscador.value);
   } else {
     txtBuscador.classList.add("border-danger");
   }
