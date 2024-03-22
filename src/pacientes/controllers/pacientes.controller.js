@@ -43,18 +43,22 @@ export const postPaciente =(req,res)=>{
     })
 }
 
-export const putMedico =  (req, res) => {
+export const putPaciente =  (req, res) => {
     let id = req.params.id;
     let frmData ={       
         nombre:req.body.nombre,
         apellidos: req.body.apellidos,
-        especialidad: req.body.especialidad,
-        horario_atencion: req.body.horario_atencion,
+        fecha_Nacimiento: req.body.fecha_Nacimiento,
+        genero: req.body.genero,
+        direccion: req.body.direccion,
+        telefono: req.body.telefono,
+        email: req.body.email,
+        eps: req.body.eps
     }
-    pool.query("UPDATE medicos set ? WHERE id= ?",[frmData,id],(error,data)=>{
+    pool.query("UPDATE pacientes set ? WHERE id= ?",[frmData,id],(error,data)=>{
         if(!error)
         {
-            res.status(200).send("usuario editado exitosamente")
+            res.status(200).send("paciente editado exitosamente")
         }else{
             res.status(500).send({
                 titulo:error.code,
@@ -64,12 +68,12 @@ export const putMedico =  (req, res) => {
     })
   }
 
-  export const deleteMedico= (req, res) => {
+  export const deletePaciente= (req, res) => {
     let id = req.params.id;
-    let sql = "DELETE from medicos WHERE id ="+id;
+    let sql = "DELETE from pacientes WHERE id ="+id;
     pool.query(sql,(error,data)=>{
         if(!error){
-            res.status(200).send("usuario eliminado con exito")
+            res.status(200).send("paciente eliminado con exito")
         }else{
             res.status(500).send({
             titulo:error.code,
