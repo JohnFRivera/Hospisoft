@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import usuarios from './usuarios/routes/usuarios.routes.js'
 import user from './usuarios/routes/index.routes.js'
+import medicos from './medicos/routes/medicos.routes.js'
 const usuario = express();
 const port = 3000;
 
@@ -9,6 +10,7 @@ usuario.use(cors());
 usuario.use(express.json());
 usuario.use(usuarios)
 usuario.use(user)
+usuario.use(medicos)
 
 
 usuario.listen(port, () => {

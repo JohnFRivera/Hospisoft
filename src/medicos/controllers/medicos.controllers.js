@@ -1,33 +1,31 @@
-    import {pool} from '../../models/MySql.js'
+import {pool} from '../../models/MySql.js'
 
-//SECTION - OBTENER USUARIOS
-export const getUsuarios = (req, res) => {
-    //NOTE - Esto es tal cosa
-    let sql ="SELECT * FROM usuarios "
-    
-    pool.query(sql, (error, data) => {
-      if(!error){
-        res.status(200).send(data)
-      }else{
-        res.status(500).send({
-            titulo:error.code,
-            mensaje:error.message
-        })
-      }
-    });
-  }
-//!SECTION
+export const getMedico =(req,res)=>{
+    let sql = "SELECT * FROM medicos"
 
-  export const postUsuarios =  (req, res) => {
+    pool.query(sql,(error,data)=>{
+        if(!error)
+        {res.status(200).send(data)
+        }else{
+            res.status(500).send({
+                titulo:error.code,
+                mensaje: error.message
+
+            })
+        }
+    })
+}
+
+export const postMedico =(req,res)=>{
     console.log(req.body.nombre);
     let frmData={
         nombre:req.body.nombre,
         apellidos: req.body.apellidos,
-        email: req.body.email,
-        contrasena: req.body.contrasena,
+        especialidad: req.body.especialidad,
+        horario_atencion: req.body.horario_atencion,
         
     }
-    pool.query("INSERT INTO usuarios set ?",frmData,(error,data)=>{
+    pool.query("INSERT INTO medicos set ?",frmData,(error,data)=>{
         if(!error){
             res.status(200).send({
                 titulo:"usuario Agregado Exitosamente"
@@ -39,17 +37,17 @@ export const getUsuarios = (req, res) => {
             })
         }
     })
-  }
+}
 
-  export const putUsuarios =  (req, res) => {
+export const putMedico =  (req, res) => {
     let id = req.params.id;
-    let frmData ={
+    let frmData ={       
         nombre:req.body.nombre,
         apellidos: req.body.apellidos,
-        email: req.body.email,
-        contrasena: req.body.contrasena,
+        especialidad: req.body.especialidad,
+        horario_atencion: req.body.horario_atencion,
     }
-    pool.query("UPDATE usuarios set ? WHERE id= ?",[frmData,id],(error,data)=>{
+    pool.query("UPDATE medicos set ? WHERE id= ?",[frmData,id],(error,data)=>{
         if(!error)
         {
             res.status(200).send("usuario editado exitosamente")
@@ -62,9 +60,9 @@ export const getUsuarios = (req, res) => {
     })
   }
 
-  export const deleteUsuario= (req, res) => {
+  export const deleteMedico= (req, res) => {
     let id = req.params.id;
-    let sql = "DELETE from usuarios WHERE id ="+id;
+    let sql = "DELETE from medicos WHERE id ="+id;
     pool.query(sql,(error,data)=>{
         if(!error){
             res.status(200).send("usuario eliminado con exito")
