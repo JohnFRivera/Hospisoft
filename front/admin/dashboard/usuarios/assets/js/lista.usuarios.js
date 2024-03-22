@@ -89,7 +89,7 @@ function nextPage() {
   }
 }
 
-getUsuarios("./assets/js/Usuarios.json");
+getUsuarios("http://localhost:3000/usuarios/listing");
 
 document.getElementById("btnBackPage").addEventListener("click", backPage);
 document.getElementById("btnNextPage").addEventListener("click", nextPage);
