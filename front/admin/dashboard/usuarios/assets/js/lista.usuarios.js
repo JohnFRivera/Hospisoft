@@ -60,7 +60,11 @@ async function getUsuarios(URL) {
 //* FILTRO ROL
 function filtroRol() {
   let slFiltroRol = document.getElementById('slFiltroRol');
-  getUsuarios("http://localhost:3000/usuarios/"+slFiltroRol.value);
+  getUsuarios("http://localhost:3000/usuarios/listingRol"+slFiltroRol.value);
+}
+
+function backFiltro() {
+  document.getElementById('btnBackFiltro').addEventListener("click", getUsuarios("http://localhost:300/usuarios/listing"));
 }
 
 //* BUSCADOR
@@ -68,7 +72,7 @@ function Buscador() {
   let txtBuscador = document.getElementById("txtBuscador");
   if (txtBuscador.value) {
     txtBuscador.classList.remove("border-danger");
-    getUsuarios("http://localhost:3000/usuarios/listing/"+txtBuscador.value);
+    getUsuarios("http://localhost:3000/usuarios/listingNombre/"+txtBuscador.value);
   } else {
     txtBuscador.classList.add("border-danger");
   }
