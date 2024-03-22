@@ -7,23 +7,20 @@ function fillTable() {
         usuariosArray.forEach(Usuario => {
             table.innerHTML += `
             <tr>
-                <th>${Usuario.id}</th>
-                <td>
-                    <img class="img-table border" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="img_usuario">
+                <th class="id">${Usuario.id}</th>
+                <td class="foto">
+                    <img class="img-table" src="../assets/pic/profile-placeholder.png"
+                        alt="${Usuario.foto}">
                 </td>
-                <td>${Usuario.nombre}</td>
-                <td>Rivera</td>
-                <td>John@gmail.com</td>
-                <td>12345</td>
+                <td class="nombre">${Usuario.nombre}</td>
+                <td class="apellidos">${Usuario.apellidos}</td>
+                <td class="email">${Usuario.email}</td>
+                <td class="contrasena">${Usuario.contrasena}</td>
+                <td class="rol fw-bold text-primary">${Usuario.rol}</td>
                 <td>
-                    <span class="badge text-bg-warning fs-6">
-                        Administrador
-                    </span>
-                </td>
-                <td>
-                    <div class="btn-group w-100">
-                        <button type="button" class="btn btn-outline-info btn-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-outline-info btnEditar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" viewBox="0 0 16 16">
                                 <path
                                     d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -31,11 +28,11 @@ function fillTable() {
                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                             </svg>
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                        <button type="button" class="btn btn-danger btnEliminar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" viewBox="0 0 16 16">
                                 <path
-                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
                             </svg>
                         </button>
                     </div>
@@ -44,7 +41,7 @@ function fillTable() {
             `;
         });
     }
-}
+};
 
 async function getUsuarios() {
     fetch("./assets/js/Usuarios.json")
@@ -55,4 +52,26 @@ async function getUsuarios() {
     })
 };
 
+function backPage() {
+    var numPage = parseInt(location.hash.replace('#', ''));
+    if (numPage > 1) {
+        numPage--;
+        location.href = location.pathname + `#${numPage}`;
+    };
+};
+
+function nextPage() {
+    if (!location.hash) {
+        location.hash = '#1';
+    };
+    var numPage = parseInt(location.hash.replace('#', ''));
+    if (numPage < 3) {
+        numPage++;
+        location.href = location.pathname + `#${numPage}`;
+    };
+};
+
 getUsuarios();
+
+document.getElementById('btnBackPage').addEventListener("click", backPage);
+document.getElementById('btnNextPage').addEventListener("click", nextPage);
