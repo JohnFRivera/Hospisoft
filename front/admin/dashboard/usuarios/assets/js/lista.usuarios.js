@@ -1,11 +1,11 @@
-let usuariosArray = new Array;
+let usuariosArray = new Array();
 
 function fillTable() {
-    let table = document.getElementById("table");
-    table.innerHTML = "";
-    if (usuariosArray.length > 0) {
-        usuariosArray.forEach(Usuario => {
-            table.innerHTML += `
+  let table = document.getElementById("table");
+  table.innerHTML = "";
+  if (usuariosArray.length > 0) {
+    usuariosArray.forEach((Usuario) => {
+      table.innerHTML += `
             <tr>
                 <th class="id">${Usuario.id}</th>
                 <td class="foto">
@@ -39,39 +39,60 @@ function fillTable() {
                 </td>
             </tr>
             `;
-        });
-    }
-};
+    });
+  }
+}
 
-async function getUsuarios() {
-    fetch("./assets/js/Usuarios.json")
-    .then(Response => Response.json())
-    .then(Data => {
-        usuariosArray = Data;
-        fillTable();
-    })
-};
+async function getUsuarios(URL) {
+  fetch(URL)
+    .then((Response) => Response.json())
+    .then((Data) => {
+      usuariosArray = Data;
+      fillTable();
+    });
+}
 
+//* FILTRO ROL
+function filtroRol() {
+  let slFiltroRol = document.getElementById('slFiltroRol');
+  console.log(slFiltroRol);
+}
+
+//* BUSCADOR
+function Buscador() {
+  let txtBuscador = document.getElementById("txtBuscador");
+  if (txtBuscador.value) {
+    txtBuscador.classList.remove("border-danger");
+    getUsuarios("http://localhost:3000/usuarios/listing/"+txtBuscador.value);
+  } else {
+    txtBuscador.classList.add("border-danger");
+  }
+}
+
+//* PAGINACION
 function backPage() {
-    var numPage = parseInt(location.hash.replace('#', ''));
-    if (numPage > 1) {
-        numPage--;
-        location.href = location.pathname + `#${numPage}`;
-    };
-};
+  var numPage = parseInt(location.hash.replace("#", ""));
+  if (numPage > 1) {
+    numPage--;
+    location.href = location.pathname + `#${numPage}`;
+  }
+}
 
 function nextPage() {
-    if (!location.hash) {
-        location.hash = '#1';
-    };
-    var numPage = parseInt(location.hash.replace('#', ''));
-    if (numPage < 3) {
-        numPage++;
-        location.href = location.pathname + `#${numPage}`;
-    };
-};
+  if (!location.hash) {
+    location.hash = "#1";
+  }
+  var numPage = parseInt(location.hash.replace("#", ""));
+  if (numPage < 3) {
+    numPage++;
+    location.href = location.pathname + `#${numPage}`;
+  }
+}
 
-getUsuarios();
+getUsuarios("./assets/js/Usuarios.json");
 
-document.getElementById('btnBackPage').addEventListener("click", backPage);
-document.getElementById('btnNextPage').addEventListener("click", nextPage);
+document.getElementById("btnBackPage").addEventListener("click", backPage);
+document.getElementById("btnNextPage").addEventListener("click", nextPage);
+
+document.getElementById('slFiltroRol').addEventListener("selectionchange", filtroRol);
+document.getElementById("btnBuscar").addEventListener("click", Buscador);

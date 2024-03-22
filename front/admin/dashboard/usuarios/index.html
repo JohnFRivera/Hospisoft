@@ -115,21 +115,24 @@
                             </svg>
                             Esta es la <b>lista de usuarios</b>, podrás buscar a un usuario por filtros especificos.
                         </p>
+                        <!--* FILTROS -->
                         <div class="row mb-3">
+                            <!--? ROL -->
                             <div class="col-2 d-flex align-items-center">
-                                <label for="filtroRol" class="fs-5 me-2">Rol:</label>
-                                <select class="form-select" id="filtroRol">
+                                <label for="slFiltroRol" class="fs-5 me-2">Rol:</label>
+                                <select class="form-select" id="slFiltroRol">
                                     <option value="">Seleccionar...</option>
                                     <option value="Usuario">Usuario</option>
                                     <option value="Medico">Medico</option>
                                     <option value="Administrador">Administrador</option>
                                 </select>
                             </div>
+                            <!--? BUSCADOR -->
                             <div class="col-3 ms-auto">
                                 <div class="input-group">
-                                    <input type="search" class="form-control" placeholder="Buscar..." id="">
+                                    <input type="search" class="form-control" placeholder="Buscar..." id="txtBuscador">
                                     <span class="input-group-text p-0">
-                                        <button type="button" class="btn m-0 rounded-start-0">
+                                        <button type="button" class="btn m-0 rounded-start-0" id="btnBuscar">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
                                                 fill="currentColor" viewBox="0 0 16 16">
                                                 <path
