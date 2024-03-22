@@ -28,7 +28,7 @@ export const postMedico =(req,res)=>{
     pool.query("INSERT INTO medicos set ?",frmData,(error,data)=>{
         if(!error){
             res.status(200).send({
-                titulo:"usuario Agregado Exitosamente"
+                titulo:"medico Agregado Exitosamente"
             })
         }else{
             res.status(500).send({

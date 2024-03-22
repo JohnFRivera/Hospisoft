@@ -18,6 +18,38 @@ export const getUsuarios = (req, res) => {
   }
 //!SECTION
 
+export const getUsuariosNombre = (req, res) => {
+    //NOTE - Esto es tal cosa
+    let sql ="SELECT * FROM usuarios WHERE Nombre Like ?;"
+    let nombre = req.params.nombre + '%';
+    pool.query(sql, nombre, (error, data) => {
+      if(!error){
+        res.status(200).send(data)
+      }else{
+        res.status(500).send({
+            titulo:error.code,
+            mensaje:error.message
+        })
+      }
+    });
+  }
+
+  export const getUsuariosRol = (req, res) => {
+    //NOTE - Esto es tal cosa
+    let sql ="SELECT * FROM usuarios WHERE Rol Like ?;"
+    let nombre = req.params.rol;
+    pool.query(sql, nombre, (error, data) => {
+      if(!error){
+        res.status(200).send(data)
+      }else{
+        res.status(500).send({
+            titulo:error.code,
+            mensaje:error.message
+        })
+      }
+    });
+  }
+
   export const postUsuarios =  (req, res) => {
     console.log(req.body.nombre);
     let frmData={

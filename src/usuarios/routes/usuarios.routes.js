@@ -1,8 +1,12 @@
 import {Router} from 'express';
-import {getUsuarios,postUsuarios,putUsuarios,deleteUsuario} from '../controllers/usuarios.controllers.js'
+import {getUsuarios,postUsuarios,putUsuarios,deleteUsuario,getUsuariosNombre,getUsuariosRol} from '../controllers/usuarios.controllers.js'
 const usuarios =Router();
 
   usuarios.get('/usuarios/listing', getUsuarios);
+  
+  usuarios.get('/usuarios/listingNombre/:nombre', getUsuariosNombre);
+
+  usuarios.get('/usuarios/listingRol/:rol', getUsuariosRol);
   
   usuarios.post('/usuarios/create', postUsuarios);
   
