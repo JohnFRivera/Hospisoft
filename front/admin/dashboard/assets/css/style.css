@@ -1,0 +1,21 @@
+.btn-dashboard-aside {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background 0.2s ease-in-out 0s;
+}
+.btn-dashboard-aside:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.btn-dashboard-aside.active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.img-table {
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+}
