@@ -1,6 +1,14 @@
+import { FiltroRol, BackFiltro, Buscador } from '../../../assets/js/Filtros.js';
+import { QueryGet } from '../../../assets/js/Querys.js';
+
 let usuariosArray = new Array();
+let hostname = "http://localhost:3000/usuarios";
 
 function fillTable() {
+  QueryGet(hostname + "/listing")
+  .then(Data =>{
+    console.log(Data);
+  });
   let table = document.getElementById("table");
   table.innerHTML = "";
   if (usuariosArray.length > 0) {
@@ -40,43 +48,8 @@ function fillTable() {
             </tr>
             `;
     });
-  }
-}
-
-async function getUsuarios(URL) {
-  fetch(URL, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((Response) => Response.json())
-    .then((Data) => {
-      usuariosArray = Data;
-      fillTable();
-    });
-}
-
-//* FILTRO ROL
-function filtroRol() {
-  let slFiltroRol = document.getElementById("slFiltroRol");
-  getUsuarios("http://localhost:3000/usuarios/listingRol" + slFiltroRol.value);
-}
-
-function backFiltro() {
-  document.getElementById('btnBackFiltro').addEventListener("click", getUsuarios("http://localhost:300/usuarios/listing"));
-}
-
-//* BUSCADOR
-function Buscador() {
-  let txtBuscador = document.getElementById("txtBuscador");
-  if (txtBuscador.value) {
-    txtBuscador.classList.remove("border-danger");
-    getUsuarios(
-      "http://localhost:3000/usuarios/listingNombre/" + txtBuscador.value
-    );
   } else {
-    txtBuscador.classList.add("border-danger");
+    console.log("error");
   }
 }
 
@@ -100,10 +73,17 @@ function nextPage() {
   }
 }
 
-getUsuarios("http://localhost:3000/usuarios/listing");
+fillTable();
 
 document.getElementById("btnBackPage").addEventListener("click", backPage);
 document.getElementById("btnNextPage").addEventListener("click", nextPage);
 
-document.getElementById('slFiltroRol').addEventListener("change", filtroRol);
-document.getElementById("btnBuscar").addEventListener("click", Buscador);
+document.getElementById('slFiltroRol').addEventListener("change", ()=>{
+  FiltroRol(hostname);
+});
+document.getElementById('btnBackFiltro').addEventListener("click", ()=>{
+  BackFiltro(hostname);
+});
+document.getElementById("btnBuscar").addEventListener("click", ()=>{
+  Buscador(hostname);
+});
