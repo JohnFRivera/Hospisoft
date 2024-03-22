@@ -1,6 +1,10 @@
+body {
+    min-height: 100vh;
+}
+
 .btn-dashboard-aside {
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,5 +21,8 @@
 .img-table {
     width: 30px;
     height: 30px;
-    border-radius: 30%;
+    border-radius: 50%;
+}
+.h-table {
+    height: 538px;
 }
