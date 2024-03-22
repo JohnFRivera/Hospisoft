@@ -44,7 +44,12 @@ function fillTable() {
 }
 
 async function getUsuarios(URL) {
-  fetch(URL)
+  fetch(URL, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
     .then((Response) => Response.json())
     .then((Data) => {
       usuariosArray = Data;
@@ -55,7 +60,7 @@ async function getUsuarios(URL) {
 //* FILTRO ROL
 function filtroRol() {
   let slFiltroRol = document.getElementById('slFiltroRol');
-  console.log(slFiltroRol);
+  getUsuarios("http://localhost:3000/usuarios/"+slFiltroRol.value);
 }
 
 //* BUSCADOR
@@ -89,10 +94,10 @@ function nextPage() {
   }
 }
 
-getUsuarios("./assets/js/Usuarios.json");
+getUsuarios("http://localhost:3000/usuarios/listing");
 
 document.getElementById("btnBackPage").addEventListener("click", backPage);
 document.getElementById("btnNextPage").addEventListener("click", nextPage);
 
-document.getElementById('slFiltroRol').addEventListener("selectionchange", filtroRol);
+document.getElementById('slFiltroRol').addEventListener("change", filtroRol);
 document.getElementById("btnBuscar").addEventListener("click", Buscador);
