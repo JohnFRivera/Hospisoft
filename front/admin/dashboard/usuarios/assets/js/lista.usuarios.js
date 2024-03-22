@@ -47,8 +47,8 @@ async function getUsuarios(URL) {
   fetch(URL, {
     method: "GET",
     headers: {
-      'Content-Type': 'application/json'
-    }
+      "Content-Type": "application/json",
+    },
   })
     .then((Response) => Response.json())
     .then((Data) => {
@@ -59,17 +59,22 @@ async function getUsuarios(URL) {
 
 //* FILTRO ROL
 function filtroRol() {
-  let slFiltroRol = document.getElementById('slFiltroRol');
-  getUsuarios("http://localhost:3000/usuarios/listingRol"+slFiltroRol.value);
+  let slFiltroRol = document.getElementById("slFiltroRol");
+  getUsuarios("http://localhost:3000/usuarios/listingRol" + slFiltroRol.value);
 }
 
+function backFiltro() {
+  document.getElementById('btnBackFiltro').addEventListener("click", getUsuarios("http://localhost:300/usuarios/listing"));
+}
 
 //* BUSCADOR
 function Buscador() {
   let txtBuscador = document.getElementById("txtBuscador");
   if (txtBuscador.value) {
     txtBuscador.classList.remove("border-danger");
-    getUsuarios("http://localhost:3000/usuarios/listingNombre/"+txtBuscador.value);
+    getUsuarios(
+      "http://localhost:3000/usuarios/listingNombre/" + txtBuscador.value
+    );
   } else {
     txtBuscador.classList.add("border-danger");
   }
@@ -101,5 +106,4 @@ document.getElementById("btnBackPage").addEventListener("click", backPage);
 document.getElementById("btnNextPage").addEventListener("click", nextPage);
 
 document.getElementById('slFiltroRol').addEventListener("change", filtroRol);
-document.getElementById('btnBackFiltro').addEventListener("click", getUsuarios("http://localhost:3000/usuarios/listing"));
 document.getElementById("btnBuscar").addEventListener("click", Buscador);
