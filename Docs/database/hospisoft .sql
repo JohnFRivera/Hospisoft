@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2024 a las 13:01:52
+-- Tiempo de generación: 22-03-2024 a las 16:41:33
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -99,12 +99,19 @@ CREATE TABLE `medicamentos` (
 --
 
 CREATE TABLE `medicos` (
-  `ID_Medico` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `Nombre` varchar(50) NOT NULL,
   `Apellidos` varchar(50) NOT NULL,
   `Especialidad` varchar(50) NOT NULL,
   `Horario_Atencion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `medicos`
+--
+
+INSERT INTO `medicos` (`id`, `Nombre`, `Apellidos`, `Especialidad`, `Horario_Atencion`) VALUES
+(1, 'kevin', 'alzate ', 'medico general', '2:30');
 
 -- --------------------------------------------------------
 
@@ -113,7 +120,7 @@ CREATE TABLE `medicos` (
 --
 
 CREATE TABLE `pacientes` (
-  `ID_Paciente` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `Nombre` varchar(50) NOT NULL,
   `Apellidos` varchar(50) NOT NULL,
   `Fecha_Nacimiento` date NOT NULL,
@@ -123,6 +130,14 @@ CREATE TABLE `pacientes` (
   `Email` varchar(50) NOT NULL,
   `EPS` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `pacientes`
+--
+
+INSERT INTO `pacientes` (`id`, `Nombre`, `Apellidos`, `Fecha_Nacimiento`, `Genero`, `Direccion`, `Telefono`, `Email`, `EPS`) VALUES
+(1, 'john', 'lochupa', '2002-03-07', 'm', 'cra 11b #54-02', '4203045', 'caco@gmail.com', 'sanitas'),
+(3, 'mariana', 'valdez', '2024-05-17', 'f', '222 manzaJ-2', '222-555-000', 'valdez@gmail.com', 'SOS');
 
 -- --------------------------------------------------------
 
@@ -142,13 +157,23 @@ CREATE TABLE `pacientes_campanas` (
 --
 
 CREATE TABLE `usuarios` (
-  `ID_Usuario` int(11) NOT NULL,
-  `Nombre` varchar(50) NOT NULL,
-  `Apellidos` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Contrasena` varchar(100) NOT NULL,
-  `Rol` varchar(20) NOT NULL
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `contrasena` varchar(100) NOT NULL,
+  `rol` varchar(20) NOT NULL,
+  `foto` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `apellidos`, `email`, `contrasena`, `rol`, `foto`) VALUES
+(1, 'kevin', 'alzate ', 'kevin@gmail.com', '123', 'admin', ''),
+(3, 'karen', 'lopez', 'lopez@gmail.com', '123', 'enfermera', NULL),
+(4, 'camilo', 'cardona', 'cardona@gmail.com', '112233', 'doctor ', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -192,13 +217,13 @@ ALTER TABLE `medicamentos`
 -- Indices de la tabla `medicos`
 --
 ALTER TABLE `medicos`
-  ADD PRIMARY KEY (`ID_Medico`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  ADD PRIMARY KEY (`ID_Paciente`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `pacientes_campanas`
@@ -211,8 +236,8 @@ ALTER TABLE `pacientes_campanas`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`ID_Usuario`),
-  ADD UNIQUE KEY `Email` (`Email`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `Email` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -252,19 +277,19 @@ ALTER TABLE `medicamentos`
 -- AUTO_INCREMENT de la tabla `medicos`
 --
 ALTER TABLE `medicos`
-  MODIFY `ID_Medico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  MODIFY `ID_Paciente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -274,8 +299,8 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `citas`
 --
 ALTER TABLE `citas`
-  ADD CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`ID_Paciente`) REFERENCES `pacientes` (`ID_Paciente`),
-  ADD CONSTRAINT `citas_ibfk_2` FOREIGN KEY (`ID_Medico`) REFERENCES `medicos` (`ID_Medico`);
+  ADD CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`ID_Paciente`) REFERENCES `pacientes` (`id`),
+  ADD CONSTRAINT `citas_ibfk_2` FOREIGN KEY (`ID_Medico`) REFERENCES `medicos` (`id`);
 
 --
 -- Filtros para la tabla `formulas_medicas`
@@ -287,13 +312,13 @@ ALTER TABLE `formulas_medicas`
 -- Filtros para la tabla `historias_clinicas`
 --
 ALTER TABLE `historias_clinicas`
-  ADD CONSTRAINT `historias_clinicas_ibfk_1` FOREIGN KEY (`ID_Paciente`) REFERENCES `pacientes` (`ID_Paciente`);
+  ADD CONSTRAINT `historias_clinicas_ibfk_1` FOREIGN KEY (`ID_Paciente`) REFERENCES `pacientes` (`id`);
 
 --
 -- Filtros para la tabla `pacientes_campanas`
 --
 ALTER TABLE `pacientes_campanas`
-  ADD CONSTRAINT `pacientes_campanas_ibfk_1` FOREIGN KEY (`ID_Paciente`) REFERENCES `pacientes` (`ID_Paciente`),
+  ADD CONSTRAINT `pacientes_campanas_ibfk_1` FOREIGN KEY (`ID_Paciente`) REFERENCES `pacientes` (`id`),
   ADD CONSTRAINT `pacientes_campanas_ibfk_2` FOREIGN KEY (`ID_Campana`) REFERENCES `campanas` (`ID_Campana`);
 COMMIT;
 

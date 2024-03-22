@@ -63,10 +63,9 @@ function filtroRol() {
   getUsuarios("http://localhost:3000/usuarios/listingRol" + slFiltroRol.value);
 }
 
-//* BOTÓN BACK
 function backFiltro() {
-  getUsuarios("http://localhost:3000/usuarios/listing");
-};
+  document.getElementById('btnBackFiltro').addEventListener("click", getUsuarios("http://localhost:300/usuarios/listing"));
+}
 
 //* BUSCADOR
 function Buscador() {
@@ -106,6 +105,5 @@ getUsuarios("http://localhost:3000/usuarios/listing");
 document.getElementById("btnBackPage").addEventListener("click", backPage);
 document.getElementById("btnNextPage").addEventListener("click", nextPage);
 
-document.getElementById("slFiltroRol").addEventListener("change", filtroRol);
-document.getElementById("btnBackFiltro").addEventListener("click", backFiltro);
+document.getElementById('slFiltroRol').addEventListener("change", filtroRol);
 document.getElementById("btnBuscar").addEventListener("click", Buscador);
