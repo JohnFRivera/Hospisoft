@@ -42,25 +42,25 @@ SetDataTable();
 document.getElementById('ckExamenesMedicos').addEventListener('change', (ev)=>{
     if (ev.target.checked) {
         document.getElementById('nuevaCita').innerHTML = `
-        <div class="border border-secondary rounded-2 p-3">
+        <div class="border border-secondary rounded-2 p-4 mb-3 shadow">
             <div class="row mb-2">
                 <div class="col">
-                    <label class="fw-semibold fs-4 ms-1" for="">Exámenes solicitados:</label>
-                    <input type="text" class="form-control form-control-lg bg-body-tertiary form-required" id="fecha">
+                    <label class="fw-normal fs-4 mb-1 ms-1" for="examenes_medicos">Exámenes solicitados</label>
+                    <input type="text" class="form-control form-control-lg form-required" id="examenes_medicos">
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-2">
                 <div class="col">
-                    <label class="fw-semibold fs-4 ms-1" for="">Especialista:</label>
-                    <select class="mb-2 form-control form-select form-select-lg bg-body-tertiary form-required" id="idmedico">
+                    <label class="fw-normal fs-4 mb-1 ms-1" for="idmedico">Especialista</label>
+                    <select class="mb-2 form-control form-select form-select-lg form-required" id="idmedico">
                         <option value="">Seleccionar...</option>
                     </select>
                 </div>
                 <div class="col">
-                    <label class="fw-semibold fs-4 ms-1" for="">Fecha para Nueva cita:</label>
+                    <label class="fw-normal fs-4 mb-1 ms-1" for="fecha">Fecha para Nueva cita</label>
                     <div class="input-group">
-                        <input type="date" class="form-control form-control-lg bg-body-tertiary form-required" id="fecha">
-                        <input type="time" class="form-control form-control-lg bg-body-tertiary form-required" id="hora">
+                        <input type="date" class="form-control form-control-lg form-required" id="fecha">
+                        <input type="time" class="form-control form-control-lg form-required" id="hora">
                     </div>
                 </div>
             </div>

@@ -23,13 +23,13 @@ const SetDataTable =()=> {
         data.forEach(item => {
             document.getElementById('tblCitas').innerHTML += `
             <tr>
-                <th class="align-content-center">${item.id}</th>
+                <th scope="row" class="align-content-center">${item.id}</th>
                 <td class="align-content-center">${item.paciente}</td>
                 <td class="align-content-center">${item.medico}</td>
                 <td class="align-content-center">${item.fecha}</td>
                 <td class="align-content-center">${item.hora}</td>
                 <td class="align-content-center">
-                    <span class="${item.estado == 'Atendido' ? 'bg-success' : 'bg-warning'} py-1 px-2 rounded-3 fw-bold text-light">${item.estado}</span>
+                    <span class="badge ${item.estado == 'Atendido' ? 'text-bg-success' : 'text-bg-warning'}">${item.estado}</span>
                 </td>
                 <td>
                     <div class="d-flex justify-content-center">

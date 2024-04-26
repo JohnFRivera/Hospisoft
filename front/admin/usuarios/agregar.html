@@ -22,46 +22,51 @@
             </aside>
             <!-- FIN BOTONES ASIDE -->
             <!--* SECCIÓN -->
-            <div class="col p-3 px-md-4 py-md-5 bg-secondary-subtle">
-                <div class="container-fluid mb-4">
-                    <h1 class="display-5 fw-semibold">
-                        <i class="bi bi-person-fill-gear"></i>
+            <div class="col px-3 py-5 p-md-5 bg-body-secondary">
+                <div class="container-fluid">
+                    <h1 class="display-5 fw-normal text-center text-light text-bg-primary cursor-default p-3 rounded-3 mb-4">
                         Gestión de Usuarios
+                        <i class="bi bi-person-fill-gear ms-0 ms-md-3"></i>
                     </h1>
-                    <hr>
-                    <ul class="nav nav-underline mb-4">
+                    <ul class="nav nav-underline border-bottom border-primary gap-1">
                         <li class="nav-item">
-                            <a class="nav-link fs-4 border-3 px-2 fw-semibold opacity-50" href="./index.html">Listado</a>
+                            <a class="nav-link fs-4 border-3 px-3 fw-semibold opacity-50" href="./index.html">
+                                <i class="bi bi-list-ol"></i>
+                                Listado
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-4 border-3 px-2 fw-semibold text-primary active" href="./agregar.html">Agregar</a>
+                            <a class="nav-link fs-4 border-3 px-3 fw-semibold text-primary active" href="./agregar.html">
+                                <i class="bi bi-plus-lg"></i>
+                                Añadir
+                            </a>
                         </li>
                     </ul>
-                    <div class="row flex-column-reverse flex-md-row px-0 px-md-2 mb-5 gap-4">
-                        <div class="col col-md-5">
-                            <label class="fw-semibold fs-4 ms-1 mb-1" for="identificacion">Identificación:</label>
+                    <div class="row flex-column-reverse flex-md-row p-0 p-md-4 mb-5 gap-4">
+                        <div class="col col-md-5 col-xl-4">
+                            <label class="fw-normal fs-4 ms-1 mb-1" for="identificacion">Identificación:</label>
                             <input type="text"
                                 class="form-control form-control-lg form-required mb-2" id="identificacion">
-                            <label class="fw-semibold fs-4 ms-1 mb-1" for="">Usuario:</label>
+                            <label class="fw-normal fs-4 ms-1 mb-1" for="usuario">Usuario:</label>
                             <input type="text"
-                                class="form-control form-control-lg form-required mb-2" id="">
-                            <label class="fw-semibold fs-4 ms-1 mb-1" for="">Email:</label>
+                                class="form-control form-control-lg form-required mb-2" id="usuario">
+                            <label class="fw-normal fs-4 ms-1 mb-1" for="email">Email:</label>
                             <input type="text"
-                                class="form-control form-control-lg form-required mb-2" id="">
-                            <label class="fw-semibold fs-4 ms-1 mb-1" for="">Contraseña:</label>
+                                class="form-control form-control-lg form-required mb-2" id="email">
+                            <label class="fw-normal fs-4 ms-1 mb-1" for="contraseña">Contraseña:</label>
                             <input type="text"
-                                class="form-control form-control-lg form-required mb-2" id="">
+                                class="form-control form-control-lg form-required mb-2" id="contraseña">
                             <input type="text"
-                                class="form-control form-control-lg form-required mb-4"
-                                placeholder="Confirmar contraseña" id="">
-                                <p class="text-danger fw-semibold fs-5 mb-2 d-flex align-items-center" id="lblError"></p>
+                                class="form-control form-control-lg form-required mb-3"
+                                placeholder="Confirmar contraseña" id="confirmContra">
+                                <span class="text-danger fw-semibold fs-5 pb-2 d-flex align-items-center" id="lblError"></span>
                             <button type="button" class="btn btn-lg btn-primary w-100" id="btnAgregar">
                                 Agregar
                             </button>
                         </div>
-                        <div class="col">
-                            <label class="fw-semibold fs-4 ms-1 mb-1" for="slRoles">Rol:</label>
-                            <select class="form-select form-select-lg form-required mb-4" id="slRoles">
+                        <div class="col col-md-7 col-xl-6">
+                            <label class="fw-normal fs-4 ms-1 mb-1" for="rol">Rol:</label>
+                            <select class="form-select form-select-lg form-required mb-4" id="rol">
                                 <option value="">Seleccionar...</option>
                             </select>
                             <div class="row bg-body-secondary mx-1 p-3 p-md-4 rounded-4 border border-secondary shadow" id="formRol"></div>
