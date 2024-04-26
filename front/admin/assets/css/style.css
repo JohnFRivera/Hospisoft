@@ -1,0 +1,16 @@
+@import url('../../../assets/css/globals.css');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+.nav-aside {
+    border: 0;
+    background-color: #F8F9FA;
+    color: #212529;
+    text-decoration-line: none;
+    transition: background 0.2s ease-in-out 0s;
+}
+.nav-aside:hover {
+    background-color: #E2E3E5;
+}
+.nav-aside.active {
+    background-color: #E2E3E5;
+}

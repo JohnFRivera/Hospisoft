@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>HOSPISOFT | Generar Horario</title>
+</head>
+
+<body class="bg-body-tertiary">
+    <!-- NAVBAR -->
+    <header class="navbar shadow" id="navBar"></header>
+    <!-- FIN NAVBAR -->
+    <!--* CONTENIDO -->
+    <main class="container-fluid">
+        <d class="row">
+            <!-- BOTONES ASIDE -->
+            <aside class="col-12 col-md-auto px-0 border-end overflow-x-auto">
+                <ul class="nav flex-nowrap flex-row flex-md-column" id="asideBtn"></ul>
+            </aside>
+            <!-- FIN BOTONES ASIDE -->
+            <!--* SECCIÓN -->
+            <div class="col p-3 p-md-5 bg-secondary-subtle">
+                <div class="container fluid">
+                    <h1 class="display-5 fw-normal">Generación de Horarios</h1>
+                    <p class="display-6 fs-5">En esta página, la secretaria elige el <b>lapso de tiempo</b> y a un <b>especialista</b>, para generar un reporte de su horario semanal o mensual. La herramienta ofrece una vista clara del horario del especialista, facilitando la coordinación de citas. Se pueden <b>descargar los reportes</b> en EXCEL para su uso posterior.</p>
+                    <hr>
+                    <p class="text-danger fw-semibold fs-5 mb-2 d-flex align-items-center" id="lblError"></p>
+                    <div class="row row-cols-1 row-cols-md-2 mb-4">
+                        <div class="col mb-2 mb-md-0">
+                            <div class="btn-group w-100">
+                                <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+                                <label class="btn btn-outline-secondary rounded-bottom-0 w-100" for="option1">Por mes</label>
+                                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                                <label class="btn btn-outline-secondary rounded-bottom-0 w-100" for="option2">Por semana</label>
+                            </div>
+                            <div class="py-3 px-4 border border-secondary-subtle border-top-0 rounded-2 rounded-top-0">
+                                <div class="row" id="selectHorario">
+                                    <div class="col">
+                                        <label class="fw-semibold fs-5 ms-1" for="">Mes:</label>
+                                        <select class="mb-2 form-control form-select bg-body-tertiary form-required" id="idmedico">
+                                            <option value="">Seleccionar...</option>
+                                            <option value="01">Enero</option>
+                                            <option value="02">Febrero</option>
+                                            <option value="03">Marzo</option>
+                                            <option value="04">Abril</option>
+                                            <option value="05">Mayo</option>
+                                            <option value="06">Junio</option>
+                                            <option value="07">Julio</option>
+                                            <option value="08">Agosto</option>
+                                            <option value="09">Septiembre</option>
+                                            <option value="10">Octubre</option>
+                                            <option value="11">Noviembre</option>
+                                            <option value="12">Diciembre</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col align-content-around">
+                            <label class="fw-semibold fs-4 ms-1" for="">Especialista:</label>
+                            <select class="mb-3 form-control form-select form-select-lg bg-body-tertiary form-required" id="idmedico">
+                                <option value="">Seleccionar...</option>
+                            </select>
+                            <button type="button" class="btn btn-success w-100" id="btnAgendar">
+                                <i class="bi bi-file-earmark-spreadsheet"></i>
+                                Generar reporte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--* FIN SECCIÓN -->
+        </div>
+    </main>
+    <!--* FIN CONTENIDO -->
+    <!-- FOOTER -->
+    <footer class="container-fluid bg-primary text-white p-5 cursor-default" id="footer"></footer>
+    <!-- FIN FOOTER -->
+
+    <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>

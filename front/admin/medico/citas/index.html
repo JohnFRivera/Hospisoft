@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>HOSPISOFT | Citas</title>
+</head>
+
+<body class="bg-body-tertiary">
+    <!-- NAVBAR -->
+    <header class="navbar shadow" id="navBar"></header>
+    <!-- FIN NAVBAR -->
+    <!--* CONTENIDO -->
+    <main class="container-fluid">
+        <d class="row">
+            <!-- BOTONES ASIDE -->
+            <aside class="col-12 col-md-auto px-0 border-end overflow-x-auto">
+                <ul class="nav flex-nowrap flex-row flex-md-column" id="asideBtn"></ul>
+            </aside>
+            <!-- FIN BOTONES ASIDE -->
+            <!--* SECCIÓN -->
+            <div class="col p-3 p-md-5 bg-secondary-subtle">
+                <div class="container-fluid mb-4">
+                    <h1 class="display-5 fw-semibold">
+                        <i class="bi bi-calendar-week-fill"></i>
+                        Gestión de Citas
+                    </h1>
+                    <p class="display-6 fs-4">En esta pantalla, podrás <b>visualizar las citas por médico</b> y <b>los pacientes atendidos por cada uno</b>. <b>Al seleccionar una cita</b>, el médico podrá generar una <b>fórmula médica</b> de manera rápida y eficiente. Simplifica la gestión de citas y la atención médica con esta herramienta integrada.</p>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-auto mb-2 mb-md-0">
+                            <label class="fs-5 ms-1" for="">Filtrar por:</label>
+                            <select class="form-select form-select-lg" id="filtrar">
+                                <option value="">Cita</option>
+                                <option value="">Paciente atendido</option>
+                            </select>
+                        </div>
+                        <div class="col-auto mb-3 mb-md-0">
+                            <label class="fs-5 ms-1" for="">Medico:</label>
+                            <select class="form-select form-select-lg" id="idMedico">
+                                <option value="">Seleccionar...</option>
+                            </select>
+                        </div>
+                        <div class="col-auto ms-auto align-content-end">
+                            <div class="input-group">
+                                <input class="form-control form-control-lg" type="search" placeholder="Buscar Paciente..."
+                                    size="30" id="txtBuscar">
+                                <div class="input-group-text p-0">
+                                    <button type="button" class="btn btn-lg rounded-start-0 h-100 w-100">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table class="table table-secondary table-hover fs-5 mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Paciente</th>
+                                            <th>Medico</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Estado</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblCitas">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link link-dark" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link link-dark" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--* FIN SECCIÓN -->
+            </div>
+    </main>
+    <!--* FIN CONTENIDO -->
+    <!-- MODAL -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true"></div>
+    <!-- FIN MODAL -->
+    <!-- FOOTER -->
+    <footer class="container-fluid bg-primary text-white p-5 cursor-default" id="footer"></footer>
+    <!-- FIN FOOTER -->
+
+    <script src="../../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>

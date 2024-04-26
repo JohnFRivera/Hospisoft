@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>HOSPISOFT | Citas</title>
+</head>
+
+<body class="bg-body-tertiary">
+    <!-- NAVBAR -->
+    <header class="navbar shadow" id="navBar"></header>
+    <!-- FIN NAVBAR -->
+    <!--* CONTENIDO -->
+    <main class="container-fluid">
+        <d class="row">
+            <!-- BOTONES ASIDE -->
+            <aside class="col-12 col-md-auto px-0 border-end overflow-x-auto">
+                <ul class="nav flex-nowrap flex-row flex-md-column" id="asideBtn"></ul>
+            </aside>
+            <!-- FIN BOTONES ASIDE -->
+            <!--* SECCIÓN -->
+            <div class="col p-3 p-md-5 bg-secondary-subtle">
+                <div class="container fluid">
+                    <a class="btn btn-outline-primary rounded-circle mb-2" href="./index.html">
+                        <i class="bi bi-arrow-left fs-4"></i>
+                    </a>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table class="table table-secondary table-hover mb-0">
+                                    <thead class="table-light fs-5">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Paciente</th>
+                                            <th>Diagnostico</th>
+                                            <th>Medicamentos</th>
+                                            <th>Exámenes</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblHistoriasClinicas"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--* FIN SECCIÓN -->
+            </div>
+    </main>
+    <!--* FIN CONTENIDO -->
+    <!-- FOOTER -->
+    <footer class="container-fluid bg-primary text-white p-5 cursor-default" id="footer"></footer>
+    <!-- FIN FOOTER -->
+
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="./js/main.historial.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+@import url('../../../assets/css/globals.css');
+
+.img-bg-hospital-register {
+    width: 100%;
+    min-height: 90vh;
+    background-image: url(../img/bg-hospital-register.jpg);
+    background-size: cover;
+    background-position-y: center;
+}

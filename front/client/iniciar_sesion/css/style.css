@@ -1,0 +1,8 @@
+@import url('../../../assets/css/globals.css');
+
+.img-bg-hospital {
+    width: 100%;
+    min-height: 90vh;
+    background-image: url(../img/bg-hospital.jpg);
+    background-size: cover;
+}

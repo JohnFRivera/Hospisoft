@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>HOSPISOFT | Dashboard</title>
+</head>
+
+<body class="bg-body-tertiary">
+    <!-- NAVBAR -->
+    <header class="navbar shadow" id="navBar"></header>
+    <!-- FIN NAVBAR -->
+    <!--* CONTENIDO -->
+    <main class="container-fluid">
+        <d class="row">
+            <!--* BOTONES ASIDE -->
+            <aside class="col-12 col-md-auto px-0 border-end overflow-x-auto">
+                <ul class="nav flex-nowrap flex-row flex-md-column" id="asideBtn"></ul>
+            </aside>
+            <!--* FIN BOTONES ASIDE -->
+            <!--* SECCIÓN -->
+            <div class="col p-5 bg-secondary-subtle">
+                <h1 class="display-5 mb-3">Bienvenida, <b>Maria Elena Restrepo</b>.</h1>
+                <h2 class="display-6 fs-2 fw-semibold mb-0">Dashboard de Estadísticas</h2>
+                <p class="display-6 fs-5">El dashboard muestra <b>estadísticas</b> clave para la gestión eficaz del centro médico, Además, ofrece la opción de <b>descargar estas estadísticas</b> en formato <b>Excel</b> para un análisis más detallado. Optimiza la toma de decisiones con esta herramienta de visualización de datos.</p>
+                <hr>
+                <div class="container-fluid">
+                    <div class="row my-5">
+                        <div class="col col-md-10 col-lg-9">
+                            <canvas id="chartPacientesPorMes"></canvas>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-success w-100 mt-0 mt-md-5">
+                                <i class="bi bi-file-earmark-spreadsheet"></i>
+                                Descargar estadística
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row my-5">
+                        <div class="col col-md-10 col-lg-9">
+                            <canvas id="chartMedicosPorMes"></canvas>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-success w-100 mt-0 mt-md-5">
+                                <i class="bi bi-file-earmark-spreadsheet"></i>
+                                Descargar estadística
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row my-5">
+                        <div class="col col-md-10 col-lg-9">
+                            <canvas id="chartFacturacionPorMes"></canvas>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-success w-100 mt-0 mt-md-5">
+                                <i class="bi bi-file-earmark-spreadsheet"></i>
+                                Descargar estadística
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--* FIN SECCIÓN -->
+        </div>
+    </main>
+    <!--* FIN CONTENIDO -->
+    <!-- FOOTER -->
+    <footer class="container-fluid bg-primary text-white p-5 cursor-default" id="footer"></footer>
+    <!-- FIN FOOTER -->
+
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>

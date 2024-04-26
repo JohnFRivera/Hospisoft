@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vmin;
+}
+
+/* Logo HOSPISOFT responsivo */
+.fs-responsive {
+    font-size: 3.22rem;
+}
+@media (min-width: 768px) {
+    .fs-responsive {
+        font-size: 2.8rem;
+    }
+}
+
+/* BACKGROUNDS COLORS */
+.bg-body-invalid {
+    background-color: #CDCECF;
+}
+
+/* CURSORS */
+.cursor-default {
+    cursor: default;
+}
