@@ -1,15 +1,19 @@
-import { SetAsideBtn, GetFormData,validInputs } from '../../../assets/js/admin.globals.js';
+import {
+  SetAsideBtn,
+  GetFormData,
+  validInputs,
+} from "../../../assets/js/admin.globals.js";
 SetAsideBtn();
 
-let selectHorario = document.getElementById('selectHorario');
-document.querySelectorAll('input[type="radio"]').forEach(Radio => {
-    Radio.addEventListener('change', (ev)=>{
-        switch (ev.target.id) {
-            case 'option1':
-                selectHorario.innerHTML = `
+let selectHorario = document.getElementById("selectHorario");
+document.querySelectorAll('input[type="radio"]').forEach((Radio) => {
+  Radio.addEventListener("change", (ev) => {
+    switch (ev.target.id) {
+      case "option1":
+        selectHorario.innerHTML = `
                 <div class="col">
-                    <label class="fw-semibold fs-5 ms-1" for="">Mes:</label>
-                    <select class="mb-2 form-control form-select bg-body-tertiary form-required" id="idmedico">
+                    <label class="fw-normal fs-4 mb-1 ms-1" for="slMes">Mes</label>
+                    <select class="form-control form-select form-select-lg form-required" id="slMes">
                         <option value="">Seleccionar...</option>
                         <option value="01">Enero</option>
                         <option value="02">Febrero</option>
@@ -26,12 +30,12 @@ document.querySelectorAll('input[type="radio"]').forEach(Radio => {
                     </select>
                 </div>
                 `;
-                break;
-            case 'option2':
-                selectHorario.innerHTML = `
+        break;
+      case "option2":
+        selectHorario.innerHTML = `
                 <div class="col">
-                    <label class="fw-semibold fs-5 ms-1" for="">Mes:</label>
-                    <select class="mb-2 form-control form-select bg-body-tertiary form-required" id="idmedico">
+                    <label class="fw-normal fs-4 mb-1 ms-1" for="slMes">Mes</label>
+                    <select class="form-control form-select form-select-lg form-required" id="slMes">
                         <option value="">Seleccionar...</option>
                         <option value="01">Enero</option>
                         <option value="02">Febrero</option>
@@ -48,8 +52,8 @@ document.querySelectorAll('input[type="radio"]').forEach(Radio => {
                     </select>
                 </div>
                 <div class="col">
-                    <label class="fw-semibold fs-5 ms-1" for="">Semana:</label>
-                    <select class="mb-2 form-control form-select bg-body-tertiary form-required" id="idmedico">
+                    <label class="fw-normal fs-4 mb-1 ms-1" for="slSemana">Semana</label>
+                    <select class="form-control form-select form-select-lg form-required" id="slSemana">
                         <option value="">Seleccionar...</option>
                         <option value="01">Lunes</option>
                         <option value="02">Martes</option>
@@ -61,7 +65,7 @@ document.querySelectorAll('input[type="radio"]').forEach(Radio => {
                     </select>
                 </div>
                 `;
-                break;
-        };
-    });
-})
+        break;
+    }
+  });
+});

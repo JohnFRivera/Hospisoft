@@ -17,7 +17,7 @@ const EPS = [
 ];
 SetAsideBtn();
 SetNumberInput('identificacion');
-let slRoles = document.getElementById('slRoles');
+let slRoles = document.getElementById('rol');
 let formRol = document.getElementById('formRol');
 Roles.forEach(Rol => {
     var opt = document.createElement('option');
@@ -30,29 +30,29 @@ slRoles.addEventListener('change', (ev)=>{
         case 'Paciente':
             formRol.innerHTML = `
             <div class="col-12 col-md-6 mb-2">
-                <label class="fw-semibold fs-4 ms-1 mb-1" for="">Nombres:</label>
+                <label class="fw-normal fs-4 ms-1 mb-1" for="nombres">Nombres:</label>
                 <input class="form-control form-control-lg form-required" type="text" id="nombres">
             </div>
             <div class="col-12 col-md-6 mb-2">
-                <label class="fw-semibold fs-4 ms-1 mb-1" for="">Apellidos:</label>
+                <label class="fw-normal fs-4 ms-1 mb-1" for="apellidos">Apellidos:</label>
                 <input class="form-control form-control-lg form-required" type="text" id="apellidos">
             </div>
             <div class="col-12 col-md-6 mb-2">
-                <label class="fw-semibold fs-4 ms-1 mb-1" for="">Fecha de nacimiento:</label>
+                <label class="fw-normal fs-4 ms-1 mb-1" for="fecha_nacimiento">Fecha de nacimiento:</label>
                 <input class="form-control form-control-lg form-required" type="date" id="fecha_nacimiento">
             </div>
             <div class="col-12 col-md-6 mb-2">
-                <label class="fw-semibold fs-4 ms-1 mb-1" for="">EPS:</label>
+                <label class="fw-normal fs-4 ms-1 mb-1" for="eps">EPS:</label>
                 <select class="form-select form-select-lg form-required" id="eps">
                     <option value="">Seleccionar...</option>
                 </select>
             </div>
             <div class="col-12 col-md-6 mb-2">
-                <label class="fw-semibold fs-4 ms-1 mb-1" for="">Movil:</label>
+                <label class="fw-normal fs-4 ms-1 mb-1" for="movil">Movil:</label>
                 <input class="form-control form-control-lg form-required" type="text" maxlength="10" id="movil">
             </div>
             <div class="col-12 col-md-6 mb-3">
-                <label class="fw-semibold fs-4 ms-1 mb-1" for="">Teléfono:</label>
+                <label class="fw-normal fs-4 ms-1 mb-1" for="telefono">Teléfono:</label>
                 <input class="form-control form-control-lg form-required" type="text" maxlength="10" id="telefono">
             </div>
             `;
@@ -68,15 +68,15 @@ slRoles.addEventListener('change', (ev)=>{
         case 'Medico':
             formRol.innerHTML = `
             <div class="col-12 col-md-6 mb-2">
-                <label class="fw-semibold fs-4 ms-1 mb-1" for="">Nombres:</label>
+                <label class="fw-normal fs-4 ms-1 mb-1" for="nombres">Nombres:</label>
                 <input class="form-control form-control-lg form-required" type="text" id="nombres">
             </div>
             <div class="col-12 col-md-6 mb-2">
-                <label class="fw-semibold fs-4 ms-1 mb-1" for="">Apellidos:</label>
+                <label class="fw-normal fs-4 ms-1 mb-1" for="apellidos">Apellidos:</label>
                 <input class="form-control form-control-lg form-required" type="text" id="apellidos">
             </div>
             <div class="col mb-3">
-                <label class="fw-semibold fs-4 ms-1 mb-1" for="">Especialidad:</label>
+                <label class="fw-normal fs-4 ms-1 mb-1" for="especialidad">Especialidad:</label>
                 <select class="form-select form-select-lg form-required" id="especialidad">
                     <option value="">Seleccionar...</option>
                 </select>

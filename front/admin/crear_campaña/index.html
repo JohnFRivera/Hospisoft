@@ -22,24 +22,29 @@
             </aside>
             <!-- FIN BOTONES ASIDE -->
             <!--* SECCIÓN -->
-            <div class="col p-3 p-md-5 bg-secondary-subtle">
-                <div class="container fluid">
-                    <h1 class="display-5 fw-normal">Campañas de Salud</h1>
-                    <p class="display-6 fs-5">En esta pantalla, puedes <b>crear campañas</b> de promoción y prevención de la salud en unos pocos pasos. Solo necesitas proporcionar un <b>título</b>, <b>fecha</b> y <b>hora</b> para la campaña. Las campañas se pueden enviar fácilmente por correo electrónico y SMS, ampliando el alcance y la efectividad de tus mensajes de salud.</p>
+            <div class="col px-3 py-5 p-md-5 bg-body-secondary">
+                <div class="container-fluid">
+                    <h1 class="display-5 fw-normal text-center text-light text-bg-primary cursor-default p-3 rounded-3 mb-2">
+                        Campañas de Salud
+                    </h1>
+                    <p class="display-6 fs-4 p-4">
+                        <i class="bi bi-info-circle"></i>
+                        En esta pantalla, puedes <b>crear campañas</b> de promoción y prevención de la salud en unos pocos pasos. Solo necesitas proporcionar un <b>título</b>, <b>fecha</b> y <b>hora</b> para la campaña. Las campañas se pueden enviar fácilmente por correo electrónico y SMS, ampliando el alcance y la efectividad de tus mensajes de salud.
+                    </p>
                     <hr>
-                    <p class="text-danger fw-semibold fs-5 mb-2 d-flex align-items-center" id="lblError"></p>
-                    <div class="row">
+                    <div class="row p-0 p-md-4 mb-5">
                         <div class="col col-md-10 col-lg-7 col-xl-5 col-xxl-4">
-                            <div class="row mb-5">
+                            <div class="row">
                                 <div class="col">
-                                    <label class="fw-semibold fs-4 ms-1" for="">Titulo:</label>
-                                    <input type="text" class="form-control form-control-lg bg-body-tertiary mb-2 form-required" id="fecha">
-                                    <label class="fw-semibold fs-4 ms-1" for="">Fecha:</label>
-                                    <div class="input-group mb-4">
-                                        <input type="date" class="form-control form-control-lg bg-body-tertiary form-required" id="fecha">
-                                        <input type="time" class="form-control form-control-lg bg-body-tertiary form-required" id="hora">
+                                    <label class="fw-normal fs-4 mb-1 ms-1" for="titulo">Titulo</label>
+                                    <input type="text" class="form-control form-control-lg mb-2 form-required" id="titulo">
+                                    <label class="fw-normal fs-4 mb-1 ms-1" for="fecha">Fecha</label>
+                                    <div class="input-group mb-3">
+                                        <input type="date" class="form-control form-control-lg form-required" id="fecha">
+                                        <input type="time" class="form-control form-control-lg form-required" id="hora">
                                     </div>
-                                    <button type="button" class="btn btn-primary w-100" id="btnAgendar">
+                                    <span class="text-danger fw-semibold fs-5 pb-2 d-flex align-items-center" id="lblError"></span>
+                                    <button type="button" class="btn btn-lg btn-primary w-100" id="btnAgendar">
                                         Realizar campaña
                                     </button>
                                 </div>

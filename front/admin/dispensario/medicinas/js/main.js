@@ -79,7 +79,7 @@ const SetDataTable =()=> {
         data.forEach(item => {
             document.getElementById('tblMedicinas').innerHTML += `
             <tr>
-                <th class="align-content-center">${item.id}</th>
+                <th scope="row" class="align-content-center">${item.id}</th>
                 <td class="align-content-center">${item.nombre}</td>
                 <td class="align-content-center">${item.existencia}</td>
                 <td class="align-content-center">${item.valor}</td>
@@ -127,7 +127,7 @@ SetDataTable();
 
 document.getElementById('btnNuevo').addEventListener('click', ()=>{
     SetModal(
-        `<h1 class="modal-title fs-4 text-primary" id="staticBackdropLabel">Agregar Medicina</h1>`,
+        `<h1 class="modal-title text-light fs-2" id="staticBackdropLabel">Agregar Medicina</h1>`,
         `
         <div class="container-fluid">
             <div class="row mb-2">

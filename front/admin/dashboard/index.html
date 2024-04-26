@@ -22,45 +22,54 @@
             </aside>
             <!--* FIN BOTONES ASIDE -->
             <!--* SECCIÓN -->
-            <div class="col p-5 bg-secondary-subtle">
-                <h1 class="display-5 mb-3">Bienvenida, <b>Maria Elena Restrepo</b>.</h1>
-                <h2 class="display-6 fs-2 fw-semibold mb-0">Dashboard de Estadísticas</h2>
-                <p class="display-6 fs-5">El dashboard muestra <b>estadísticas</b> clave para la gestión eficaz del centro médico, Además, ofrece la opción de <b>descargar estas estadísticas</b> en formato <b>Excel</b> para un análisis más detallado. Optimiza la toma de decisiones con esta herramienta de visualización de datos.</p>
-                <hr>
+            <div class="col px-3 py-5 p-md-5 bg-body-secondary">
                 <div class="container-fluid">
-                    <div class="row my-5">
-                        <div class="col col-md-10 col-lg-9">
-                            <canvas id="chartPacientesPorMes"></canvas>
-                        </div>
+                    <h1 class="display-5 fw-normal text-center text-light text-bg-primary cursor-default p-3 rounded-3 mb-4">
+                        Dashboard de Estadísticas
+                    </h1>
+                    <h2 class="display-6 mb-3">Bienvenida, <b>Maria Elena Restrepo</b>.</h2>
+                    <p class="display-6 fs-4 p-4 pt-0">
+                        <i class="bi bi-info-circle"></i>
+                        El dashboard muestra <b>estadísticas</b> clave para la gestión eficaz del centro médico, Además, ofrece la opción de <b>descargar estas estadísticas</b> en formato <b>Excel</b> para un análisis más detallado. Optimiza la toma de decisiones con esta herramienta de visualización de datos.
+                    </p>
+                    <hr class="border-primary">
+                    <div class="row p-0 p-md-5 mb-5">
                         <div class="col">
-                            <button type="button" class="btn btn-success w-100 mt-0 mt-md-5">
-                                <i class="bi bi-file-earmark-spreadsheet"></i>
-                                Descargar estadística
-                            </button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row my-5">
-                        <div class="col col-md-10 col-lg-9">
-                            <canvas id="chartMedicosPorMes"></canvas>
-                        </div>
-                        <div class="col">
-                            <button type="button" class="btn btn-success w-100 mt-0 mt-md-5">
-                                <i class="bi bi-file-earmark-spreadsheet"></i>
-                                Descargar estadística
-                            </button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row my-5">
-                        <div class="col col-md-10 col-lg-9">
-                            <canvas id="chartFacturacionPorMes"></canvas>
-                        </div>
-                        <div class="col">
-                            <button type="button" class="btn btn-success w-100 mt-0 mt-md-5">
-                                <i class="bi bi-file-earmark-spreadsheet"></i>
-                                Descargar estadística
-                            </button>
+                            <div class="row">
+                                <div class="col-12">
+                                    <canvas id="chartPacientesPorMes"></canvas>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <button type="button" class="btn btn-lg btn-success mt-0 mt-md-4">
+                                        <i class="bi bi-file-earmark-spreadsheet"></i>
+                                        Descargar estadística
+                                    </button>
+                                </div>
+                            </div>
+                            <hr class="border-primary my-5">
+                            <div class="row">
+                                <div class="col-12">
+                                    <canvas id="chartMedicosPorMes"></canvas>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <button type="button" class="btn btn-lg btn-success mt-0 mt-md-4">
+                                        <i class="bi bi-file-earmark-spreadsheet"></i>
+                                        Descargar estadística
+                                    </button>
+                                </div>
+                            </div>
+                            <hr class="border-primary my-5">
+                            <div class="row">
+                                <div class="col-12">
+                                    <canvas id="chartFacturacionPorMes"></canvas>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <button type="button" class="btn btn-lg btn-success mt-0 mt-md-4">
+                                        <i class="bi bi-file-earmark-spreadsheet"></i>
+                                        Descargar estadística
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

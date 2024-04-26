@@ -22,43 +22,56 @@
             </aside>
             <!-- FIN BOTONES ASIDE -->
             <!--* SECCIÓN -->
-            <div class="col p-3 p-md-5 bg-secondary-subtle">
-                <div class="container fluid">
-                    <a class="btn btn-outline-primary rounded-circle mb-4" href="./index.html">
-                        <i class="bi bi-arrow-left fs-4"></i>
-                    </a>
-                    <h1 class="display-5 fw-normal">Formula medica</h1>
-                    <p class="display-6 fs-5">En esta pantalla, podrás generar fórmulas médicas con facilidad. Simplemente ingresa el <b>diagnóstico</b> y los <b>medicamentos recetados</b>. También tienes la opción de agregar <b>exámenes médicos</b> si es necesario. En caso de solicitar exámenes, se te guiará para <b>agendar una nueva cita</b>. Simplifica el proceso de prescripción médica con esta herramienta intuitiva.</p>
-                    <hr>
-                    <p class="text-danger fw-semibold fs-5 mb-2 d-flex align-items-center" id="lblError"></p>
-                    <div class="row mb-4">
-                        <label class="fw-semibold fs-4 mb-0 ms-1" for="">Paciente:</label>
-                        <div class="col">
-                            <p class="fw-normal fs-5 mb-0 ms-1">Nombres:</p>
-                            <div class="bg-dark-subtle rounded-2 fw-light fs-4 py-2 px-3">
-                                ${res.nombres}
+            <div class="col px-3 py-5 p-md-5 bg-body-secondary">
+                <div class="container-fluid">
+                    <h1
+                        class="display-5 fw-normal text-center text-light text-bg-primary cursor-default p-3 rounded-3 position-relative">
+                        <a class="btn btn-outline-light rounded-circle ms-3 mt-1 position-absolute start-0"
+                            href="./index.html">
+                            <i class="bi bi-arrow-left fs-4"></i>
+                        </a>
+                        Formula Medica
+                    </h1>
+                    <p class="display-6 fs-4 p-4">
+                        <i class="bi bi-info-circle"></i>
+                        En esta pantalla, podrás generar fórmulas médicas con facilidad. Simplemente ingresa el
+                        <b>diagnóstico</b> y los <b>medicamentos recetados</b>. También tienes la opción de agregar
+                        <b>exámenes médicos</b> si es necesario. En caso de solicitar exámenes, se te guiará para
+                        <b>agendar una nueva cita</b>. Simplifica el proceso de prescripción médica con esta herramienta
+                        intuitiva.
+                    </p>
+                    <hr class="border-primary">
+                    <div class="row p-0 p-md-4 mb-5 gap-4">
+                        <div class="col-4">
+                            <h2 class="fw-semibold">Paciente</h2>
+                            <p class="fw-normal fs-4 mb-1 ms-1">Nombres</p>
+                            <div class="bg-body-tertiary border rounded-2 text-black-50 fw-normal fs-4 py-2 px-3 mb-2" id="nombres">
+                                John Freddy
+                            </div>
+                            <p class="fw-normal fs-4 mb-1 ms-1">Apellidos</p>
+                            <div class="bg-body-tertiary border rounded-2 text-black-50 fw-normal fs-4 py-2 px-3" id="nombres">
+                                Rivera Ayala
                             </div>
                         </div>
                         <div class="col">
-                            <p class="fw-normal fs-5 mb-0 ms-1">Apellidos:</p>
-                            <div class="bg-dark-subtle rounded-2 fw-light fs-4 py-2 px-3">
-                                ${res.apellidos}
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row mb-5">
-                        <div class="col">
-                            <label class="fw-semibold fs-4 ms-1" for="">Diagnostico:</label>
-                            <textarea class="mb-2 form-control bg-body-tertiary form-required" id="" rows="4"></textarea>
-                            <div class="row">
+                            <h2 class="fw-semibold">Formula</h2>
+                            <label class="fw-normal fs-4 mb-1 ms-1" for="diagnostico">Diagnostico:</label>
+                            <textarea class="form-control bg-body-tertiary mb-2 form-required" id="diagnostico"
+                                rows="6"></textarea>
+                            <div class="row mb-2">
                                 <div class="col">
-                                    <label class="fw-semibold fs-4 ms-1" for="">Medicamentos:</label>
-                                    <textarea class="mb-2 form-control bg-body-tertiary form-required" id="medicinas" rows="4"></textarea>
+                                    <p class="fw-normal fs-4 mb-1 ms-1">Medicamentos</p>
+                                    <div class="bg-body-tertiary rounded-2 border p-2">
+                                        <ol class="fs-5 fw-light mb-2">
+                                            <li>Clonacepam</li>
+                                            <li>Acetaminofen</li>
+                                            <li>Acetaminofen</li>
+                                        </ol>
+                                    </div>
                                 </div>
-                                <div class="col mb-4 mb-md-0">
-                                    <div class="table-medicina mt-0 mt-md-4 overflow-y-auto">
-                                        <table class="table table-secondary table-hover">
+                                <div class="col pt-3">
+                                    <div class="table-medicina overflow-y-auto">
+                                        <table class="table table-hover mb-0">
                                             <tbody id="tblMedicinas"></tbody>
                                         </table>
                                     </div>
@@ -67,13 +80,14 @@
                             <div class="form-check mb-2 fs-5">
                                 <input class="form-check-input" type="checkbox" value="" id="ckExamenesMedicos">
                                 <label class="form-check-label" for="ckExamenesMedicos">
-                                  Exámenes medicos
+                                    Exámenes medicos
                                 </label>
                             </div>
-                            <div class="row mb-4">
+                            <div class="row mb-3">
                                 <div class="col" id="nuevaCita"></div>
                             </div>
-                            <button type="button" class="btn btn-primary w-100" id="btnAgendar">
+                            <span class="text-danger fw-semibold fs-5 pb-2 d-flex align-items-center" id="lblError"></span>
+                            <button type="button" class="btn btn-lg btn-primary w-100" id="btnAgendar">
                                 Terminar atención
                             </button>
                         </div>
