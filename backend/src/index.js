@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import usuariosRouter  from './usuario/routes/usuario.routes.js'
 import pacientesRouter from './pacientes/routes/pacientes.routes.js'
+import medicosRouter from './medicos/routes/medicos.routes.js'
+import medicamentosRouter from './medicamentos/routes/medicamentos.routes.js'
 const app = express();
 const port = 3000;
 
@@ -11,6 +13,8 @@ app.use(express.json());
 
 app.use(usuariosRouter )
 app.use(pacientesRouter)
+app.use(medicosRouter)
+app.use(medicamentosRouter)
 
 
 app.listen(port,()=>{
