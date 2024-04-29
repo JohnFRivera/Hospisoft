@@ -1,4 +1,6 @@
-import { SetAsideBtn, GetFormData,validInputs } from '../../assets/js/admin.globals.js';
+import { SetAsideBtn, GetFormData, validInputs } from '../../assets/js/admin.globals.js';
+import { Query } from '../../../assets/js/querys.js';
+
 SetAsideBtn();
 let btnAgregar = document.getElementById('btnAgendar');
 btnAgregar.addEventListener('click', ()=>{
@@ -8,15 +10,10 @@ btnAgregar.addEventListener('click', ()=>{
     `;
     if (validInputs()) {
         let formData = GetFormData();
-        fetch('', {
-            method: 'POST',
-            headers: '',
-            body: formData
-        })
-        .then(response => response.json())
+        Query('', 'POST', formData)
         .then(res => {
-            
-        })
-    }
+
+        });
+    };
     btnAgregar.innerHTML = 'Agendar';
 });

@@ -127,6 +127,6 @@ document.getElementById('txtBuscar').addEventListener('change', (ev) => {
 document.getElementById('btnBuscar').addEventListener('click', ()=>{
     var txtBuscar = document.getElementById('txtBuscar');
     if (txtBuscar.value.length > 0) {
-        GetData('');
+        GetData(`${txtBuscar.value}`);
     }
 });

@@ -1,10 +1,7 @@
-import {
-  SetAsideBtn,
-  GetFormData,
-  validInputs,
-} from "../../../assets/js/admin.globals.js";
-SetAsideBtn();
+import { SetAsideBtn } from "../../../assets/js/admin.globals.js";
+import { NonQuery } from '../../../../assets/js/querys.js';
 
+SetAsideBtn();
 let selectHorario = document.getElementById("selectHorario");
 document.querySelectorAll('input[type="radio"]').forEach((Radio) => {
   Radio.addEventListener("change", (ev) => {
@@ -68,4 +65,46 @@ document.querySelectorAll('input[type="radio"]').forEach((Radio) => {
         break;
     }
   });
+});
+let slEspecialista = document.getElementById('idMedico');
+NonQuery('', 'GET')
+.then(res => {
+  if (res.length > 0) {
+    res.forEach(item => {
+      slEspecialista.innerHTML += `
+      <option value="${item.id}">${item.nombres} ${item.apellidos}</option>
+      `;
+    });
+  };
+});
+slEspecialista.addEventListener('change', ()=>{
+  if (slEspecialista.value.length > 0) {
+    NonQuery('', 'GET')
+    .then(res => {
+      if (res) {
+        let slMes = document.getElementById('slMes');
+        let slSemanas = document.getElementById('slSemanas');
+        if (slMes) {
+          slMes.innerHTML = `
+          <option value="">Seleccionar...</option>
+          `;
+          res.meses.forEach(item => {
+            slMes.innerHTML += `
+            <option value="${item}">${item}</option>
+            `;
+          });
+        };
+        if (slSemanas) {
+          slSemanas.innerHTML = `
+          <option value="">Seleccionar...</option>
+          `;
+          res.semanas.forEach(item => {
+            slSemanas.innerHTML += `
+            <option value="${item}">${item}</option>
+            `;
+          });
+        };
+      };
+    });
+  };
 });
