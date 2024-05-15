@@ -1,21 +1,19 @@
-import { pool } from '../../model/MySql.js';
-
+import { pool } from "../../model/MySql.js";
 
 export const getUsuarios = (req, res) => {
-
-  let sql = "SELECT * FROM usuarios "
+  let sql = "SELECT * FROM usuarios ";
 
   pool.query(sql, (error, data) => {
     if (!error) {
-      res.status(200).send(data)
+      res.status(200).send(data);
     } else {
       res.status(500).send({
         title: error.code,
-        message: error.message
-      })
+        message: error.message,
+      });
     }
   });
-}
+};
 
 export const postUsuarios = (req, res) => {
   console.log(req.body);
@@ -25,24 +23,23 @@ export const postUsuarios = (req, res) => {
     usuario: req.body.usuario,
     email: req.body.email,
     contraseña: req.body.contraseña,
-    rol: req.body.rol
+    rol: req.body.rol,
+  };
 
-  }
-
-  pool.query("INSERT INTO usuarios set ?", frmData, (error, data) => {
+  pool.query("INSERT INTO usuarios set ?", frmData,(error, data) => {
     if (!error) {
       res.status(200).send({
         title: "Agregado exitosamente",
-        message: `Usuario <b class="text-primary">${frmData.nombre} ${frmData.apellidos}</b> agregado correctamente.`
-      })
+        message: `Usuario <b class="text-primary">${frmData.nombre} ${frmData.apellidos}</b> agregado correctamente.`,
+      });
     } else {
       res.status(500).send({
         title: error.code,
-        message: error.message
-      })
+        message: error.message,
+      });
     }
-  })
-}
+  });
+};
 
 export const putUsuarios = (req, res) => {
   let id = req.params.id;
@@ -51,146 +48,180 @@ export const putUsuarios = (req, res) => {
     usuario: req.body.usuario,
     email: req.body.email,
     contraseña: req.body.contraseña,
-    rol: req.body.rol
-
-  }
-  pool.query("UPDATE usuarios set ? WHERE id= ?", [frmData, id], (error, data) => {
-    if (!error) {
-      res.status(200).send("editado")
-    } else {
-      res.status(500).send({
-        title: error.code,
-        message: error.message
-      })
+    rol: req.body.rol,
+  };
+  pool.query(
+    "UPDATE usuarios set ? WHERE id= ?",
+    [frmData, id],
+    (error, data) => {
+      if (!error) {
+        res.status(200).send("editado");
+      } else {
+        res.status(500).send({
+          title: error.code,
+          message: error.message,
+        });
+      }
     }
-  })
-}
-
+  );
+};
 
 export const deleteUsuario = (req, res) => {
   let id = req.params.id;
   let sql = "DELETE from usuarios WHERE id =" + id;
   pool.query(sql, (error, data) => {
     if (!error) {
-      res.status(200).send("usuario eliminado con exito")
+      res.status(200).send("usuario eliminado con exito");
     } else {
       res.status(500).send({
         title: error.code,
-        message: error.message
-      })
+        message: error.message,
+      });
     }
-  })
-}
-
-const prueba = [
-  {
-    page: "dashboard",
-    icon: "bi-graph-up",
-    text: "Dashboard",
-  },
-  {
-    page: "usuarios",
-    icon: "bi-person",
-    text: "Usuarios",
-  },
-  {
-    page: "Usuario/separar_cita",
-    icon: "bi-calendar-plus",
-    text: "Separar Cita",
-  },
-  {
-    page: "Medico/citas",
-    icon: "bi-calendar2-minus",
-    text: "Citas",
-  },
-  {
-    page: "historias_clinicas",
-    icon: "bi-file-text",
-    text: "Historias Clínicas",
-  },
-  {
-    page: "Secretaria/generar_horario_especialista",
-    icon: "bi-calendar-week",
-    text: "Generar Horario",
-  },
-  {
-    page: "Dispensario/medicinas",
-    icon: "bi-prescription2",
-    text: "Medicinas",
-  },
-  {
-    page: "crear_campaña",
-    icon: "bi-chat-dots",
-    text: "Crear Campaña",
-  },
-];
+  });
+};
 
 export const loginUser = (req, res) => {
   let email = req.body.email;
   let contraseña = req.body.contraseña;
-  let identificacion = req.body.identificacion
-  let sql = "SELECT usuario,email,contraseña,rol,identificacion FROM usuarios WHERE email = ?"
+  let identificacion = req.body.identificacion;
+  let sql =
+    "SELECT usuario,email,contraseña,rol,identificacion FROM usuarios WHERE email = ?";
   pool.query(sql, email, (error, data) => {
     if (!error) {
       res.status(200).send({
-        email: data[0].email
-      })
+        email: data[0].email,
+      });
       if (data[0].contraseña == contraseña) {
         if (data[0].identificacion == identificacion) {
-         let btn = []
-         switch (data[0].rol) {
-          case "Administrador":
-           btn = prueba
+          let btn = [];
+          switch (data[0].rol) {
+            case "Administrador":
+              btn = [
+                {
+                  page: "dashboard",
+                  icon: "bi-graph-up",
+                  text: "Dashboard",
+                },
+                {
+                  page: "usuarios",
+                  icon: "bi-person",
+                  text: "Usuarios",
+                },
+                {
+                  page: "Usuario/separar_cita",
+                  icon: "bi-calendar-plus",
+                  text: "Separar Cita",
+                },
+                {
+                  page: "Medico/citas",
+                  icon: "bi-calendar2-minus",
+                  text: "Citas",
+                },
+                {
+                  page: "historias_clinicas",
+                  icon: "bi-file-text",
+                  text: "Historias Clínicas",
+                },
+                {
+                  page: "Secretaria/generar_horario_especialista",
+                  icon: "bi-calendar-week",
+                  text: "Generar Horario",
+                },
+                {
+                  page: "Dispensario/medicinas",
+                  icon: "bi-prescription2",
+                  text: "Medicinas",
+                },
+                {
+                  page: "crear_campaña",
+                  icon: "bi-chat-dots",
+                  text: "Crear Campaña",
+                },
+              ];
 
-            break;
-          case "Usuario" :
-          btn= [{
-            page: "Usuario/separar_cita",
-            icon: "bi-calendar-plus",
-            text: "Separar Cita",
-          }]
-          break;
+              break;
+            case "Usuario":
+              btn = [
+                {
+                  page: "Usuario/separar_cita",
+                  icon: "bi-calendar-plus",
+                  text: "Separar Cita",
+                },
+              ];
+              break;
 
-          case "Pacientes":
-            btn = [
-              {
-                page: "Usuario/separar_cita",
-                icon: "bi-calendar-plus",
-                text: "Separar Cita",
-            }
+            case "Pacientes":
+              btn = [
+                {
+                  page: "Usuario/separar_cita",
+                  icon: "bi-calendar-plus",
+                  text: "Separar Cita",
+                },
+              ];
+              break;
+            case "Secretaria":
+              btn = [
+                {
+                  page: "Secretaria/generar_horario_especialista",
+                  icon: "bi-calendar-week",
+                  text: "Generar Horario",
+                },
+              ];
+              break;
 
-            ]
-            case "Secretaria" :
-         btn = [
-          {
-            page: "Secretaria/generar_horario_especialista",
-            icon: "bi-calendar-week",
-            text: "Generar Horario",
-        }
-         ]
-          default:
-            break;
-         }
+            case "Dispensario":
+              btn = [
+                {
+                  page: "Dispensario/medicinas",
+                  icon: "bi-prescription2",
+                  text: "Medicinas",
+                },
+              ];
+              break;
 
-        }else{
+            case "Medico":
+              btn = [
+                {
+                  page: "Usuario/separar_cita",
+                  icon: "bi-calendar-plus",
+                  text: "Separar Cita",
+                },
+                {
+                  page: "Medico/citas",
+                  icon: "bi-calendar2-minus",
+                  text: "Citas",
+                },
+                {
+                  page: "Usuario/separar_cita",
+                  icon: "bi-calendar-plus",
+                  text: "Separar Cita",
+                },
+              ];
+              break;
+          }
+          res.status(200).send({
+            access: true,
+            userID: data[0].id,
+            aside: btn,
+          });
+        } else {
           res.status(500).send({
             title: "Error de identificacion",
-            message: "no existe la identificaion del usuario"
-          })
+            message: "no existe la identificaion del usuario",
+          });
         }
       } else {
         res.status(500).send({
           title: "Error de contraseña",
-          message: "no existe la contraseña"
-        })
+          message: "no existe la contraseña",
+        });
       }
-
-    }else {
+    } else {
       res.status(500).send({
         title: "error de correo",
-        message: "no se encuentra el correo"
-      })
+        message: "no se encuentra el correo",
+      });
     }
-      
-  })
-}
+  });
+};
