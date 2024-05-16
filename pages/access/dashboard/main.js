@@ -1,5 +1,6 @@
-import { SetAsideBtn } from '../../assets/js/admin.globals.js';
-SetAsideBtn();
+import {} from '../../assets/helper/layout.js';
+//import { SetAsideBtn } from '../assets/js/admin.globals.js';
+//SetAsideBtn();
 
 const ctxPacientesPorMes = document.getElementById('chartPacientesPorMes');
 const ctxMedicosPorMes = document.getElementById('chartMedicosPorMes');

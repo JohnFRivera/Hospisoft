@@ -1,5 +1,3 @@
-import { GetTitle, SetNavBar, SetNumberInput, GetFormData, validInputs, SetFooter } from "../../../assets/js/globals.js";
-SetNavBar();
 
 const Origin = window.location.origin;
 
@@ -70,14 +68,14 @@ const SetAsideBtn = () => {
     arrayBtn.forEach((Btn) => {
         asideBtn.innerHTML += `
         <li class="nav-item">
-            <a class="nav-aside fs-4 py-2 px-4 d-flex align-items-center h-100 w-100" href="${Origin}/front/admin/${Btn.page.toLowerCase()}/">
+            <a class="nav-aside text-secondary-emphasis fs-4 py-2 px-4 d-flex align-items-center h-100 w-100" href="${Origin}/front/admin/${Btn.page.toLowerCase()}/">
                 <i class="bi ${Btn.icon} fs-4 me-3"></i>
                 ${Btn.text}
             </a>
         </li>
         `;
     });
-    SetAsideActive();
+    //SetAsideActive();
 };
 
 const GetRowData =(btn)=> {
@@ -108,6 +106,4 @@ const SetEspecialidades =()=> {
         document.getElementById('especialidad').append(opt);
     });
 }
-
-SetFooter();
-export { SetAsideBtn, SetNumberInput, GetFormData, GetRowData, validInputs, SetEspecialidades };
+export { SetAsideBtn, GetRowData, SetEspecialidades };

@@ -4,11 +4,29 @@ let confirmPassErr = document.getElementById('confirmPassErr');
 document.getElementById('inpConfirmPass').addEventListener('focusout', (ev)=>{
   if (ev.target.value.length > 0) {
     if (ev.target.value == document.getElementById('contraseña').value) {
-      
+      confirmPassErr.innerHTML = '';
+      ev.target.classList.remove('is-invalid');
+      ev.target.classList.add('is-valid');
+    } else {
+      confirmPassErr.innerHTML = 'Las contraseñas no coinciden';
+      ev.target.classList.remove('is-valid');
+      ev.target.classList.add('is-invalid');
     }
   } else {
     confirmPassErr.innerText = 'Tienes que llenar este campo';
+    ev.target.classList.remove('is-valid');
+    ev.target.classList.add('is-invalid');
   }
+});
+const EPS = [
+  'Seleccionar...',
+  'Coosalud',
+  'Barrios Unidos'
+];
+EPS.forEach(item => {
+  document.getElementById('eps').innerHTML += `
+  <option value="${item}">${item}</option>
+  `;
 });
 let btnRegistrarse = document.getElementById('btnRegistrarse');
 btnRegistrarse.addEventListener('click', ()=>{
@@ -45,7 +63,7 @@ btnRegistrarse.addEventListener('click', ()=>{
                       ${data.message}
                     </div>
                     <div class="modal-footer">
-                      <a class="btn btn-primary" href="${window.location.origin}/pages/ingresar/">Understood</a>
+                      <a class="btn btn-primary" href="${window.location.origin}/pages/ingresar/">Aceptar</a>
                     </div>
                   </div>
                 </div>

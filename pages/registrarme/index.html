@@ -18,9 +18,9 @@
                     <form>
                         <!--? IDENTIFICACIÓN -->
                         <label class="fw-normal fs-5 mb-1 ms-1" for="identificacion">Identificación</label>
-                        <input type="text" class="form-control mb-2" name="identificacion" id="identificacion" required>
+                        <input type="text" class="form-control mb-2" name="identificacion" id="identificacion" pattern="^[0-9]*$" required>
                         <!--? NOMBRES -->
-                        <label class="fw-normal fs-5 mb-1 ms-1" for="nombre">Datos</label>
+                        <label class="fw-normal fs-5 mb-1 ms-1" for="usuario">Datos</label>
                         <div class="text-secondary input-group mb-2">
                             <div class="input-group-text">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -28,7 +28,7 @@
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
                                 </svg>
                             </div>
-                            <input type="text" class="form-control" placeholder="Nombre de usuario" id="nombre">
+                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Nombre de usuario" required>
                         </div>
                         <!--? EMAIL -->
                         <div class="input-group mb-2">
@@ -53,9 +53,37 @@
                             </div>
                             <input type="password" class="form-control" placeholder="Contraseña" name="contraseña" id="contraseña" minlength="8" required>
                         </div>
+                        <input type="password" class="form-control" placeholder="Confirmar contraseña" id="inpConfirmPass">
+                        <p class="text-danger fw-semibold ms-2 mb-0 pb-2" id="confirmPassErr"></p>
+                        <!-- INFORMACIÓN -->
+                        <label class="fw-normal fs-5 mb-1 ms-1" for="nombre">Información</label>
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col mb-2">
+                                <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+                            </div>
+                            <div class="col mb-2">
+                                <input class="form-control" type="text" name="apellido" id="apellido" placeholder="Apellido" required>
+                            </div>
+                        </div>
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col mb-2">
+                                <input class="form-control" type="tel" name="movil" id="movil" placeholder="Movil" maxlength="10" pattern="^[0-9]*$">
+                            </div>
+                            <div class="col mb-2">
+                                <input class="form-control" type="tel" name="telefono" id="telefono" placeholder="Teléfono" maxlength="10" pattern="^[0-9]*$">
+                            </div>
+                        </div>
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col mb-2">
+                                <label class="fw-normal fs-6 mb-1 ms-1" for="fecha_nacimiento">Fecha de Nacimiento</label>
+                                <input class="form-control" type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
+                            </div>
+                            <div class="col mb-4">
+                                <label class="fw-normal fs-6 mb-1 ms-1" for="eps">EPS</label>
+                                <select class="form-select" name="eps" id="eps" required></select>
+                            </div>
+                        </div>
                     </form>
-                    <input type="password" class="form-control" placeholder="Confirmar contraseña" id="inpConfirmPass">
-                    <p class="text-danger fw-semibold ms-2 mb-0 pb-4" id="confirmPassErr"></p>
                     <p class="text-danger fw-bold text-center mb-0" id="lblErr"></p>
                     <!--? ENTRAR -->
                     <button type="button" class="btn btn-primary fw-semibold w-100 mb-2"
