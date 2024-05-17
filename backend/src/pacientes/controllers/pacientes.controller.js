@@ -101,6 +101,7 @@ export const putPaciente =  (req, res) => {
             res.status(200).send({
                 title: "felicidades",
                 message: `registrado con exito ${data[0].nombres}`
+                
             })
         }else{
             res.status(500).send({
