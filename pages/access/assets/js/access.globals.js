@@ -54,31 +54,30 @@ const SetAsideActive = () => {
         };
     });
 };
-const SetAsideBtn = () => {
-    var asideBtn = document.getElementById("asideBtn");
-    asideBtn.innerHTML = `
-    <li class="nav-item border-bottom">
-        <a class="nav-aside fs-4 py-2 px-3 d-flex align-items-center h-100 w-100" href="${Origin}/front/admin/perfil/">
-            <i class="bi bi-person-circle fs-2 me-3"></i>
-            <b>${window.localStorage.getItem("userName")} Rivera</b>
+var asideBtn = document.getElementById("asideBtn");
+var userInfo = JSON.parse(window.localStorage.getItem("userInfo"));
+asideBtn.innerHTML = `
+<li class="nav-item border-bottom">
+    <a class="nav-aside fs-4 py-2 px-3 d-flex align-items-center h-100 w-100" href="${Origin}/front/admin/perfil/">
+        <i class="bi bi-person-circle fs-2 me-3"></i>
+        <b>${userInfo[1]}</b>
+    </a>
+</li>
+`;
+var arrayBtn = JSON.parse(window.localStorage.getItem('btnAside'));
+arrayBtn.forEach((Btn) => {
+    asideBtn.innerHTML += `
+    <li class="nav-item">
+        <a class="nav-aside text-secondary-emphasis fs-4 py-2 px-4 d-flex align-items-center h-100 w-100" href="${Origin}/pages/access/${Btn.page.toLowerCase()}/">
+            <i class="bi ${Btn.icon} fs-4 me-3"></i>
+            ${Btn.text}
         </a>
     </li>
     `;
-    var arrayBtn = prueba; //window.localStorage.getItem('asideBtn');
-    arrayBtn.forEach((Btn) => {
-        asideBtn.innerHTML += `
-        <li class="nav-item">
-            <a class="nav-aside text-secondary-emphasis fs-4 py-2 px-4 d-flex align-items-center h-100 w-100" href="${Origin}/front/admin/${Btn.page.toLowerCase()}/">
-                <i class="bi ${Btn.icon} fs-4 me-3"></i>
-                ${Btn.text}
-            </a>
-        </li>
-        `;
-    });
-    //SetAsideActive();
-};
+});
+//SetAsideActive();
 
-const GetRowData =(btn)=> {
+const GetRowData = (btn) => {
     let result = new Array();
     while (btn.tagName != 'TR') {
         btn = btn.parentNode;
@@ -91,7 +90,7 @@ const GetRowData =(btn)=> {
     });
     return result;
 }
-const SetEspecialidades =()=> {
+const SetEspecialidades = () => {
     const Especialidades = [
         'Cardiólogo',
         'Cirujano Pediátrica',
@@ -106,4 +105,4 @@ const SetEspecialidades =()=> {
         document.getElementById('especialidad').append(opt);
     });
 }
-export { SetAsideBtn, GetRowData, SetEspecialidades };
+export { GetRowData, SetEspecialidades };

@@ -5,50 +5,50 @@ var cssTag = document.createElement('link');
 cssTag.rel = 'stylesheet';
 cssTag.href = `${Origen}/pages/assets/css/styles.css`;
 document.head.appendChild(cssTag);
+// valid navbar
+let btnNavbar = window.localStorage.getItem('btnNavbar');
+if (!btnNavbar) {
+    btnNavbar = `
+    <ul class="nav nav-pills w-100">
+        <li class="nav-item">
+            <a class="nav-link fw-semibold text-center fs-4" href="${Origen}/pages/inicio/">Inicio</a>
+        </li>
+    </ul>
+    <div class="row mt-3 mt-md-0">
+        <div class="col">
+            <div class="btn-group w-100">
+                <a class="btn btn-outline-primary text-center fs-4 px-3 text-nowrap" href="${Origen}/pages/ingresar/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="mb-1" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                    </svg>
+                    Ingresar
+                </a>
+                <a class="btn btn-primary text-center fs-4 px-3" href="${Origen}/pages/registrarme/">Registrarme</a>
+            </div>
+        </div>
+    </div>
+    `;
+};
 // set header
 document.querySelector('header').innerHTML = `
-<div class="row py-2">
-    <div class="col">
-        <nav class="navbar navbar-expand-md">
-            <div class="container-fluid">
-                <div class="row flex-row-reverse flex-md-row">
-                    <div class="col-auto align-content-center">
-                        <a class="display-6 fw-bold text-decoration-none me-0 me-md-4" href="${Origen}/pages/inicio/">HOSPISOFT</a>
-                    </div>
-                    <div class="col-auto d-inline d-md-none">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse py-3 py-md-0" id="navbarTogglerDemo01">
-                    <ul class="nav nav-pills w-100">
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold text-center fs-4" href="${Origen}/pages/inicio/">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold text-center fs-4" href="${Origen}/pages/access/">Dashboard</a>
-                        </li>
-                    </ul>
-                    <div class="row mt-3 mt-md-0">
-                        <div class="col">
-                            <div class="btn-group w-100">
-                                <a class="btn btn-outline-primary text-center fs-4 px-3 text-nowrap" href="${Origen}/pages/ingresar/">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="mb-1" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
-                                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-                                    </svg>
-                                    Ingresar
-                                </a>
-                                <a class="btn btn-primary text-center fs-4 px-3" href="${Origen}/pages/registrarme/">Registrarme</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<nav class="navbar navbar-expand-md py-3 px-0 px-md-5 w-100">
+    <div class="container-fluid">
+        <div class="row flex-row-reverse flex-md-row">
+            <div class="col-auto align-content-center">
+                <a class="display-6 fw-bold text-decoration-none me-0 me-md-4" href="${Origen}/pages/inicio/">HOSPISOFT</a>
             </div>
-        </nav>
+            <div class="col-auto d-inline d-md-none">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse py-3 py-md-0" id="navbarTogglerDemo01">
+            ${btnNavbar}
+        </div>
     </div>
-</div>
+</nav>
 `;
 // set footer
 document.querySelector('footer').innerHTML = `
