@@ -12,11 +12,13 @@ export const postCampaña =(req,res)=>{
     pool.query('INSERT INTO campañas SET ?',formData,(error,data)=>{
         if (!error) {
             res.status(200).send({
+                succes: true,
                 title:"Felicidades",
                 message:"campaña agregada con exito"
             })
         }else{
             res.status(500).send({
+                succes: false,
                 title:error.code,
                 message:error.message
             })
