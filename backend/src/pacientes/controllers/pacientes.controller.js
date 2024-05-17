@@ -4,8 +4,8 @@ export const getPaciente =(req,res)=>{
     let sql = "SELECT * FROM pacientes"
 
     pool.query(sql,(error,data)=>{
-        if(!error)
-        {res.status(200).send(data)
+        if(!error){
+            res.status(200).send(data)
         }else{
             res.status(500).send({
                 title:error.code,
@@ -81,9 +81,9 @@ export const putPaciente =  (req, res) => {
     })
   }
   
-  export const register =()=>{
+  export const register = (req,res)=>{
 
-    let formData = {
+    let formData =  {
       identificacion: req.body.identificacion,
       nombres: req.body.nombres,
       apellidos: req.body.apellidos,
@@ -98,22 +98,10 @@ export const putPaciente =  (req, res) => {
 
     pool.query(sql,formData,(error,data)=>{
         if (!error) {
-            sqlSelect = "SELECT identificacion,nombres,apellidos,fecha_nacimiento,movil,telefono,eps,usuario FROM pacientes WHERE id = ?";
-        pool.query(sqlSelect,id,(error,data)=>{
-            if(!error){
-                res.status(200).send({
-                    title: "felicidades",
-                    message: `registrado con exito ${data[0].nombres}`
-                    
-                })
-            }else{
-                res.status(500).send({
-                    title: error.code,
-                    message: error.message,
-                  });
-            }
-        })
-        
+            res.status(200).send({
+                title: "felicidades",
+                message: `registrado con exito ${data[0].nombres}`
+            })
         }else{
             res.status(500).send({
                 title: error.code,

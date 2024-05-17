@@ -6,7 +6,7 @@ paciente.get('/pacientes/listing', getPaciente);
 
 paciente.post('/pacientes/add', postPaciente);
 
-paciente.put('/pacientes/edit/:id', putPaciente)
+paciente.put('/pacientes/edit/:id',  putPaciente)
 
 paciente.delete('/pacientes/delete/:id', deletePaciente)
   
