@@ -80,3 +80,46 @@ export const putPaciente =  (req, res) => {
         })}
     })
   }
+  
+  export const register =()=>{
+
+    let formData = {
+      identificacion: req.body.identificacion,
+      nombres: req.body.nombres,
+      apellidos: req.body.apellidos,
+      fecha_nacimiento: req.body.fecha_nacimiento,
+      movil: req.body.movil,
+      telefono: req.body.telefono,
+      eps: req.body.eps,
+      usuarios: req.body.usuario
+    }
+    let id = req.params.id
+    sql="INSERT INTO pacientes SET ?"
+
+    pool.query(sql,formData,(error,data)=>{
+        if (!error) {
+            sqlSelect = "SELECT identificacion,nombres,apellidos,fecha_nacimiento,movil,telefono,eps,usuario FROM pacientes WHERE id = ?";
+        pool.query(sqlSelect,id,(error,data)=>{
+            if(!error){
+                res.status(200).send({
+                    title: "felicidades",
+                    message: `registrado con exito ${data[0].nombres}`
+                    
+                })
+            }else{
+                res.status(500).send({
+                    title: error.code,
+                    message: error.message,
+                  });
+            }
+        })
+        
+        }else{
+            res.status(500).send({
+                title: error.code,
+                message: error.message,
+              });
+        }
+    })
+  
+  }
