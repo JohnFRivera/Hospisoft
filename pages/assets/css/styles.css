@@ -120,3 +120,12 @@ body {
 .nav-aside.active {
     background-color: #E2E3E5;
 }
+
+.camp-hover {
+    filter: brightness(1);
+    transition: filter .3s ease-in-out 0s;
+}
+.camp-hover:hover {
+    filter: brightness(0.97);
+    cursor: pointer;
+}

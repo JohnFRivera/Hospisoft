@@ -202,14 +202,22 @@ export const loginUser = (req, res) => {
             access: true,
             userInfo: [data[0].id,data[0].usuario],
             asideBtn: btn,
-            btnNavbar: `<ul class="nav nav-pills w-100">
-            <li class="nav-item">
+            btnNavbar: `
+            <ul class="nav nav-pills w-100">
+              <li class="nav-item">
                 <a class="nav-link fw-semibold text-center fs-4" href="http://127.0.0.1:5500/pages/inicio/">Inicio</a>
-            </li>
-            <li class="nav-item">
+              </li>
+              <li class="nav-item">
                 <a class="nav-link fw-semibold text-center fs-4" href="http://127.0.0.1:5500/pages/access/">Dashboard</a>
-            </li>
-        </ul>`,
+              </li>
+              <li class="nav-item align-content-center ms-auto">
+                <button class="btn btn-outline-danger" type="button" id="btnLogout">
+                  <i class="bi bi-box-arrow-right"></i>
+                  Cerrar Sesión
+                </button>
+              </li>
+            </ul>
+            `,
             route: "http://127.0.0.1:5500/pages/access/"
           });
         } else {

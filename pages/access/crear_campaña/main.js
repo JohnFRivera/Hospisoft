@@ -62,7 +62,7 @@ const getCamp = () => {
                 var arrayTime = item.hora.split(':');
                 dtCamps.innerHTML += `
                 <div class="col">
-                    <div class="alert alert-light alert-dismissible fade show">
+                    <div class="alert alert-light alert-dismissible fade show camp-hover">
                         <div class="d-flex justify-content-between">
                             <h3 class="mt-4">${item.titulo}</h3>
                             <span class="flex-column">
@@ -78,13 +78,13 @@ const getCamp = () => {
             deletBtn();
         }).catch(err => {
             dtCamps.innerHTML += `
-        <div class="col">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <p>${err}</p>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="col">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <p>${err}</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </div>
-        </div>
-        `;
+            `;
         })
 }
 getCamp();

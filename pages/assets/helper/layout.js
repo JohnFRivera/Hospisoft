@@ -50,6 +50,15 @@ document.querySelector('header').innerHTML = `
     </div>
 </nav>
 `;
+let btnLogout = document.getElementById('btnLogout');
+if (btnLogout) {
+    btnLogout.addEventListener('click', ()=>{
+        window.localStorage.removeItem('userInfo');
+        window.localStorage.removeItem('btnAside');
+        window.localStorage.removeItem('btnNavbar');
+        window.location.href = `${Origen}/pages/inicio/`;
+    });
+}
 // set footer
 document.querySelector('footer').innerHTML = `
 <div class="row px-4">
