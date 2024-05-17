@@ -22,7 +22,7 @@ btnEntrar.addEventListener('click', ()=>{
             obj[key] = value;
         });
         /* API */
-        fetch('', {
+            fetch('http://localhost:3000/usuario/login', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'

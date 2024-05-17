@@ -86,12 +86,10 @@ export const loginUser = (req, res) => {
   let contraseña = req.body.contraseña;
   let identificacion = req.body.identificacion;
   let sql =
-    "SELECT usuario,email,contraseña,rol,identificacion FROM usuarios WHERE email = ?";
+    "SELECT id,usuario,email,contraseña,rol,identificacion FROM usuarios WHERE email = ?";
   pool.query(sql, email, (error, data) => {
     if (!error) {
-      res.status(200).send({
-        email: data[0].email,
-      });
+      console.log(data);
       if (data[0].contraseña == contraseña) {
         if (data[0].identificacion == identificacion) {
           let btn = [];
@@ -202,8 +200,17 @@ export const loginUser = (req, res) => {
           }
           res.status(200).send({
             access: true,
-            userID: data[0].id,
-            aside: btn,
+            userInfo: [data[0].id,data[0].usuario],
+            asideBtn: btn,
+            btnNavbar: `<ul class="nav nav-pills w-100">
+            <li class="nav-item">
+                <a class="nav-link fw-semibold text-center fs-4" href="http://127.0.0.1:5500/pages/inicio/">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-semibold text-center fs-4" href="http://127.0.0.1:5500/pages/access/">Dashboard</a>
+            </li>
+        </ul>`,
+            route: "http://127.0.0.1:5500/pages/access/"
           });
         } else {
           res.status(500).send({
@@ -225,3 +232,5 @@ export const loginUser = (req, res) => {
     }
   });
 };
+
+
