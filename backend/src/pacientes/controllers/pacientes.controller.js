@@ -91,12 +91,12 @@ export const putPaciente =  (req, res) => {
       movil: req.body.movil,
       telefono: req.body.telefono,
       eps: req.body.eps,
-      usuarios: req.body.usuario
+      email: req.body.email
     }
-    let id = req.params.id
-    sql="INSERT INTO pacientes SET ?"
+ 
+    
 
-    pool.query(sql,formData,(error,data)=>{
+    pool.query("INSERT INTO pacientes set ?",formData,(error,data)=>{
         if (!error) {
             res.status(200).send({
                 title: "felicidades",
