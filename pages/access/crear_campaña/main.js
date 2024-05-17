@@ -2,6 +2,40 @@ import {} from '../../assets/helper/layout.js';
 import { SetAsideBtn } from '../assets/js/access.globals.js';
 document.title += ' | Crear Campaña';
 SetAsideBtn();
+const getCamp =()=>{
+    let dtCamps = document.getElementById('dtCamps').innerHTML;
+    dtCamps.innerHTML = '';
+    fetch('')
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(item => {
+            dtCamps.innerHTML += `
+            <div class="col">
+                <div class="alert alert-light alert-dismissible fade show" role="alert">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="mt-4">${item.titulo}</h3>
+                        <span class="flex-column">
+                            <p class="mb-0">${item.fecha}</p>
+                            <p class="mb-0 small">${item.hora}</p>
+                        </span>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+            `;
+        });
+    }).catch(err => {
+        dtCamps.innerHTML += `
+        <div class="col">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <p>${err}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+        `;
+    })
+}
+getCamp();
 let btnCrear = document.getElementById('btnCrear');
 btnCrear.addEventListener('click', ()=>{
     btnCrear.innerHTML = `
@@ -25,11 +59,8 @@ btnCrear.addEventListener('click', ()=>{
         })
         .then(response => response.json())
         .then(data => {
-            if (data.access) {
-                window.localStorage.setItem('userInfo', data.userInfo);
-                window.localStorage.setItem('btnAside', data.asideBtn);
-                window.localStorage.setItem('btnNavbar', data.btnNavbar);
-                window.location.href = data.route;
+            if (!data.title) {
+                getCamp();
             } else {
                 document.getElementById('lblErr').innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="mb-1" viewBox="0 0 16 16">
