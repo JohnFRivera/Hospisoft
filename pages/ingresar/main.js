@@ -32,8 +32,8 @@ btnEntrar.addEventListener('click', ()=>{
         .then(response => response.json())
         .then(data => {
             if (data.access) {
-                window.localStorage.setItem('userInfo', data.userInfo);
-                window.localStorage.setItem('btnAside', data.asideBtn);
+                window.localStorage.setItem('userInfo', JSON.stringify(data.userInfo));
+                window.localStorage.setItem('btnAside', JSON.stringify(data.asideBtn));
                 window.localStorage.setItem('btnNavbar', data.btnNavbar);
                 window.location.href = data.route;
             } else {
