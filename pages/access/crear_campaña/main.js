@@ -77,10 +77,11 @@ const getCamp = () => {
             });
             deletBtn();
         }).catch(err => {
+            console.error(err);
             dtCamps.innerHTML += `
             <div class="col">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <p>${err}</p>
+                    <p>Ha ocurrido un error de conexión</p>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>

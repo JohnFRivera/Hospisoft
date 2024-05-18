@@ -1,0 +1,146 @@
+[
+  {
+    "id": "1",
+    "nombre": "Paracetamol",
+    "existencias": "50",
+    "valor": "10.5"
+  },
+  {
+    "id": "2",
+    "nombre": "Ibuprofen",
+    "existencias": "30",
+    "valor": "8.75"
+  },
+  {
+    "id": "3",
+    "nombre": "Aspirin",
+    "existencias": "20",
+    "valor": "6.25"
+  },
+  {
+    "id": "4",
+    "nombre": "Cetirizine",
+    "existencias": "40",
+    "valor": "12.0"
+  },
+  {
+    "id": "5",
+    "nombre": "Loratadine",
+    "existencias": "35",
+    "valor": "9.99"
+  },
+  {
+    "id": "6",
+    "nombre": "Omeprazole",
+    "existencias": "25",
+    "valor": "15.75"
+  },
+  {
+    "id": "7",
+    "nombre": "Metformin",
+    "existencias": "60",
+    "valor": "5.5"
+  },
+  {
+    "id": "8",
+    "nombre": "Amoxicillin",
+    "existencias": "15",
+    "valor": "7.35"
+  },
+  {
+    "id": "9",
+    "nombre": "Ciprofloxacin",
+    "existencias": "10",
+    "valor": "14.25"
+  },
+  {
+    "id": "10",
+    "nombre": "Lisinopril",
+    "existencias": "55",
+    "valor": "4.75"
+  },
+  {
+    "id": "11",
+    "nombre": "Atorvastatin",
+    "existencias": "45",
+    "valor": "11.5"
+  },
+  {
+    "id": "12",
+    "nombre": "Levothyroxine",
+    "existencias": "28",
+    "valor": "9.25"
+  },
+  {
+    "id": "13",
+    "nombre": "Metoprolol",
+    "existencias": "38",
+    "valor": "6.99"
+  },
+  {
+    "id": "14",
+    "nombre": "Prednisone",
+    "existencias": "18",
+    "valor": "13.75"
+  },
+  {
+    "id": "15",
+    "nombre": "Zolpidem",
+    "existencias": "33",
+    "valor": "10.5"
+  },
+  {
+    "id": "16",
+    "nombre": "Escitalopram",
+    "existencias": "23",
+    "valor": "8.75"
+  },
+  {
+    "id": "17",
+    "nombre": "Venlafaxine",
+    "existencias": "43",
+    "valor": "6.25"
+  },
+  {
+    "id": "18",
+    "nombre": "Bupropion",
+    "existencias": "53",
+    "valor": "12.0"
+  },
+  {
+    "id": "19",
+    "nombre": "Tramadol",
+    "existencias": "13",
+    "valor": "9.99"
+  },
+  {
+    "id": "20",
+    "nombre": "Codeine",
+    "existencias": "8",
+    "valor": "15.75"
+  },
+  {
+    "id": "21",
+    "nombre": "Diazepam",
+    "existencias": "48",
+    "valor": "5.5"
+  },
+  {
+    "id": "22",
+    "nombre": "Amitriptyline",
+    "existencias": "58",
+    "valor": "7.35"
+  },
+  {
+    "id": "23",
+    "nombre": "Morphine",
+    "existencias": "3",
+    "valor": "14.25"
+  },
+  {
+    "id": "24",
+    "nombre": "Warfarin",
+    "existencias": "5",
+    "valor": "4.75"
+  }
+]

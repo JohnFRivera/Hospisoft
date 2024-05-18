@@ -1,49 +1,6 @@
 
 const Origin = window.location.origin;
 
-let prueba = [
-    {
-        page: "dashboard",
-        icon: "bi-graph-up",
-        text: "Dashboard",
-    },
-    {
-        page: "usuarios",
-        icon: "bi-person",
-        text: "Usuarios",
-    },
-    {
-        page: "Usuario/separar_cita",
-        icon: "bi-calendar-plus",
-        text: "Separar Cita",
-    },
-    {
-        page: "Medico/citas",
-        icon: "bi-calendar2-minus",
-        text: "Citas",
-    },
-    {
-        page: "historias_clinicas",
-        icon: "bi-file-text",
-        text: "Historias Clínicas",
-    },
-    {
-        page: "Secretaria/generar_horario_especialista",
-        icon: "bi-calendar-week",
-        text: "Generar Horario",
-    },
-    {
-        page: "Dispensario/medicinas",
-        icon: "bi-prescription2",
-        text: "Medicinas",
-    },
-    {
-        page: "crear_campaña",
-        icon: "bi-chat-dots",
-        text: "Crear Campaña",
-    },
-];
-
 const SetAsideActive = () => {
     var arrayAsideBtn = Array.prototype.slice.call(
         document.getElementsByClassName("nav-aside")
@@ -56,16 +13,17 @@ const SetAsideActive = () => {
 };
 var asideBtn = document.getElementById("asideBtn");
 var userInfo = JSON.parse(window.localStorage.getItem("userInfo"));
-asideBtn.innerHTML = `
-<li class="nav-item border-bottom">
-    <a class="nav-aside fs-4 py-2 px-3 d-flex align-items-center h-100 w-100" href="${Origin}/front/admin/perfil/">
-        <i class="bi bi-person-circle fs-2 me-3"></i>
-        <b>${userInfo[1]}</b>
-    </a>
-</li>
-`;
-var arrayBtn = JSON.parse(window.localStorage.getItem('btnAside'));
-arrayBtn.forEach((Btn) => {
+if (userInfo) {
+    asideBtn.innerHTML = `
+    <li class="nav-item border-bottom">
+        <a class="nav-aside fs-4 py-2 px-3 d-flex align-items-center h-100 w-100" href="${Origin}/front/admin/perfil/">
+            <i class="bi bi-person-circle fs-2 me-3"></i>
+            <b>${userInfo[1]}</b>
+        </a>
+    </li>
+    `;
+    var arrayBtn = JSON.parse(window.localStorage.getItem('btnAside'));
+    arrayBtn.forEach((Btn) => {
     asideBtn.innerHTML += `
     <li class="nav-item">
         <a class="nav-aside text-secondary-emphasis fs-4 py-2 px-4 d-flex align-items-center h-100 w-100" href="${Origin}/pages/access/${Btn.page.toLowerCase()}/">
@@ -75,7 +33,9 @@ arrayBtn.forEach((Btn) => {
     </li>
     `;
 });
-//SetAsideActive();
+} else {
+    //window.location.href = `${Origin}/pages/inicio/`;
+}
 
 const GetRowData = (btn) => {
     let result = new Array();

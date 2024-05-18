@@ -2,7 +2,7 @@ const SetModal =(title, body, footer)=> {
     document.querySelector('.modal.fade').innerHTML = `
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-primary">
+            <div class="modal-header">
                 ${title}
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
