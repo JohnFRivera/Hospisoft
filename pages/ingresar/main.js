@@ -1,5 +1,7 @@
 import {} from '../assets/helper/layout.js';
 document.title += ' | Ingresar';
+
+// se crea una funcion para hacer visible una contraseña 
 let inpPass = document.getElementById('contraseña');
 document.getElementById('ckShowPass').addEventListener('change', (ev)=>{
     if (ev.target.checked) {
@@ -8,17 +10,21 @@ document.getElementById('ckShowPass').addEventListener('change', (ev)=>{
         inpPass.type = 'password';
     }
 });
+
+
 let btnEntrar = document.getElementById('btnEntrar');
 btnEntrar.addEventListener('click', ()=>{
     btnEntrar.innerHTML = `
     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
     <span role="status">Cargando...</span>
     `;
+    // se extrae la informacion del form y se valida que todos los campos esten llenos 
     let form = document.querySelector('form');
     if (form.reportValidity()) {
         let obj = new Object;
         var formData = new FormData(form);
         formData.forEach((value, key)=>{
+            // en el foreach iteramos sobre la informacion y nos devuelven los datos
             obj[key] = value;
         });
         /* API */
@@ -32,6 +38,7 @@ btnEntrar.addEventListener('click', ()=>{
         .then(response => response.json())
         .then(data => {
             if (data.access) {
+                // lo que recibimos desde el backend lo mandamos al local storage para confirmar su inicio de sesion 
                 window.localStorage.setItem('userInfo', JSON.stringify(data.userInfo));
                 window.localStorage.setItem('btnAside', JSON.stringify(data.asideBtn));
                 window.localStorage.setItem('btnNavbar', data.btnNavbar);
