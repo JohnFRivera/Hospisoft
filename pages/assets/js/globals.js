@@ -1,17 +1,4 @@
-//* NAVBAR
-const SetNavActive = () => {
-  var arrayNavBtn = Array.prototype.slice.call(
-    document.getElementsByClassName("nav-btn")
-  );
-  arrayNavBtn.forEach((NavBtn) => {
-    if (NavBtn.innerText == GetTitle()) {
-      NavBtn.classList.add("active");
-      if (NavBtn.innerText == "Ingresar") {
-        NavBtn.classList.replace("btn-outline-primary", "btn-primary");
-      }
-    }
-  });
-};
+
 //! ERROR MESSAGE
 const SetError = (Mensaje) => {
   document.getElementById("lblError").innerHTML = `
@@ -24,21 +11,23 @@ const SetError = (Mensaje) => {
 const ClearError = () => {
   document.getElementById("lblError").innerHTML = "";
 };
+
 //? INPUTS
-const SetNumberInput =(id)=> {
-  document.getElementById(id).addEventListener('input', (ev)=>{
-    var result = ev.target.value.match(/[0-9]/g);
-    ev.target.value = '';
+const SetNumberInput = (id) => {
+  document.getElementById(id).addEventListener('input', (ev) => {
+    var result = ev.target.value.match(/[0-9]/g); // Extrae los dígitos del valor ingresado
+    ev.target.value = ''; // Limpia el valor del campo de entrada
     if (result) {
         result.forEach(char => {
-            ev.target.value += char;
+            ev.target.value += char; // Vuelve a agregar solo los dígitos al campo de entrada
         });
-    };
+    }
   });
 };
+
 const GetArrayForm = () => {
   return Array.prototype.slice.call(
-    document.getElementsByClassName("form-required")
+    document.getElementsByClassName("form-required") 
   );
 };
 const GetFormData = () => {
@@ -87,4 +76,4 @@ function SetConfirmPass() {
     }
   });
 }
-export { GetTitle, SetNavBar, SetNumberInput, GetFormData, GetArrayForm, validInputs, SetConfirmPass, SetFooter };
+export {  SetNumberInput, GetFormData, GetArrayForm, validInputs, SetConfirmPass };
