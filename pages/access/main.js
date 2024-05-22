@@ -1,4 +1,4 @@
-import { } from '../assets/helper/layout.js';
-import { } from './assets/js/access.globals.js';
-var userInfo = JSON.parse(window.localStorage.getItem('userInfo'));
-document.getElementById('userName').innerText = userInfo[1];
+import { SetTitle, CreateCss } from '../assets/js/globals.functions.js';
+import { cssStyles } from '../assets/helper/globals.helpers.js';
+CreateCss(cssStyles);
+SetTitle('Dashboard');

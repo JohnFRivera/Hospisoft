@@ -1,5 +1,5 @@
-import { } from '../../assets/helper/layout.js';
-import { } from '../assets/js/access.globals.js';
+import { CreateCss } from '../../assets/js/globals.functions.js';
+import { cssStyles } from '../../assets/helper/globals.helpers.js';
 document.title += ' | Crear Campaña';
 const deletBtn = () => {
     let btn = document.getElementsByClassName('btn-close');
