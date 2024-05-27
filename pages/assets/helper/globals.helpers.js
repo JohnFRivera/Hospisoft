@@ -4,7 +4,7 @@ const cssStyles = `${GetHost()}/pages/assets/css/styles.css`;
 const scriptBS = `${GetHost()}/pages/assets/js/bootstrap.bundle.min.js`;
 //components
 const NavBarUnregister = `
-<nav class="navbar navbar-expand-md py-3 px-0 px-md-5 w-100">
+<nav class="navbar navbar-expand-md py-3 px-0 px-md-5 bg-body w-100">
     <div class="container-fluid">
         <div class="row flex-row-reverse flex-md-row">
             <div class="col-auto align-content-center">
@@ -119,11 +119,39 @@ const arrayEPS = [
     { value: 'Coosalud', text: 'Coosalud' },
     { value: 'Barrios Unidos', text: 'Barrios Unidos' }
 ];
+const GetSpanishLanguage = (entrada) => {
+    return {
+        "decimal":        "",
+        "emptyTable":     "No hay datos disponibles en la tabla",
+        "info":           "Mostrando _START_ a _END_ de _TOTAL_ "+entrada,
+        "infoEmpty":      "Mostrando 0 a 0 de 0 "+entrada,
+        "infoFiltered":   `(filtrado de _MAX_ ${entrada} totales)`,
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Mostrar _MENU_ "+entrada,
+        "loadingRecords": "Cargando...",
+        "processing":     "",
+        "search":         "Buscar:",
+        "zeroRecords":    "No se encontraron registros coincidentes",
+        "paginate": {
+            "first":      "«",
+            "last":       "»",
+            "next":       "›",
+            "previous":   "‹"
+        },
+        "aria": {
+            "orderable":  "Ordenar por esta columna",
+            "orderableReverse": "Ordenar esta columna en orden inverso"
+        }
+    }
+};
+
 export {
     cssStyles,
     scriptBS,
     NavBarUnregister,
     FooterDefault,
     spinCargando,
+    GetSpanishLanguage,
     arrayEPS
 };
