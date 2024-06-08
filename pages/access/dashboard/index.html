@@ -6,75 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
-    <header class="navbar shadow"></header>
+<body class="container-fluid bg-body-secondary">
+    <header class="row shadow" id="header"></header>
     <!--* CONTENIDO -->
-    <main class="container-fluid">
-        <d class="row">
-            <!--* BOTONES ASIDE -->
-            <aside class="col-12 col-md-auto px-0 border-end overflow-x-auto">
-                <ul class="nav flex-nowrap flex-row flex-md-column" id="asideBtn"></ul>
-            </aside>
-            <!--* FIN BOTONES ASIDE -->
-            <!--* SECCIÓN -->
-            <div class="col px-3 py-5 p-md-5 bg-body-secondary">
-                <div class="container-fluid">
-                    <h1 class="display-5 fw-normal text-center text-light text-bg-primary cursor-default p-3 rounded-3 mb-4">
-                        Dashboard de Estadísticas
-                    </h1>
-                    <h2 class="display-6 mb-3">Bienvenida, <b>Maria Elena Restrepo</b>.</h2>
-                    <p class="display-6 fs-4 p-4 pt-0">
-                        <i class="bi bi-info-circle"></i>
-                        El dashboard muestra <b>estadísticas</b> clave para la gestión eficaz del centro médico, Además, ofrece la opción de <b>descargar estas estadísticas</b> en formato <b>Excel</b> para un análisis más detallado. Optimiza la toma de decisiones con esta herramienta de visualización de datos.
-                    </p>
-                    <hr class="border-primary">
-                    <div class="row p-0 p-md-5 mb-5">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col-12">
-                                    <canvas id="chartPacientesPorMes"></canvas>
-                                </div>
-                                <div class="col-auto ms-auto">
-                                    <button type="button" class="btn btn-lg btn-success mt-0 mt-md-4">
-                                        <i class="bi bi-file-earmark-spreadsheet"></i>
-                                        Descargar estadística
-                                    </button>
-                                </div>
+    <main class="row">
+        <!-- BOTONES ASIDE -->
+        <aside class="col-auto bg-body-tertiary overflow-x-auto px-0 shadow">
+            <ul class="nav flex-nowrap flex-row flex-md-column" id="asideBtn"></ul>
+        </aside>
+        <!-- FIN BOTONES ASIDE -->
+        <!--* SECCIÓN -->
+        <section class="col col-md-9 mx-auto py-4">
+            <h1 class="display-5 fw-normal text-center text-light text-bg-primary cursor-default p-3 rounded-3 mb-3 mb-md-4">
+                Dashboard
+            </h1>
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="col mb-4">
+                    <div class="bg-body rounded-3 p-3 shadow">
+                        <div class="row">
+                            <div class="col-auto ms-auto">
+                                <button class="btn btn-success" type="button">
+                                    <i class="bi bi-file-earmark-spreadsheet"></i>
+                                    Excel
+                                </button>
                             </div>
-                            <hr class="border-primary my-5">
-                            <div class="row">
-                                <div class="col-12">
-                                    <canvas id="chartMedicosPorMes"></canvas>
-                                </div>
-                                <div class="col-auto ms-auto">
-                                    <button type="button" class="btn btn-lg btn-success mt-0 mt-md-4">
-                                        <i class="bi bi-file-earmark-spreadsheet"></i>
-                                        Descargar estadística
-                                    </button>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <canvas id="chartPacientesPorMes"></canvas>
                             </div>
-                            <hr class="border-primary my-5">
-                            <div class="row">
-                                <div class="col-12">
-                                    <canvas id="chartFacturacionPorMes"></canvas>
-                                </div>
-                                <div class="col-auto ms-auto">
-                                    <button type="button" class="btn btn-lg btn-success mt-0 mt-md-4">
-                                        <i class="bi bi-file-earmark-spreadsheet"></i>
-                                        Descargar estadística
-                                    </button>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="bg-body rounded-3 p-3 shadow">
+                        <div class="row">
+                            <div class="col-auto ms-auto">
+                                <button class="btn btn-success" type="button">
+                                    <i class="bi bi-file-earmark-spreadsheet"></i>
+                                    Excel
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <canvas id="chartMedicosPorMes"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="bg-body rounded-3 p-3 shadow">
+                        <div class="row">
+                            <div class="col-auto ms-auto">
+                                <button class="btn btn-success" type="button">
+                                    <i class="bi bi-file-earmark-spreadsheet"></i>
+                                    Excel
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <canvas id="chartFacturacionPorMes"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--* FIN SECCIÓN -->
-        </div>
+        </section>
+        <!--* FIN SECCIÓN -->
     </main>
     <!--* FIN CONTENIDO -->
-    <footer class="container-fluid bg-primary text-white p-5 cursor-default"></footer>
-
+    <footer class="row" id="footer"></footer>
+    <!-- MODAL -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true"></div>
+    <!-- FIN MODAL -->
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="main.js"></script>
 </body>

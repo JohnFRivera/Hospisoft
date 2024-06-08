@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/datatables.min.css">
+</head>
+
+<body class="container-fluid bg-body-secondary">
+    <header class="row shadow" id="header"></header>
+    <!--* CONTENIDO -->
+    <main class="row">
+        <!-- BOTONES ASIDE -->
+        <aside class="col-auto bg-body-tertiary overflow-x-auto px-0 shadow">
+            <ul class="nav flex-nowrap flex-row flex-md-column" id="asideBtn"></ul>
+        </aside>
+        <!-- FIN BOTONES ASIDE -->
+        <!--* SECCIÓN -->
+        <section class="col col-md-9 mx-auto py-4">
+            <h1
+                class="display-5 fw-normal text-center text-light text-bg-primary cursor-default p-3 rounded-3 position-relative mb-3 mb-md-4">
+                <a class="btn btn-outline-light rounded-circle ms-3 mt-1 position-absolute start-0"
+                    href="./index.html">
+                    <i class="bi bi-arrow-left fs-4"></i>
+                </a>
+                Formula Medica
+            </h1>
+            <div class="row mb-1">
+                <h3 class="fw-semibold">Paciente</h3>
+                <div class="col">
+                    <p class="fw-normal fs-5 mb-1 ms-1">Nombres</p>
+                    <div class="bg-body-tertiary border rounded-2 text-black-50 fw-normal fs-5 py-2 px-3 mb-2" id="nombres">
+                        John Freddy
+                    </div>
+                </div>
+                <div class="col">
+                    <p class="fw-normal fs-5 mb-1 ms-1">Apellidos</p>
+                    <div class="bg-body-tertiary border rounded-2 text-black-50 fw-normal fs-5 py-2 px-3" id="nombres">
+                        Rivera Ayala
+                    </div>
+                </div>
+            </div>
+            <div class="row flex-column">
+                <h3 class="fw-semibold">Formula</h3>
+                <div class="col">
+                    <p class="fw-normal fs-5 mb-1 ms-1">Diagnostico</p>
+                    <textarea class="form-control mb-2" id="diagnostico"
+                                rows="6"></textarea>
+                </div>
+                <div class="col">
+                    <p class="fw-normal fs-5 mb-1 ms-1">Medicamentos</p>
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table class="table table-light table-hover" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Existencias</th>
+                                            <th>Valor</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-body-tertiary rounded-2 border p-2">
+                        <ol class="fs-5 fw-light mb-2">
+                            <li>Clonacepam</li>
+                            <li>Acetaminofen</li>
+                            <li>Acetaminofen</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" value="" id="ckExamenesMedicos">
+                        <label class="form-check-label" for="ckExamenesMedicos">
+                            Exámenes medicos
+                        </label>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col" id="nuevaCita"></div>
+                    </div>
+                    <span class="mb-0 pb-3" id="lblError"></span>
+                    <button type="button" class="btn btn-success w-100" id="btnAgendar">
+                        <i class="bi bi-check2-circle"></i>
+                        Terminar atención
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!--* FIN SECCIÓN -->
+    </main>
+    <!--* FIN CONTENIDO -->
+    <footer class="row" id="footer"></footer>
+    <!-- MODAL -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true"></div>
+    <!-- FIN MODAL -->
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/datatables.min.js"></script>
+    <script type="module" src="main.atender_cita.js"></script>
+</body>
+
+</html>

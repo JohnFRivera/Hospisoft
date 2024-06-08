@@ -6,38 +6,45 @@ async function NonQuery(endpoint, method) {
     let response = await fetch(endpoint, {
         method: method
     });
-    var res = response.json();
-    res.then(data => {
-        if (response.ok) {
+    if (response.ok) {
+        var res = response.json();
+        res.then(data => {
             result.ok = true;
             result.data = data;
-        } else {
-            result.ok = false;
-            result.data = data;
-        };
-    });
+        });
+    } else {
+        result.ok = false;
+        result.data = data;
+    };
+    return result;
 };
-async function Query(endpoint, method, formData) {
-    let result = {
-        ok: null,
-        data: null
-    }
-    let response = await fetch(endpoint, {
-        method: method,
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        },
-        body: formData
-    });
-    var res = response.json();
-    res.then(data => {
+async function Query(endpoint, method, json) {
+    try {
+        let result = {
+            ok: null,
+            data: null
+        }
+        let response = await fetch(endpoint, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(json)
+        });
         if (response.ok) {
-            result.ok = true;
-            result.data = data;
+            var res = response.json();
+            res.then(data => {
+                result.ok = true;
+                result.data = data;
+            });
         } else {
             result.ok = false;
-            result.data = data;
+            result.data = [];
         };
-    });
+        return result;
+    } catch(err) {
+        console.log(err);
+        return err;
+    };
 };
 export { NonQuery, Query };

@@ -1,6 +1,13 @@
-import {} from '../../assets/helper/layout.js';
-//import { SetAsideBtn } from '../assets/js/admin.globals.js';
-//SetAsideBtn();
+import { NavBarUnregister, cssStyles, spinCargando, FooterDefault } from '../../assets/helper/globals.helpers.js';
+import { CreateCss, SetError, SetNavbar, SetFooter, SetTitle, validForm, formToJson } from '../../assets/js/globals.functions.js';
+import {Button_Click, SetAsideBar} from '../assets/js/access.globals.js';
+import { SetModal, ShowModal } from '../assets/js/modal.js';
+
+CreateCss(cssStyles);
+SetTitle('Dashboard');
+SetNavbar(NavBarUnregister);
+SetAsideBar();
+SetFooter(FooterDefault);
 
 const ctxPacientesPorMes = document.getElementById('chartPacientesPorMes');
 const ctxMedicosPorMes = document.getElementById('chartMedicosPorMes');

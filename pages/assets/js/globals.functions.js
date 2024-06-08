@@ -63,6 +63,7 @@ const SetConfirmPass = () => {
 };
 const FillSelect = (id, data) => {
   let select = document.getElementById(id);
+  select.innerHTML = `<option value="">Seleccionar...</option>`;
   data.forEach(item => {
     select.innerHTML += `
     <option value="${item.value}">${item.text}</option>

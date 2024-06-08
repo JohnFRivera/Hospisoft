@@ -1,10 +1,10 @@
-import { NavBarUnregister, cssStyles, spinCargando, FooterDefault, GetSpanishLanguage, arrayRoles } from '../../assets/helper/globals.helpers.js';
+import { NavBarUnregister, cssStyles, spinCargando, FooterDefault, GetSpanishLanguage } from '../../assets/helper/globals.helpers.js';
 import { CreateCss, SetConfirmPass, SetError, SetNavbar, SetFooter, SetNumberInput, SetTitle, validForm, formToJson, FillSelect } from '../../assets/js/globals.functions.js';
 import {Button_Click, GetArrayData, SetAsideBar} from '../assets/js/access.globals.js';
 import { SetModal, ShowModal } from '../assets/js/modal.js';
 
 CreateCss(cssStyles);
-SetTitle('Medicinas');
+SetTitle('Citas');
 SetNavbar(NavBarUnregister);
 SetAsideBar();
 SetFooter(FooterDefault);
@@ -21,14 +21,9 @@ fetch('Medicinas.json')
                 <td class="align-content-center">${item.valor}</td>
                 <td>
                     <div class="d-flex justify-content-center">
-                        <div class="btn-group">
-                            <button class="btn btn-sm btn-outline-info" id="edit-${item.id}">
-                                <i class="bi bi-pencil-square"></i>
-                            </button>
-                            <button class="btn btn-sm btn-danger" id="delet-${item.id}">
-                                <i class="bi bi-trash-fill"></i>
-                            </button>
-                        </div>
+                        <button class="btn btn-sm btn-outline-info" id="edit-${item.id}">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
                     </div>
                 </td>
             </tr>
@@ -73,40 +68,15 @@ fetch('Medicinas.json')
                 Button_Click('Modificar', '', 'formMedicina');
             });
         });
-        let btnDeletes = document.querySelectorAll('.btn-danger');
-        btnDeletes.forEach(item => {
-            item.addEventListener('click', ()=>{
-                var arrayData = GetArrayData(document.getElementById(`row-${item.id.replace('delet-', '')}`));
-                SetModal(
-                    `
-                    <h1 class="fs-3 text-danger">
-                        <i class="bi bi-trash-fill"></i>
-                        Eliminar Medicinas
-                    </h1>
-                    `,
-                    `
-                    <span class="fs-5">
-                        ¿Seguro que deseas eliminar a <b>'${arrayData[0]}'</b> permanentemente?
-                    </span>
-                    `,
-                    `
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
-                    `
-                );
-                ShowModal();
-                Button_Click('Eliminar', '', '');
-            });
-        });
     })
     .catch(err => {
         console.error(err);
     })
     .finally(() => {
         const dataTable = new DataTable('#dataTable', {
-            language: GetSpanishLanguage('medicinas'),
+            language: GetSpanishLanguage('citas'),
             columnDefs: [
-                { target: 3, width: '10%', orderable: false }
+                { target: 5, width: '10%', orderable: false }
             ]
         });
     });

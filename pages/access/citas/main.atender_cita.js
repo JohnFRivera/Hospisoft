@@ -1,15 +1,15 @@
-import { NavBarUnregister, cssStyles, spinCargando, FooterDefault, GetSpanishLanguage, arrayRoles } from '../../assets/helper/globals.helpers.js';
+import { NavBarUnregister, cssStyles, spinCargando, FooterDefault, GetSpanishLanguage } from '../../assets/helper/globals.helpers.js';
 import { CreateCss, SetConfirmPass, SetError, SetNavbar, SetFooter, SetNumberInput, SetTitle, validForm, formToJson, FillSelect } from '../../assets/js/globals.functions.js';
 import {Button_Click, GetArrayData, SetAsideBar} from '../assets/js/access.globals.js';
 import { SetModal, ShowModal } from '../assets/js/modal.js';
 
 CreateCss(cssStyles);
-SetTitle('Medicinas');
+SetTitle('Citas');
 SetNavbar(NavBarUnregister);
 SetAsideBar();
 SetFooter(FooterDefault);
 
-const btnNuevo = document.getElementById('btnNuevo');
+const btnAgendar = document.getElementById('btnAgendar');
 fetch('Medicinas.json')
     .then(response => response.json())
     .then(data => {
@@ -21,14 +21,9 @@ fetch('Medicinas.json')
                 <td class="align-content-center">${item.valor}</td>
                 <td>
                     <div class="d-flex justify-content-center">
-                        <div class="btn-group">
-                            <button class="btn btn-sm btn-outline-info" id="edit-${item.id}">
-                                <i class="bi bi-pencil-square"></i>
-                            </button>
-                            <button class="btn btn-sm btn-danger" id="delet-${item.id}">
-                                <i class="bi bi-trash-fill"></i>
-                            </button>
-                        </div>
+                        <button class="btn btn-sm btn-outline-info" id="edit-${item.id}">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
                     </div>
                 </td>
             </tr>
@@ -73,31 +68,6 @@ fetch('Medicinas.json')
                 Button_Click('Modificar', '', 'formMedicina');
             });
         });
-        let btnDeletes = document.querySelectorAll('.btn-danger');
-        btnDeletes.forEach(item => {
-            item.addEventListener('click', ()=>{
-                var arrayData = GetArrayData(document.getElementById(`row-${item.id.replace('delet-', '')}`));
-                SetModal(
-                    `
-                    <h1 class="fs-3 text-danger">
-                        <i class="bi bi-trash-fill"></i>
-                        Eliminar Medicinas
-                    </h1>
-                    `,
-                    `
-                    <span class="fs-5">
-                        ¿Seguro que deseas eliminar a <b>'${arrayData[0]}'</b> permanentemente?
-                    </span>
-                    `,
-                    `
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
-                    `
-                );
-                ShowModal();
-                Button_Click('Eliminar', '', '');
-            });
-        });
     })
     .catch(err => {
         console.error(err);
@@ -106,45 +76,67 @@ fetch('Medicinas.json')
         const dataTable = new DataTable('#dataTable', {
             language: GetSpanishLanguage('medicinas'),
             columnDefs: [
-                { target: 3, width: '10%', orderable: false }
+                { target: 3, orderable: false }
             ]
         });
     });
 
-btnNuevo.addEventListener('click', ()=> {
-    SetModal(
-        `
-        <h1 class="fs-3 text-primary">
-            <i class="bi bi-plus-lg"></i>
-            Agregar Medicinas
-        </h1>
-        `,
-        `
-        <form id="formMedicina">
-            <div class="row flex-column">
-                <div class="col mb-2">
-                    <label class="fs-5 mb-1 ms-1" for="nombre">Nombre</label>
-                    <input class="form-control" type="text" name="nombre" id="nombre" required />
+btnAgendar.addEventListener('click', ()=> {
+    if (validForm('formCamp')) {
+        btnAgendar.innerHTML = spinCargando;
+        var json = formToJson('formCamp');
+        fetch('http://localhost:3000/historia_clinica/add', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(json)
+        }).then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.reload();
+            } else {
+                SetError(data.title);
+            }
+        }).catch(err => {
+            SetError(err);
+        }).finally(()=>{
+            btnAgendar.innerHTML = `
+            <i class="bi bi-check2-circle"></i>
+            Terminar atención
+            `;
+        });
+    };
+});
+
+document.getElementById('ckExamenesMedicos').addEventListener('change', (ev)=>{
+    if (ev.target.checked) {
+        document.getElementById('nuevaCita').innerHTML = `
+        <div class="bg-body-tertiary rounded-2 p-4 mb-3 shadow">
+            <div class="row mb-2">
+                <div class="col">
+                    <label class="fs-5 mb-1 ms-1" for="examenes_medicos">Exámenes solicitados</label>
+                    <input type="text" class="form-control" id="examenes_medicos" required>
                 </div>
-                <div class="col mb-2">
-                    <label class="fs-5 mb-1 ms-1" for="existencias">Existencias</label>
-                    <input class="form-control" type="text" name="existencias" id="existencias" required />
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    <label class="fs-5 mb-1 ms-1" for="idmedico">Especialista</label>
+                    <select class="mb-2 form-control form-selec" id="idmedico" required>
+                        <option value="">Seleccionar...</option>
+                    </select>
                 </div>
                 <div class="col">
-                    <label class="fs-5 mb-1 ms-1" for="valor">Valor</label>
-                    <input class="form-control mb-3" type="text" name="valor" id="valor" required />
+                    <label class="fs-5 mb-1 ms-1" for="fecha">Fecha para Nueva cita</label>
+                    <div class="input-group">
+                        <input type="date" class="form-control" id="fecha" required>
+                        <input type="time" class="form-control" id="hora" required>
+                    </div>
                 </div>
-                <p class="mb-1" id="lblErr"></p>
             </div>
-        </form>
-        `,
-        `
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
-        `
-    );
-    SetNumberInput('existencias');
-    SetNumberInput('valor');
-    ShowModal();
-    Button_Click('Guardar', '', 'formMedicina');
-});
+        </div>
+        `;
+    } else {
+        document.getElementById('nuevaCita').innerHTML = '';
+    }
+})

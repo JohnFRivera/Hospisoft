@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/datatables.min.css">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>HOSPISOFT | Separar Cita</title>
 </head>
 
 <body class="container-fluid bg-body-secondary">
@@ -19,32 +21,26 @@
         <!--* SECCIÓN -->
         <section class="col col-md-9 mx-auto py-4">
             <h1 class="display-5 fw-normal text-center text-light text-bg-primary cursor-default p-3 rounded-3 mb-3 mb-md-4">
-                <i class="bi bi-person-fill-gear ms-0 ms-md-3"></i>
-                Gestión de Usuarios
+                Separación de Citas
             </h1>
-            <div class="row mb-1">
-                <div class="col-auto">
-                    <button class="btn btn-primary" type="button" id="btnNuevo">
-                        Nuevo
-                    </button>
-                </div>
-            </div>
             <div class="row">
-                <div class="col">
-                    <div class="table-responsive">
-                        <table class="table table-light table-hover" id="dataTable">
-                            <thead>
-                                <tr>
-                                    <th>Identificación</th>
-                                    <th>Usuario</th>
-                                    <th>Email</th>
-                                    <th>Rol</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
+                <div class="col col-xl-6 col-xxl-4 mx-auto">
+                    <form id="formCita">
+                        <label class="fs-5 ms-1 mb-1" for="idmedico">Especialista</label>
+                        <select class="form-select mb-2" id="idmedico" required>
+                            <option value="">Seleccionar...</option>
+                        </select>
+                        <label class="fs-5 ms-1 mb-1" for="fecha">Fecha</label>
+                        <div class="input-group mb-3">
+                            <input type="date" class="form-control" id="fecha" required>
+                            <input type="time" class="form-control" id="hora" required>
+                        </div>
+                    </form>
+                    <span class="mb-0 pb-3" id="lblError"></span>
+                    <button type="button" class="btn btn-primary w-100" id="btnAgendar">
+                        <i class="bi bi-plus-lg"></i>
+                        Agendar
+                    </button>
                 </div>
             </div>
         </section>
@@ -56,7 +52,6 @@
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true"></div>
     <!-- FIN MODAL -->
-    <script src="../assets/js/datatables.min.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="main.js"></script>
 </body>
