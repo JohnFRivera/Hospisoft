@@ -10,37 +10,35 @@ SetAsideBar();
 SetFooter(FooterDefault);
 
 const ctxPacientesPorMes = document.getElementById('chartPacientesPorMes');
-const ctxMedicosPorMes = document.getElementById('chartMedicosPorMes');
 const ctxFacturacionPorMes = document.getElementById('chartFacturacionPorMes');
 //* DATOS
-let dataPacientesPorMes = {
-    labels: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
-    datasets: [{
-        label: 'Pacientes atendidos por mes',
-        data: [85, 90, 100, 150, 220, 200, 240],
-        borderColor: '#0dcaf0',
-        borderWidth: 3
-    }]
+const CrearArrayRand = (num) => {
+    let arrayResult = new Array();
+    for (let i = 0; i < num; i++) {
+        arrayResult.push(Math.floor(Math.random() * 80));
+    }
+    return arrayResult
 };
-let dataMedicosPorMes = {
-    labels: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+const Meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+let dataPacientesPorMes = {
+    labels: Meses,
     datasets: [{
-        label: 'Médicos con más consultas en el mes',
-        data: [85, 90, 100, 150, 220, 200, 240],
-        borderColor: '#0d6efd',
-        borderWidth: 3
+        label: '# de Pacientes',
+        data: CrearArrayRand(12),
+        backgroundColor: '#45B6FB90',
+        borderColor: [ '#45B6FB' ],
+        borderWidth: 2
     }]
 };
 let dataFacturacionPorMes = {
-    labels: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+    labels: Meses,
     datasets: [{
-        label: 'Total de facturación de citas por mes',
-        data: [85, 90, 100, 150, 220, 200, 240],
+        label: '$ de Citas',
+        data: CrearArrayRand(12),
         borderColor: '#198754',
         borderWidth: 3
     }]
 };
-
 let Options = {
     responsive: true,
     plugins: {
@@ -56,13 +54,8 @@ let Options = {
     }
 }
 new Chart(ctxPacientesPorMes, {
-    type: 'line',
+    type: 'bar',
     data: dataPacientesPorMes,
-    Options
-});
-new Chart(ctxMedicosPorMes, {
-    type: 'line',
-    data: dataMedicosPorMes,
     Options
 });
 new Chart(ctxFacturacionPorMes, {
