@@ -1,6 +1,6 @@
-import { NavBarUnregister, cssStyles, spinCargando, FooterDefault, GetSpanishLanguage, arrayRoles } from '../../assets/helper/globals.helpers.js';
-import { CreateCss, SetConfirmPass, SetError, SetNavbar, SetFooter, SetNumberInput, SetTitle, validForm, formToJson, FillSelect } from '../../assets/js/globals.functions.js';
-import {Button_Click, GetArrayData, SetAsideBar} from '../assets/js/access.globals.js';
+import { NavBarUnregister, cssStyles, FooterDefault, GetSpanishLanguage } from '../../assets/helper/globals.helpers.js';
+import { CreateCss, SetNavbar, SetFooter, SetNumberInput, SetTitle } from '../../assets/js/globals.functions.js';
+import { Button_Click, GetArrayData, SetAsideBar } from '../assets/js/access.globals.js';
 import { SetModal, ShowModal } from '../assets/js/modal.js';
 
 CreateCss(cssStyles);
@@ -17,7 +17,7 @@ fetch('Medicinas.json')
             document.getElementById('dataTable').lastElementChild.innerHTML += `
             <tr id="row-${item.id}">
                 <td class="align-content-center">${item.nombre}</td>
-                <td class="align-content-center ${item.existencias <= 10 ? 'text-warning fw-bold': '' }">${item.existencias}</td>
+                <td class="align-content-center ${item.existencia <= 10 ? 'text-warning fw-bold' : ''}">${item.existencia}</td>
                 <td class="align-content-center">${item.valor}</td>
                 <td>
                     <div class="d-flex justify-content-center">
@@ -36,7 +36,7 @@ fetch('Medicinas.json')
         });
         let btnEdits = document.querySelectorAll('.btn-outline-info');
         btnEdits.forEach(item => {
-            item.addEventListener('click', ()=>{
+            item.addEventListener('click', () => {
                 var arrayData = GetArrayData(document.getElementById(`row-${item.id.replace('edit-', '')}`));
                 SetModal(
                     `
@@ -54,7 +54,7 @@ fetch('Medicinas.json')
                             </div>
                             <div class="col mb-2">
                                 <label class="fs-5 mb-1 ms-1" for="existencias">Existencias</label>
-                                <input class="form-control" type="text" name="existencias" id="existencias" value="${arrayData[1]}" required />
+                                <input class="form-control" type="text" name="existencia" id="existencia" value="${arrayData[1]}" required />
                             </div>
                             <div class="col">
                                 <label class="fs-5 mb-1 ms-1" for="valor">Valor</label>
@@ -75,7 +75,7 @@ fetch('Medicinas.json')
         });
         let btnDeletes = document.querySelectorAll('.btn-danger');
         btnDeletes.forEach(item => {
-            item.addEventListener('click', ()=>{
+            item.addEventListener('click', () => {
                 var arrayData = GetArrayData(document.getElementById(`row-${item.id.replace('delet-', '')}`));
                 SetModal(
                     `
@@ -111,7 +111,7 @@ fetch('Medicinas.json')
         });
     });
 
-btnNuevo.addEventListener('click', ()=> {
+btnNuevo.addEventListener('click', () => {
     SetModal(
         `
         <h1 class="fs-3 text-primary">
@@ -128,7 +128,7 @@ btnNuevo.addEventListener('click', ()=> {
                 </div>
                 <div class="col mb-2">
                     <label class="fs-5 mb-1 ms-1" for="existencias">Existencias</label>
-                    <input class="form-control" type="text" name="existencias" id="existencias" required />
+                    <input class="form-control" type="text" name="existencia" id="existencia" required />
                 </div>
                 <div class="col">
                     <label class="fs-5 mb-1 ms-1" for="valor">Valor</label>
@@ -143,7 +143,7 @@ btnNuevo.addEventListener('click', ()=> {
         <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
         `
     );
-    SetNumberInput('existencias');
+    SetNumberInput('existencia');
     SetNumberInput('valor');
     ShowModal();
     Button_Click('Guardar', '', 'formMedicina');

@@ -50,7 +50,7 @@ const Button_Click = (btn, URL, idForm) => {
                 .then(data => {
                     SetModal(
                         `
-                        <h1 class="fs-3 text-info">
+                        <h1 class="fs-3 text-danger">
                             <i class="bi bi-info-circle-fill"></i>
                             ${data.title}
                         </h1>
@@ -60,7 +60,7 @@ const Button_Click = (btn, URL, idForm) => {
                             ${data.message}
                         </span>
                         `,
-                        `<button class="btn btn-info" type="button" id="btnReload">Aceptar</button>`
+                        `<button class="btn btn-secondary" type="button" id="btnReload">Aceptar</button>`
                     );
                     document.getElementById('btnReload').addEventListener('click', () => {
                         window.location.reload();
@@ -89,7 +89,7 @@ const Button_Click = (btn, URL, idForm) => {
                     .then(data => {
                         SetModal(
                             `
-                            <h1 class="fs-3 text-info">
+                            <h1 class="fs-3 text-primary">
                                 <i class="bi bi-info-circle-fill"></i>
                                 ${data.title}
                             </h1>
@@ -99,7 +99,7 @@ const Button_Click = (btn, URL, idForm) => {
                                 ${data.message}
                             </span>
                             `,
-                            `<button class="btn btn-info" type="button" id="btnReload">Aceptar</button>`
+                            `<button class="btn btn-secondary" type="button" id="btnReload">Aceptar</button>`
                         );
                         document.getElementById('btnReload').addEventListener('click', () => {
                             window.location.reload();
