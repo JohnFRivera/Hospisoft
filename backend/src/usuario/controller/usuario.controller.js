@@ -68,21 +68,29 @@ export const putUsuarios = (req, res) => {
 };
 
 export const deleteUsuario = (req, res) => {
-  let id = req.params.id;
-  let sql = "DELETE from usuarios WHERE id =" + id;
-  pool.query(sql, (error, data) => {
-    if (!error) {
-      res.status(200).send({
-        title: "Felicidades",
-        message: "usuario eliminado",
-      });
-    } else {
-      res.status(500).send({
-        title: error.code,
-        message: error.message,
-      });
-    }
-  });
+  try {
+    let id = req.params.id;
+    let sql = "DELETE from usuarios WHERE id =" + id;
+    pool.query(sql, (error, data) => {
+      if (!error) {
+        console.log(data);
+        res.status(200).send({
+          title: "Felicidades",
+          message: `Usuario <b>${id}</b> Eliminado Correctamente`,
+        });
+      } else {
+        res.status(500).send({
+          title: error.code,
+          message: error.message,
+        });
+      }
+    });
+  } catch (error) {
+    res.status(500).send({
+      title: 'Error Letal',
+      message: error,
+    });
+  }
 };
 
 export const loginUser = (req, res) => {

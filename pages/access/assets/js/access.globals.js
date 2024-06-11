@@ -48,7 +48,23 @@ const Button_Click = (btn, URL, idForm) => {
                 method: 'delete'
             }).then(response => response.json())
                 .then(data => {
-                    button.innerHTML = btn;
+                    SetModal(
+                        `
+                        <h1 class="fs-3 text-info">
+                            <i class="bi bi-info-circle-fill"></i>
+                            ${data.title}
+                        </h1>
+                        `,
+                        `
+                        <span class="fs-5">
+                            ${data.message}
+                        </span>
+                        `,
+                        `<button class="btn btn-info" type="button" id="btnReload">Aceptar</button>`
+                    );
+                    document.getElementById('btnReload').addEventListener('click', () => {
+                        window.location.reload();
+                    });
                 }).catch(err => {
                     console.error(err);
                     SetError(`ERROR: ${err}`);
@@ -73,13 +89,21 @@ const Button_Click = (btn, URL, idForm) => {
                     .then(data => {
                         SetModal(
                             `
-                            <i class="bi bi-info-circle-fill"></i>
-                            ${data.title}
+                            <h1 class="fs-3 text-info">
+                                <i class="bi bi-info-circle-fill"></i>
+                                ${data.title}
+                            </h1>
                             `,
-                            data.message,
-                            `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>`
+                            `
+                            <span class="fs-5">
+                                ${data.message}
+                            </span>
+                            `,
+                            `<button class="btn btn-info" type="button" id="btnReload">Aceptar</button>`
                         );
-                        window.location.reload();
+                        document.getElementById('btnReload').addEventListener('click', () => {
+                            window.location.reload();
+                        });
                     }).catch(err => {
                         console.error(err);
                         SetError(`ERROR: ${err}`);
