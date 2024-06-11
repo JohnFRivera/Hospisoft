@@ -30,7 +30,7 @@ export const postUsuarios = (req, res) => {
     if (!error) {
       res.status(200).send({
         title: "Agregado exitosamente",
-        message: `Usuario <b class="text-primary">${frmData.nombre} ${frmData.apellidos}</b> agregado correctamente.`,
+        message: `Usuario <b class="text-primary">${frmData.usuario}</b> agregado correctamente.`,
       });
     } else {
       res.status(500).send({
