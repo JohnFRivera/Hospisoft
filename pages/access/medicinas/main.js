@@ -10,7 +10,7 @@ SetAsideBar();
 SetFooter(FooterDefault);
 
 const btnNuevo = document.getElementById('btnNuevo');
-fetch('Medicinas.json')
+fetch('http://localhost:3000/medicamentos/listing')
     .then(response => response.json())
     .then(data => {
         data.forEach(item => {
@@ -70,7 +70,7 @@ fetch('Medicinas.json')
                     `
                 );
                 ShowModal();
-                Button_Click('Modificar', '', 'formMedicina');
+                Button_Click('Modificar', 'http://localhost:3000/medicamentos/edit/' + item.id.replace('edit-', ''), 'formMedicina');
             });
         });
         let btnDeletes = document.querySelectorAll('.btn-danger');
@@ -95,7 +95,7 @@ fetch('Medicinas.json')
                     `
                 );
                 ShowModal();
-                Button_Click('Eliminar', '', '');
+                Button_Click('Eliminar', 'http://localhost:3000/medicamentos/delete/' + item.id.replace('delet-', ''), '');
             });
         });
     })
@@ -146,5 +146,5 @@ btnNuevo.addEventListener('click', () => {
     SetNumberInput('existencia');
     SetNumberInput('valor');
     ShowModal();
-    Button_Click('Guardar', '', 'formMedicina');
+    Button_Click('Guardar', 'http://localhost:3000/medicamentos/add', 'formMedicina');
 });
