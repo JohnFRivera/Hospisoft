@@ -12,17 +12,7 @@ function SetActiveAside() {
     });
 };
 const SetAsideBar = () => {
-    const json = [
-        { text: 'Dashboard', href: `/pages/access/dashboard/`, icon: 'bi-graph-up-arrow' },
-        { text: 'Usuarios', href: `/pages/access/usuarios/`, icon: 'bi-people' },
-        { text: 'Medicinas', href: `/pages/access/medicinas/`, icon: 'bi-prescription2' },
-        { text: 'Agenda Especialista', href: `/pages/access/agenda_especialista/`, icon: 'bi-calendar4-range' },
-        { text: 'Citas', href: `/pages/access/citas/`, icon: 'bi-calendar4-week' },
-        { text: 'Separar Cita', href: `/pages/access/separar_cita/`, icon: 'bi-calendar2-plus' },
-        { text: 'Historias Clínicas', href: `/pages/access/historias_clinicas/`, icon: 'bi-clipboard2-pulse' },
-        { text: 'Crear Campaña', href: `/pages/access/crear_campaña/`, icon: 'bi-envelope-plus' }
-    ];
-    var buttonsJson = json //JSON.parse(window.localStorage.getItem('btnAside'));
+    var buttonsJson = JSON.parse(window.localStorage.getItem('btnAside'));
     var asideBtn = document.getElementById('asideBtn');
     asideBtn.innerHTML = '';
     if (buttonsJson) {
