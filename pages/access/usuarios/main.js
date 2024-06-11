@@ -1,6 +1,6 @@
 import { NavBarUnregister, cssStyles, spinCargando, FooterDefault, GetSpanishLanguage, arrayRoles } from '../../assets/helper/globals.helpers.js';
 import { CreateCss, SetConfirmPass, SetError, SetNavbar, SetFooter, SetNumberInput, SetTitle, validForm, formToJson, FillSelect } from '../../assets/js/globals.functions.js';
-import {Button_Click, GetArrayData, SetAsideBar} from '../assets/js/access.globals.js';
+import { Button_Click, GetArrayData, SetAsideBar } from '../assets/js/access.globals.js';
 import { SetModal, ShowModal } from '../assets/js/modal.js';
 
 CreateCss(cssStyles);
@@ -37,7 +37,7 @@ fetch('Usuarios.json')
         });
         let btnEdits = document.querySelectorAll('.btn-outline-info');
         btnEdits.forEach(item => {
-            item.addEventListener('click', ()=>{
+            item.addEventListener('click', () => {
                 var arrayData = GetArrayData(document.getElementById(`row-${item.id.replace('edit-', '')}`));
                 SetModal(
                     `
@@ -81,7 +81,7 @@ fetch('Usuarios.json')
         });
         let btnDeletes = document.querySelectorAll('.btn-danger');
         btnDeletes.forEach(item => {
-            item.addEventListener('click', ()=>{
+            item.addEventListener('click', () => {
                 var arrayData = GetArrayData(document.getElementById(`row-${item.id.replace('delet-', '')}`));
                 SetModal(
                     `
@@ -127,25 +127,6 @@ btnNuevo.addEventListener('click', () => {
         </h1>
         `,
         `
-<<<<<<< HEAD
-        <form id="frmNuevo">
-            <div class="row flex-column">
-                <div class="col mb-2">
-                    <label class="fs-5 text-black-50 mb-1 ms-1" for="identificacion">Identificación</label>
-                    <input class="form-control" type="text" name="identificacion" id="identificacion" required>
-                </div>
-                <div class="col">
-                    <div class="row">
-                        <div class="col mb-2">
-                            <label class="fs-5 text-black-50 mb-1 ms-1" for="usuario">Usuario</label>
-                            <input class="form-control" type="text" name="usuario" id="usuario" required>
-                        </div>
-                        <div class="col mb-2">
-                            <label class="fs-5 text-black-50 mb-1 ms-1" for="rol">Rol</label>
-                            <select class="form-select" name="rol" id="rol" required>
-                                <option value="">Seleccionar...</option>
-                            </select>
-=======
         <form id="formUsuario">
             <div class="row flex-column">
                 <div class="col mb-2">
@@ -161,70 +142,31 @@ btnNuevo.addEventListener('click', () => {
                         <div class="col mb-2">
                             <label class="fs-5 mb-1 ms-1" for="rol">Rol</label>
                             <select class="form-select" name="rol" id="rol" required></select>
->>>>>>> 906889409e6d564434249560f6b7995e5b476df3
                         </div>
                     </div>
                 </div>
                 <div class="col mb-2">
-<<<<<<< HEAD
-                    <label class="fs-5 text-black-50 mb-1 ms-1" for="email">Email</label>
-                    <input class="form-control" type="email" name="email" id="email" required>
-                </div>
-                <div class="col mb-2">
-                    <label class="fs-5 text-black-50 mb-1 ms-1" for="contraseña">Contraseña</label>
-                    <input class="form-control mb-2" type="password" name="contraseña" id="contraseña" required>
-                    <input class="form-control" type="password" id="confirmPass" placeholder="Confirmar contraseña" required>
-                </div>
-=======
                     <label class="fs-5 mb-1 ms-1" for="email">Email</label>
                     <input class="form-control" type="text" name="email" id="email" required />
                 </div>
                 <div class="col">
                     <label class="fs-5 mb-1 ms-1" for="contraseña">Contraseña</label>
-                    <input class="form-control mb-3" type="password" name="contraseña" id="contraseña" required />
+                    <input class="form-control mb-2" type="password" name="contraseña" id="contraseña" required />
                     <input class="form-control" type="password" id="txtConfirmPass" placeholder="Confirmar contraseña" required />
                     <p class="text-danger ms-1 mt-1 mb-0" id="confirmPassErr"></p>
                 </div>
                 <p class="mb-1" id="lblErr"></p>
->>>>>>> 906889409e6d564434249560f6b7995e5b476df3
             </div>
         </form>
         `,
         `
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-<<<<<<< HEAD
-        <button type="button" class="btn btn-primary" id="btnAgregar">
-            <i class="bi bi-plus-lg"></i>
-            Agregar
-        </button>
-=======
         <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
->>>>>>> 906889409e6d564434249560f6b7995e5b476df3
         `
     );
     SetNumberInput('identificacion');
     FillSelect('rol', arrayRoles);
     SetConfirmPass();
     ShowModal();
-<<<<<<< HEAD
-    let btnAgregar = document.getElementById('btnAgregar');
-    btnAgregar.addEventListener('click', ()=>{
-        btnAgregar.innerHTML = spinCargando;
-        if (validForm('frmNuevo')) {
-            var json = formToJson('frmNuevo')
-            fetch('', {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(json)
-            }).then(response => response.json())
-            .then(data => {
-                
-            })
-        }
-    });
-=======
     Button_Click('Guardar', '');
->>>>>>> 906889409e6d564434249560f6b7995e5b476df3
 });

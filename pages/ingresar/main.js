@@ -1,4 +1,4 @@
-import { CreateCss, SetTitle, SetNavbar, SetNumberInput, validForm, formToJson, SetError, SetFooter, CreateScript } from '../assets/js/globals.functions.js';
+import { CreateCss, SetTitle, SetNavbar, SetNumberInput, validForm, formToJson, SetError, SetFooter, CreateScript, GetHost } from '../assets/js/globals.functions.js';
 import { cssStyles, NavBarUnregister, FooterDefault, spinCargando, scriptBS } from '../assets/helper/globals.helpers.js';
 CreateCss(cssStyles);
 const pageName = 'Ingresar';
@@ -35,7 +35,7 @@ btnEntrar.addEventListener('click', () => {
                     window.localStorage.setItem('userInfo', JSON.stringify(data.userInfo));
                     window.localStorage.setItem('btnAside', JSON.stringify(data.asideBtn));
                     window.localStorage.setItem('btnNavbar', data.btnNavbar);
-                    window.location.href = data.route;
+                    window.location.href = GetHost() + data.route;
                 } else {
                     SetError(data.title);
                 }

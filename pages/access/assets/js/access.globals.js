@@ -13,23 +13,23 @@ function SetActiveAside() {
 };
 const SetAsideBar = () => {
     const json = [
-        { text: 'Dashboard', href: `${GetHost()}/pages/access/dashboard/`, icon: 'bi-graph-up-arrow' },
-        { text: 'Usuarios', href: `${GetHost()}/pages/access/usuarios/`, icon: 'bi-people' },
-        { text: 'Medicinas', href: `${GetHost()}/pages/access/medicinas/`, icon: 'bi-prescription2' },
-        { text: 'Agenda Especialista', href: `${GetHost()}/pages/access/agenda_especialista/`, icon: 'bi-calendar4-range' },
-        { text: 'Citas', href: `${GetHost()}/pages/access/citas/`, icon: 'bi-calendar4-week' },
-        { text: 'Separar Cita', href: `${GetHost()}/pages/access/separar_cita/`, icon: 'bi-calendar2-plus' },
-        { text: 'Historias Clínicas', href: `${GetHost()}/pages/access/historias_clinicas/`, icon: 'bi-clipboard2-pulse' },
-        { text: 'Crear Campaña', href: `${GetHost()}/pages/access/crear_campaña/`, icon: 'bi-envelope-plus' }
+        { text: 'Dashboard', href: `/pages/access/dashboard/`, icon: 'bi-graph-up-arrow' },
+        { text: 'Usuarios', href: `/pages/access/usuarios/`, icon: 'bi-people' },
+        { text: 'Medicinas', href: `/pages/access/medicinas/`, icon: 'bi-prescription2' },
+        { text: 'Agenda Especialista', href: `/pages/access/agenda_especialista/`, icon: 'bi-calendar4-range' },
+        { text: 'Citas', href: `/pages/access/citas/`, icon: 'bi-calendar4-week' },
+        { text: 'Separar Cita', href: `/pages/access/separar_cita/`, icon: 'bi-calendar2-plus' },
+        { text: 'Historias Clínicas', href: `/pages/access/historias_clinicas/`, icon: 'bi-clipboard2-pulse' },
+        { text: 'Crear Campaña', href: `/pages/access/crear_campaña/`, icon: 'bi-envelope-plus' }
     ];
-    var buttonsJson = json //JSON.parse(window.localStorage.getItem('asideButtons'));
+    var buttonsJson = json //JSON.parse(window.localStorage.getItem('btnAside'));
     var asideBtn = document.getElementById('asideBtn');
     asideBtn.innerHTML = '';
     if (buttonsJson) {
         buttonsJson.forEach(item => {
             asideBtn.innerHTML += `
             <li class="nav-item border-end btn-aside">
-                <a class="nav-link text-aside fs-5" href="${item.href}">
+                <a class="nav-link text-aside fs-5" href="${GetHost()}${item.href}">
                     <i class="bi ${item.icon} me-2"></i>
                     ${item.text}
                 </a>
@@ -50,18 +50,18 @@ const SetAsideBar = () => {
 };
 const Button_Click = (btn, URL, idForm) => {
     let button = document.getElementById(`btn${btn}`);
-    button.addEventListener('click', ()=>{
+    button.addEventListener('click', () => {
         if (btn == 'Eliminar') {
             button.innerHTML = spinCargando;
             fetch(URL, {
                 method: 'delete'
             }).then(response => response.json())
-            .then(data => {
-                button.innerHTML = btn;
-            }).catch(err => {
-                console.error(err);
-                SetError(`ERROR: ${err}`);
-            });
+                .then(data => {
+                    button.innerHTML = btn;
+                }).catch(err => {
+                    console.error(err);
+                    SetError(`ERROR: ${err}`);
+                });
         } else {
             if (validForm(idForm)) {
                 button.innerHTML = spinCargando;
@@ -79,12 +79,12 @@ const Button_Click = (btn, URL, idForm) => {
                     },
                     body: JSON.stringify(json)
                 }).then(response => response.json())
-                .then(data => {
-                    button.innerHTML = btn;
-                }).catch(err => {
-                    console.error(err);
-                    SetError(`ERROR: ${err}`);
-                });
+                    .then(data => {
+                        button.innerHTML = btn;
+                    }).catch(err => {
+                        console.error(err);
+                        SetError(`ERROR: ${err}`);
+                    });
             };
         };
     });

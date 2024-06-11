@@ -26,7 +26,7 @@ export const postUsuarios = (req, res) => {
     rol: req.body.rol,
   };
 
-  pool.query("INSERT INTO usuarios set ?", frmData,(error, data) => {
+  pool.query("INSERT INTO usuarios set ?", frmData, (error, data) => {
     if (!error) {
       res.status(200).send({
         title: "Agregado exitosamente",
@@ -97,111 +97,50 @@ export const loginUser = (req, res) => {
             switch (data[0].rol) {
               case "Administrador":
                 btn = [
-                  {
-                    page: "dashboard",
-                    icon: "bi-graph-up",
-                    text: "Dashboard",
-                  },
-                  {
-                    page: "usuarios",
-                    icon: "bi-person",
-                    text: "Usuarios",
-                  },
-                  {
-                    page: "Usuario/separar_cita",
-                    icon: "bi-calendar-plus",
-                    text: "Separar Cita",
-                  },
-                  {
-                    page: "Medico/citas",
-                    icon: "bi-calendar2-minus",
-                    text: "Citas",
-                  },
-                  {
-                    page: "historias_clinicas",
-                    icon: "bi-file-text",
-                    text: "Historias Clínicas",
-                  },
-                  {
-                    page: "Secretaria/generar_horario_especialista",
-                    icon: "bi-calendar-week",
-                    text: "Generar Horario",
-                  },
-                  {
-                    page: "Dispensario/medicinas",
-                    icon: "bi-prescription2",
-                    text: "Medicinas",
-                  },
-                  {
-                    page: "crear_campaña",
-                    icon: "bi-chat-dots",
-                    text: "Crear Campaña",
-                  },
+                  { text: 'Dashboard', href: `/pages/access/dashboard/`, icon: 'bi-graph-up-arrow' },
+                  { text: 'Usuarios', href: `/pages/access/usuarios/`, icon: 'bi-people' },
+                  { text: 'Medicinas', href: `/pages/access/medicinas/`, icon: 'bi-prescription2' },
+                  { text: 'Agenda Especialista', href: `/pages/access/agenda_especialista/`, icon: 'bi-calendar4-range' },
+                  { text: 'Citas', href: `/pages/access/citas/`, icon: 'bi-calendar4-week' },
+                  { text: 'Separar Cita', href: `/pages/access/separar_cita/`, icon: 'bi-calendar2-plus' },
+                  { text: 'Historias Clínicas', href: `/pages/access/historias_clinicas/`, icon: 'bi-clipboard2-pulse' },
+                  { text: 'Crear Campaña', href: `/pages/access/crear_campaña/`, icon: 'bi-envelope-plus' }
                 ];
-  
                 break;
               case "Usuario":
                 btn = [
-                  {
-                    page: "Usuario/separar_cita",
-                    icon: "bi-calendar-plus",
-                    text: "Separar Cita",
-                  },
+                  { text: 'Separar Cita', href: `/pages/access/separar_cita/`, icon: 'bi-calendar2-plus' },
                 ];
                 break;
-  
+
               case "Pacientes":
                 btn = [
-                  {
-                    page: "Usuario/separar_cita",
-                    icon: "bi-calendar-plus",
-                    text: "Separar Cita",
-                  },
+                  { text: 'Separar Cita', href: `/pages/access/separar_cita/`, icon: 'bi-calendar2-plus' },
                 ];
                 break;
               case "Secretaria":
                 btn = [
-                  {
-                    page: "Secretaria/generar_horario_especialista",
-                    icon: "bi-calendar-week",
-                    text: "Generar Horario",
-                  },
+                  { text: 'Agenda Especialista', href: `/pages/access/agenda_especialista/`, icon: 'bi-calendar4-range' },
                 ];
                 break;
-  
+
               case "Dispensario":
                 btn = [
-                  {
-                    page: "Dispensario/medicinas",
-                    icon: "bi-prescription2",
-                    text: "Medicinas",
-                  },
+                  { text: 'Medicinas', href: `/pages/access/medicinas/`, icon: 'bi-prescription2' },
                 ];
                 break;
-  
+
               case "Medico":
                 btn = [
-                  {
-                    page: "Usuario/separar_cita",
-                    icon: "bi-calendar-plus",
-                    text: "Separar Cita",
-                  },
-                  {
-                    page: "Medico/citas",
-                    icon: "bi-calendar2-minus",
-                    text: "Citas",
-                  },
-                  {
-                    page: "Usuario/separar_cita",
-                    icon: "bi-calendar-plus",
-                    text: "Separar Cita",
-                  },
+                  { text: 'Citas', href: `/pages/access/citas/`, icon: 'bi-calendar4-week' },
+                  { text: 'Separar Cita', href: `/pages/access/separar_cita/`, icon: 'bi-calendar2-plus' },
+                  { text: 'Historias Clínicas', href: `/pages/access/historias_clinicas/`, icon: 'bi-clipboard2-pulse' },
                 ];
                 break;
             }
             res.status(200).send({
               access: true,
-              userInfo: [data[0].id,data[0].usuario],
+              userInfo: [data[0].id, data[0].usuario],
               asideBtn: btn,
               btnNavbar: `
               <ul class="nav nav-pills w-100">
@@ -219,7 +158,7 @@ export const loginUser = (req, res) => {
                 </li>
               </ul>
               `,
-              route: "http://127.0.0.1:5500/pages/access/"
+              route: btn[0].href
             });
           } else {
             res.status(500).send({
@@ -233,10 +172,10 @@ export const loginUser = (req, res) => {
             message: "no existe la contraseña",
           });
         }
-      }else{
+      } else {
         res.status(500).send({
           title: "email no exite"
-          
+
         });
       }
     } else {

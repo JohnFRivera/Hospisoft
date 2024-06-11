@@ -1,6 +1,6 @@
 import { NavBarUnregister, cssStyles, spinCargando, FooterDefault } from '../../assets/helper/globals.helpers.js';
 import { CreateCss, SetError, SetNavbar, SetFooter, SetTitle, validForm, formToJson } from '../../assets/js/globals.functions.js';
-import {Button_Click, SetAsideBar} from '../assets/js/access.globals.js';
+import { Button_Click, SetAsideBar } from '../assets/js/access.globals.js';
 import { SetModal, ShowModal } from '../assets/js/modal.js';
 
 CreateCss(cssStyles);
@@ -10,7 +10,7 @@ SetAsideBar();
 SetFooter(FooterDefault);
 
 const btnNuevo = document.getElementById('btnNuevo');
-fetch('').then(response => response.json())
+fetch('http://localhost:3000/campana/listing').then(response => response.json())
     .then(data => {
         data.forEach(item => {
             var dateTime = new Date(item.fecha);
@@ -32,7 +32,7 @@ fetch('').then(response => response.json())
         });
         let btnDeletes = document.querySelectorAll('.btn-close');
         btnDeletes.forEach(item => {
-            item.addEventListener('click', ()=>{
+            item.addEventListener('click', () => {
                 var titulo = document.getElementById(`campTitulo-${item.id}`);
                 SetModal(
                     `
@@ -66,7 +66,7 @@ fetch('').then(response => response.json())
         `;
     });
 
-btnNuevo.addEventListener('click', ()=> {
+btnNuevo.addEventListener('click', () => {
     if (validForm('formCamp')) {
         btnNuevo.innerHTML = spinCargando;
         var json = formToJson('formCamp');
@@ -77,16 +77,16 @@ btnNuevo.addEventListener('click', ()=> {
             },
             body: JSON.stringify(json)
         }).then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.reload();
-            } else {
-                SetError(data.title);
-            }
-        }).catch(err => {
-            SetError(err);
-        }).finally(()=>{
-            btnNuevo.innerHTML = 'Realizar campaña';
-        });
+            .then(data => {
+                if (data.success) {
+                    window.location.reload();
+                } else {
+                    SetError(data.title);
+                }
+            }).catch(err => {
+                SetError(err);
+            }).finally(() => {
+                btnNuevo.innerHTML = 'Realizar campaña';
+            });
     };
 });
