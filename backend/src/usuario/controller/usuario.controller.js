@@ -53,7 +53,10 @@ export const putUsuarios = (req, res) => {
     [frmData, id],
     (error, data) => {
       if (!error) {
-        res.status(200).send("editado");
+        res.status(200).send({
+          title: "Felicidades",
+          message: `Editado ${frmData.usuario} Correctamente`,
+        });
       } else {
         res.status(500).send({
           title: error.code,
