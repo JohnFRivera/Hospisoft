@@ -72,7 +72,10 @@ export const deleteUsuario = (req, res) => {
   let sql = "DELETE from usuarios WHERE id =" + id;
   pool.query(sql, (error, data) => {
     if (!error) {
-      res.status(200).send("usuario eliminado con exito");
+      res.status(200).send({
+        title: "Felicidades",
+        message: "usuario eliminado",
+      });
     } else {
       res.status(500).send({
         title: error.code,
