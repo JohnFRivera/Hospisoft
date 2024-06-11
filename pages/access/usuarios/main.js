@@ -76,7 +76,7 @@ fetch('http://localhost:3000/usuario/listing')
                 );
                 FillSelect('rol', arrayRoles);
                 ShowModal();
-                Button_Click('Modificar', '');
+                Button_Click('Modificar', 'http://localhost:3000/usuario/edit/' + arrayData[0], 'formUsuario');
             });
         });
         let btnDeletes = document.querySelectorAll('.btn-danger');
@@ -101,7 +101,7 @@ fetch('http://localhost:3000/usuario/listing')
                     `
                 );
                 ShowModal();
-                Button_Click('Eliminar', '');
+                Button_Click('Eliminar', 'http://localhost:3000/usuario/delete/' + arrayData[0], '');
             });
         });
     })
@@ -168,5 +168,5 @@ btnNuevo.addEventListener('click', () => {
     FillSelect('rol', arrayRoles);
     SetConfirmPass();
     ShowModal();
-    Button_Click('Guardar', '');
+    Button_Click('Guardar', 'http://localhost:3000/usuario/add', 'formUsuario');
 });

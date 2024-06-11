@@ -71,6 +71,7 @@ const Button_Click = (btn, URL, idForm) => {
                 }).then(response => response.json())
                     .then(data => {
                         button.innerHTML = btn;
+                        window.location.reload();
                     }).catch(err => {
                         console.error(err);
                         SetError(`ERROR: ${err}`);
