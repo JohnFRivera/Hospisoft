@@ -44,13 +44,13 @@ fetch('Usuarios.json')
         const dataTable = new DataTable('#dataTable', {
             language: GetSpanishLanguage('usuarios'),
             columnDefs: [
-                { target: 0, width: '10%', className: 'text-start' },
-                { target: 4, width: '10%', orderable: false }
+                { target: 0, className: 'text-start' },
+                { target: 4, orderable: false }
             ]
         });
     });
 
-btnNuevo.addEventListener('click', ()=> {
+btnNuevo.addEventListener('click', () => {
     SetModal(
         `
         <h1 class="fs-3">
@@ -59,12 +59,62 @@ btnNuevo.addEventListener('click', ()=> {
         </h1>
         `,
         `
-        
+        <form id="frmNuevo">
+            <div class="row flex-column">
+                <div class="col mb-2">
+                    <label class="fs-5 text-black-50 mb-1 ms-1" for="identificacion">Identificación</label>
+                    <input class="form-control" type="text" name="identificacion" id="identificacion" required>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col mb-2">
+                            <label class="fs-5 text-black-50 mb-1 ms-1" for="usuario">Usuario</label>
+                            <input class="form-control" type="text" name="usuario" id="usuario" required>
+                        </div>
+                        <div class="col mb-2">
+                            <label class="fs-5 text-black-50 mb-1 ms-1" for="rol">Rol</label>
+                            <select class="form-select" name="rol" id="rol" required>
+                                <option value="">Seleccionar...</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-2">
+                    <label class="fs-5 text-black-50 mb-1 ms-1" for="email">Email</label>
+                    <input class="form-control" type="email" name="email" id="email" required>
+                </div>
+                <div class="col mb-2">
+                    <label class="fs-5 text-black-50 mb-1 ms-1" for="contraseña">Contraseña</label>
+                    <input class="form-control mb-2" type="password" name="contraseña" id="contraseña" required>
+                    <input class="form-control" type="password" id="confirmPass" placeholder="Confirmar contraseña" required>
+                </div>
+            </div>
+        </form>
         `,
         `
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-primary" id="btnAgregar">
+            <i class="bi bi-plus-lg"></i>
+            Agregar
+        </button>
         `
     );
     ShowModal();
+    let btnAgregar = document.getElementById('btnAgregar');
+    btnAgregar.addEventListener('click', ()=>{
+        btnAgregar.innerHTML = spinCargando;
+        if (validForm('frmNuevo')) {
+            var json = formToJson('frmNuevo')
+            fetch('', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(json)
+            }).then(response => response.json())
+            .then(data => {
+                
+            })
+        }
+    });
 });
