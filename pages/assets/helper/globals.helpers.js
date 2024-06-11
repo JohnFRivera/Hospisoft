@@ -119,6 +119,14 @@ const arrayEPS = [
     { value: 'Coosalud', text: 'Coosalud' },
     { value: 'Barrios Unidos', text: 'Barrios Unidos' }
 ];
+const arrayRoles = [
+    { value: 'Paciente', text: 'Paciente' },
+    { value: 'Medico', text: 'Medico' },
+    { value: 'Dispensario', text: 'Dispensario' },
+    { value: 'Secretaria', text: 'Secretaria' },
+    { value: 'Administrador', text: 'Administrador' }
+];
+
 const GetSpanishLanguage = (entrada) => {
     return {
         "decimal":        "",
@@ -153,5 +161,6 @@ export {
     FooterDefault,
     spinCargando,
     GetSpanishLanguage,
-    arrayEPS
+    arrayEPS,
+    arrayRoles
 };
