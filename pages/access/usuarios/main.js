@@ -10,7 +10,7 @@ SetAsideBar();
 SetFooter(FooterDefault);
 const btnNuevo = document.getElementById('btnNuevo');
 
-fetch('Usuarios.json')
+fetch('http://localhost:3000/usuario/listing')
     .then(response => response.json())
     .then(data => {
         data.forEach(item => {
