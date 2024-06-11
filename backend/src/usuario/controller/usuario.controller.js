@@ -44,10 +44,8 @@ export const postUsuarios = (req, res) => {
 export const putUsuarios = (req, res) => {
   let id = req.params.id;
   let frmData = {
-    identificacion: req.body.identificacion,
     usuario: req.body.usuario,
     email: req.body.email,
-    contraseña: req.body.contraseña,
     rol: req.body.rol,
   };
   pool.query(
@@ -55,7 +53,10 @@ export const putUsuarios = (req, res) => {
     [frmData, id],
     (error, data) => {
       if (!error) {
-        res.status(200).send("editado");
+        res.status(200).send({
+          title: "Felicidades",
+          message: `Editado ${frmData.usuario} Correctamente`,
+        });
       } else {
         res.status(500).send({
           title: error.code,
