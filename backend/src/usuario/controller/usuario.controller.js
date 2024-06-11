@@ -44,10 +44,8 @@ export const postUsuarios = (req, res) => {
 export const putUsuarios = (req, res) => {
   let id = req.params.id;
   let frmData = {
-    identificacion: req.body.identificacion,
     usuario: req.body.usuario,
     email: req.body.email,
-    contraseña: req.body.contraseña,
     rol: req.body.rol,
   };
   pool.query(
