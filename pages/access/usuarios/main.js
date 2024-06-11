@@ -1,5 +1,5 @@
-import { NavBarUnregister, cssStyles, spinCargando, FooterDefault, GetSpanishLanguage, arrayRoles } from '../../assets/helper/globals.helpers.js';
-import { CreateCss, SetConfirmPass, SetError, SetNavbar, SetFooter, SetNumberInput, SetTitle, validForm, formToJson, FillSelect } from '../../assets/js/globals.functions.js';
+import { NavBarUnregister, cssStyles, FooterDefault, GetSpanishLanguage, arrayRoles } from '../../assets/helper/globals.helpers.js';
+import { CreateCss, SetConfirmPass, SetNavbar, SetFooter, SetNumberInput, SetTitle, FillSelect } from '../../assets/js/globals.functions.js';
 import { Button_Click, GetArrayData, SetAsideBar } from '../assets/js/access.globals.js';
 import { SetModal, ShowModal } from '../assets/js/modal.js';
 

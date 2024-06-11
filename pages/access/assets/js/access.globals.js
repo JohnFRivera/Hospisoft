@@ -1,5 +1,6 @@
 import { GetHost, validForm, formToJson, SetError } from '../../../assets/js/globals.functions.js';
 import { spinCargando } from '../../../assets/helper/globals.helpers.js';
+import { SetModal } from './modal.js';
 
 function SetActiveAside() {
     var navItems = document.querySelectorAll('.nav-item.border-end');
@@ -70,7 +71,14 @@ const Button_Click = (btn, URL, idForm) => {
                     body: JSON.stringify(json)
                 }).then(response => response.json())
                     .then(data => {
-                        button.innerHTML = btn;
+                        SetModal(
+                            `
+                            <i class="bi bi-info-circle-fill"></i>
+                            ${data.title}
+                            `,
+                            data.message,
+                            `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>`
+                        );
                         window.location.reload();
                     }).catch(err => {
                         console.error(err);

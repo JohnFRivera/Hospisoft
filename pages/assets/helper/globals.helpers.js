@@ -63,7 +63,8 @@ if (userInfo) {
                     <div class="col">
                         <div class="dropdown">
                             <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                ${jsonInfo.usuario}
+                                <i class="bi bi-person-circle"></i>
+                                ${jsonInfo[1]}
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
