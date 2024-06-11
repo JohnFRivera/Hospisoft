@@ -34,7 +34,6 @@ btnEntrar.addEventListener('click', () => {
                     // lo que recibimos desde el backend lo mandamos al local storage para confirmar su inicio de sesion 
                     window.localStorage.setItem('userInfo', JSON.stringify(data.userInfo));
                     window.localStorage.setItem('btnAside', JSON.stringify(data.asideBtn));
-                    window.localStorage.setItem('btnNavbar', data.btnNavbar);
                     window.location.href = GetHost() + data.route;
                 } else {
                     SetError(data.title);

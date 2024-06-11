@@ -3,7 +3,7 @@ import { GetHost } from '../js/globals.functions.js';
 const cssStyles = `${GetHost()}/pages/assets/css/styles.css`;
 const scriptBS = `${GetHost()}/pages/assets/js/bootstrap.bundle.min.js`;
 //components
-const NavBarUnregister = `
+let NavBarUnregister = `
 <nav class="navbar navbar-expand-md py-3 px-0 px-md-5 bg-body w-100">
     <div class="container-fluid">
         <div class="row flex-row-reverse flex-md-row">
@@ -37,6 +37,50 @@ const NavBarUnregister = `
     </div>
 </nav>
 `;
+let userInfo = window.localStorage.getItem('userInfo');
+if (userInfo) {
+    var jsonInfo = JSON.parse(userInfo);
+    NavBarUnregister = `
+    <nav class="navbar navbar-expand-md py-3 px-0 px-md-5 bg-body w-100">
+        <div class="container-fluid">
+            <div class="row flex-row-reverse flex-md-row">
+                <div class="col-auto align-content-center">
+                    <a class="display-6 fw-bold text-decoration-none me-0 me-md-4" href="${GetHost()}/pages/inicio/">HOSPISOFT</a>
+                </div>
+                <div class="col-auto d-inline d-md-none">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse py-3 py-md-0" id="navbarTogglerDemo01">
+                <ul class="nav nav-pills w-100">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold text-center fs-4" href="${GetHost()}/pages/inicio/">Inicio</a>
+                    </li>
+                </ul>
+                <div class="row mt-3 mt-md-0">
+                    <div class="col">
+                        <div class="dropdown">
+                            <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                ${jsonInfo.usuario}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    `;
+}
 const FooterDefault = `
 <div class="col">
     <div class="row bg-primary text-white p-5 cursor-default">
@@ -129,26 +173,26 @@ const arrayRoles = [
 
 const GetSpanishLanguage = (entrada) => {
     return {
-        "decimal":        "",
-        "emptyTable":     "No hay datos disponibles en la tabla",
-        "info":           "Mostrando _START_ a _END_ de _TOTAL_ "+entrada,
-        "infoEmpty":      "Mostrando 0 a 0 de 0 "+entrada,
-        "infoFiltered":   `(filtrado de _MAX_ ${entrada} totales)`,
-        "infoPostFix":    "",
-        "thousands":      ",",
-        "lengthMenu":     "Mostrar _MENU_ "+entrada,
+        "decimal": "",
+        "emptyTable": "No hay datos disponibles en la tabla",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ " + entrada,
+        "infoEmpty": "Mostrando 0 a 0 de 0 " + entrada,
+        "infoFiltered": `(filtrado de _MAX_ ${entrada} totales)`,
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ " + entrada,
         "loadingRecords": "Cargando...",
-        "processing":     "",
-        "search":         "Buscar:",
-        "zeroRecords":    "No se encontraron registros coincidentes",
+        "processing": "",
+        "search": "Buscar:",
+        "zeroRecords": "No se encontraron registros coincidentes",
         "paginate": {
-            "first":      "«",
-            "last":       "»",
-            "next":       "›",
-            "previous":   "‹"
+            "first": "«",
+            "last": "»",
+            "next": "›",
+            "previous": "‹"
         },
         "aria": {
-            "orderable":  "Ordenar por esta columna",
+            "orderable": "Ordenar por esta columna",
             "orderableReverse": "Ordenar esta columna en orden inverso"
         }
     }
