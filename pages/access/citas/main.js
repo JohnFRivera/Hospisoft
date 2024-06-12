@@ -10,15 +10,17 @@ SetAsideBar();
 SetFooter(FooterDefault);
 
 const btnNuevo = document.getElementById('btnNuevo');
-fetch('Medicinas.json')
+fetch('http://localhost:3000/cita/listing')
     .then(response => response.json())
     .then(data => {
         data.forEach(item => {
             document.getElementById('dataTable').lastElementChild.innerHTML += `
             <tr id="row-${item.id}">
-                <td class="align-content-center">${item.nombre}</td>
-                <td class="align-content-center ${item.existencias <= 10 ? 'text-warning fw-bold': '' }">${item.existencias}</td>
-                <td class="align-content-center">${item.valor}</td>
+                <td class="align-content-center">${item.nombres}</td>
+                <td class="align-content-center ${item.apellidos <= 10 ? 'text-warning fw-bold': '' }">${item.medico}</td>
+                <td class="align-content-center">${item.fecha}</td>
+                <td class="align-content-center">${item.hora}</td>
+               
                 <td>
                     <div class="d-flex justify-content-center">
                         <button class="btn btn-sm btn-outline-info" id="edit-${item.id}">

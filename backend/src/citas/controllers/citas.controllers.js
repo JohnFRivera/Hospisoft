@@ -14,6 +14,20 @@ export const getEspecialista=(req,res)=>{
     });
 } 
 
+export const getCita=(req,res)=>{
+    let sql = "SELECT pacientes.nombres, medicos.apellidos, citas.fecha, citas.hora FROM citas INNER JOIN medicos ON citas.FK_idMedico = medicos.id INNER JOIN pacientes ON citas.FK_idPaciente = pacientes.id;"
+    pool.query(sql,(error,data)=>{
+        if (!error) {
+            res.status(200).send(data)
+        }else{
+            res.status(500).send({
+                title: error.code,
+                message: error.message
+            })
+        }
+    });
+} 
+
 export const postCita = (req,res) =>{
     let formData ={
         FK_idPaciente: req.body.FK_idPaciente,

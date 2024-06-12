@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { getEspecialista, postCita } from "../controllers/citas.controllers.js";
+import { getCita, getEspecialista, postCita } from "../controllers/citas.controllers.js";
 
 const cita = Router()
 
-cita.get('/cita/listing',getEspecialista)
+cita.get('/cita/listing',getCita)
+cita.get('/cita/getespecialista',getEspecialista)
 cita.post('/cita/add', postCita)
 
 
