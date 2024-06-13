@@ -26,10 +26,10 @@
             <div class="row">
                 <div class="col col-xl-6 col-xxl-4 mx-auto">
                     <form id="formCita">
-                        <label class="fs-5 ms-1 mb-1" for="idmedico">Especialista</label>
-                        <select class="form-select mb-2" id="idmedico" required>
-                            <option value="">Seleccionar...</option>
-                        </select>
+                        <label for="selectEspecialistas">Especialista:</label>
+                            <select id="selectEspecialistas" name="FK_idMedico" class="form-control">
+                                <option value="" disabled selected>Seleccione un especialista</option>
+                            </select>
                         <label class="fs-5 ms-1 mb-1" for="fecha">Fecha</label>
                         <div class="input-group mb-3">
                             <input type="date" class="form-control" id="fecha" required>

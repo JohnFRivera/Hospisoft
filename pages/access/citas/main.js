@@ -17,7 +17,7 @@ fetch('http://localhost:3000/cita/listing')
             document.getElementById('dataTable').lastElementChild.innerHTML += `
             <tr id="row-${item.id}">
                 <td class="align-content-center">${item.nombres}</td>
-                <td class="align-content-center ${item.apellidos <= 10 ? 'text-warning fw-bold': '' }">${item.medico}</td>
+                <td class="align-content-center ${item.apellidos <= 10 ? 'text-warning fw-bold': '' }">${item.apellidos}</td>
                 <td class="align-content-center">${item.fecha}</td>
                 <td class="align-content-center">${item.hora}</td>
                

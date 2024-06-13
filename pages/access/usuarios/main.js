@@ -76,7 +76,7 @@ fetch('http://localhost:3000/usuario/listing')
                 );
                 FillSelect('rol', arrayRoles);
                 ShowModal();
-                Button_Click('Modificar', 'http://localhost:3000/usuario/edit/' + item.id.replace('delet-', ''), 'formUsuario');
+                Button_Click('Modificar', 'http://localhost:3000/usuario/edit/' + item.id.replace('edit-', ''), 'formUsuario');
             });
         });
         let btnDeletes = document.querySelectorAll('.btn-danger');

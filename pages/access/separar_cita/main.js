@@ -9,12 +9,32 @@ SetNavbar(NavBarUnregister);
 SetAsideBar();
 SetFooter(FooterDefault);
 
+
+const cargarEspecialistas = () => {
+    fetch('http://localhost:3000/cita/listingMedico')
+        .then(response => response.json())
+        .then(data => {
+            const selectEspecialistas = document.getElementById('selectEspecialistas');
+            data.forEach(especialista => {
+                const option = document.createElement('option');
+                option.value = especialista.id;
+                option.textContent = especialista.nombres;
+                selectEspecialistas.appendChild(option);
+            });
+        })
+        .catch(err => {
+            console.error('Error al cargar especialistas:', err);
+            alert('Ocurrió un error al cargar los especialistas.');
+        });
+};
+
+document.addEventListener('DOMContentLoaded', cargarEspecialistas);
 let btnAgendar = document.getElementById('btnAgendar');
 btnAgendar.addEventListener('click', ()=>{
     if (validForm('formCita')) {
         btnAgendar.innerHTML = spinCargando;
         var json = formToJson('formCita');
-        fetch('', {
+        fetch('http://localhost:3000/cita/verificar', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,9 +42,12 @@ btnAgendar.addEventListener('click', ()=>{
             body: JSON.stringify(json)
         }).then(response => response.json())
         .then(data => {
-
+            if (data.title) {
+                alert('cita agregada')
+            }
         }).catch(err => {
-
+            console.error('Error:', err);
+            alert('Ocurrió un error al intentar crear la cita.');
         }).finally(()=>{
             btnAgendar.innerHTML = `
             <i class="bi bi-plus-lg"></i>
