@@ -9,14 +9,14 @@ SetNavbar(NavBarUnregister);
 SetAsideBar();
 SetFooter(FooterDefault);
 
-fetch('Medicinas.json')
+fetch('http://localhost:3000/historial/getpaciente')
     .then(response => response.json())
     .then(data => {
         data.forEach(item => {
             document.getElementById('dataTable').lastElementChild.innerHTML += `
             <tr id="row-${item.id}">
-                <td class="align-content-center">${item.nombre}</td>
-                <td class="align-content-center">${item.apellido}</td>
+                <td class="align-content-center">${item.nombres}</td>
+                <td class="align-content-center">${item.apellidos}</td>
                 <td class="align-content-center">${item.eps}</td>
                 <td>
                     <div class="d-flex justify-content-center">
