@@ -19,7 +19,7 @@ btnAgendar.addEventListener('click', ()=>{
     if (validForm('formCita')) {
         btnAgendar.innerHTML = spinCargando;
         var json = formToJson('formCita');
-        fetch('', {
+        fetch('http://localhost:3000/cita/verificar', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,9 +27,12 @@ btnAgendar.addEventListener('click', ()=>{
             body: JSON.stringify(json)
         }).then(response => response.json())
         .then(data => {
-
+            if (data.title) {
+                alert('cita agregada')
+            }
         }).catch(err => {
-
+            console.error('Error:', err);
+            alert('Ocurrió un error al intentar crear la cita.');
         }).finally(()=>{
             btnAgendar.innerHTML = `
             <i class="bi bi-plus-lg"></i>

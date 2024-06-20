@@ -10,7 +10,7 @@ SetAsideBar();
 SetFooter(FooterDefault);
 
 const btnNuevo = document.getElementById('btnNuevo');
-fetch('Medicinas.json')
+fetch('http://localhost:3000/cita/listing')
     .then(response => response.json())
     .then(data => {
         data.forEach(item => {
