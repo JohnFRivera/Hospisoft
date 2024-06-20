@@ -87,25 +87,28 @@ const Button_Click = (btn, URL, idForm) => {
                     body: JSON.stringify(json)
                 }).then(response => response.json())
                     .then(data => {
-                        SetModal(
-                            `
-                            <h1 class="fs-3 text-primary">
-                                <i class="bi bi-info-circle-fill"></i>
-                                ${data.title}
-                            </h1>
-                            `,
-                            `
-                            <span class="fs-5">
-                                ${data.message}
-                            </span>
-                            `,
-                            `<button class="btn btn-secondary" type="button" id="btnReload">Aceptar</button>`
-                        );
-                        document.getElementById('btnReload').addEventListener('click', () => {
-                            window.location.reload();
-                        });
+                        if (data.success) {
+                            SetModal(
+                                `
+                                <h1 class="fs-3 text-primary">
+                                    <i class="bi bi-info-circle-fill"></i>
+                                    ${data.title}
+                                </h1>
+                                `,
+                                `
+                                <span class="fs-5">
+                                    ${data.message}
+                                </span>
+                                `,
+                                `<button class="btn btn-secondary" type="button" id="btnReload">Aceptar</button>`
+                            );
+                            document.getElementById('btnReload').addEventListener('click', () => {
+                                window.location.reload();
+                            });
+                        } else {
+                            SetError(data.message);
+                        };
                     }).catch(err => {
-                        console.error(err);
                         SetError(`ERROR: ${err}`);
                     });
             };

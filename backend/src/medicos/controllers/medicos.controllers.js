@@ -1,8 +1,7 @@
 import {pool} from '../../model/MySql.js';
 
-export const getMedico =(req,res)=>{
-    let sql = "SELECT * FROM medicos"
-
+export const getMedicoForSelect =(req,res)=>{
+    let sql = "SELECT id As value, especialidad As text FROM medicos"
     pool.query(sql,(error,data)=>{
         if(!error)
         {res.status(200).send(data)
@@ -10,7 +9,20 @@ export const getMedico =(req,res)=>{
             res.status(500).send({
                 title:error.code,
                 message: error.message
+            })
+        }
+    })
+}
 
+export const getMedico =(req,res)=>{
+    let sql = "SELECT * FROM medicos"
+    pool.query(sql,(error,data)=>{
+        if(!error)
+        {res.status(200).send(data)
+        }else{
+            res.status(500).send({
+                title:error.code,
+                message: error.message
             })
         }
     })
@@ -23,7 +35,6 @@ export const postMedico =(req,res)=>{
         nombres: req.body.nombres,
         apellidos: req.body.apellidos,
         especialidad: req.body.especialidad
-        
     }
     pool.query("INSERT INTO medicos set ?",frmData,(error,data)=>{
         if(!error){
@@ -61,16 +72,16 @@ export const putMedico =  (req, res) => {
     })
   }
 
-  export const deleteMedico= (req, res) => {
-    let id = req.params.id;
-    let sql = "DELETE from medicos WHERE id ="+id;
-    pool.query(sql,(error,data)=>{
-        if(!error){
-            res.status(200).send("usuario eliminado con exito")
-        }else{
-            res.status(500).send({
-            title:error.code,
-            message:error.message
-        })}
-    })
-  }
+export const deleteMedico= (req, res) => {
+let id = req.params.id;
+let sql = "DELETE from medicos WHERE id ="+id;
+pool.query(sql,(error,data)=>{
+    if(!error){
+        res.status(200).send("usuario eliminado con exito")
+    }else{
+        res.status(500).send({
+        title:error.code,
+        message:error.message
+    })}
+})
+}

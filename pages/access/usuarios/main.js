@@ -1,5 +1,5 @@
 import { NavBarUnregister, cssStyles, FooterDefault, GetSpanishLanguage, arrayRoles } from '../../assets/helper/globals.helpers.js';
-import { CreateCss, SetConfirmPass, SetNavbar, SetFooter, SetNumberInput, SetTitle, FillSelect } from '../../assets/js/globals.functions.js';
+import { CreateCss, SetConfirmPass, SetNavbar, SetFooter, SetNumberInput, SetTitle, FillSelect, SetSelectOpt } from '../../assets/js/globals.functions.js';
 import { Button_Click, GetArrayData, SetAsideBar } from '../assets/js/access.globals.js';
 import { SetModal, ShowModal } from '../assets/js/modal.js';
 
@@ -75,8 +75,9 @@ fetch('http://localhost:3000/usuario/listing')
                     `
                 );
                 FillSelect('rol', arrayRoles);
+                SetSelectOpt('rol', arrayData[3])
                 ShowModal();
-                Button_Click('Modificar', 'http://localhost:3000/usuario/edit/' + item.id.replace('delet-', ''), 'formUsuario');
+                Button_Click('Modificar', 'http://localhost:3000/usuario/edit/' + item.id.replace('edit-', ''), 'formUsuario');
             });
         });
         let btnDeletes = document.querySelectorAll('.btn-danger');

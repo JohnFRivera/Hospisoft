@@ -17,7 +17,7 @@ fetch('Medicinas.json')
             document.getElementById('dataTable').lastElementChild.innerHTML += `
             <tr id="row-${item.id}">
                 <td class="align-content-center">${item.nombre}</td>
-                <td class="align-content-center ${item.existencias <= 10 ? 'text-warning fw-bold': '' }">${item.existencias}</td>
+                <td class="align-content-center ${item.existencia <= 10 ? 'text-warning fw-bold': '' }">${item.existencia}</td>
                 <td class="align-content-center">${item.valor}</td>
                 <td>
                     <div class="d-flex justify-content-center">

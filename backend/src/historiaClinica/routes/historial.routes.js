@@ -4,6 +4,6 @@ import { geInfoPaciente, geInfoHistorias } from '../controllers/historial.contro
 const historial = Router();
 
 historial.get('/historial/getpaciente', geInfoPaciente);
-historial.get('/historial/gethistorial', geInfoHistorias);
+historial.get('/historial/gethistorial/:id', geInfoHistorias);
 
 export default historial;

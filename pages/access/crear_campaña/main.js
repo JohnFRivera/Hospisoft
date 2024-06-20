@@ -14,7 +14,6 @@ fetch('http://localhost:3000/campana/listing').then(response => response.json())
     .then(data => {
         data.forEach(item => {
             var dateTime = new Date(item.fecha);
-            var arrayTime = item.fecha.split(':');
             document.getElementById('dtCamps').innerHTML += `
             <div class="col">
                 <div class="alert alert-light alert-dismissible fade show camp-hover">
@@ -22,7 +21,7 @@ fetch('http://localhost:3000/campana/listing').then(response => response.json())
                         <h3 class="mt-4" id="campTitulo-${item.id}">${item.titulo}</h3>
                         <span class="flex-column">
                             <p class="mb-0">${dateTime.getDate()}/${dateTime.getMonth() + 1}/${dateTime.getFullYear()}</p>
-                            <p class="mb-0 small">${arrayTime[0]}:${arrayTime[1]}</p>
+                            <p class="mb-0 small">${item.hora}</p>
                         </span>
                     </div>
                     <button type="button" class="btn-close" id="${item.id}"></button>
@@ -33,7 +32,7 @@ fetch('http://localhost:3000/campana/listing').then(response => response.json())
         let btnDeletes = document.querySelectorAll('.btn-close');
         btnDeletes.forEach(item => {
             item.addEventListener('click', () => {
-                var titulo = document.getElementById(`campTitulo-${item.id}`);
+                var titulo = document.getElementById(`campTitulo-${item.id}`).innerText;
                 SetModal(
                     `
                     <h1 class="fs-3 text-danger">
@@ -79,13 +78,30 @@ btnNuevo.addEventListener('click', () => {
         }).then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    window.location.reload();
+                    SetModal(
+                        `
+                        <h1 class="fs-3 text-danger">
+                            <i class="bi bi-info-circle-fill"></i>
+                            ${data.title}
+                        </h1>
+                        `,
+                        `
+                        <span class="fs-5">
+                            ${data.message}
+                        </span>
+                        `,
+                        `<button class="btn btn-secondary" type="button" id="btnReload">Aceptar</button>`
+                    );
+                    document.getElementById('btnReload').addEventListener('click', () => {
+                        window.location.reload();
+                    });
+                    ShowModal();
                 } else {
-                    SetError(data.title);
+                    SetError(data.message);
                 }
             }).catch(err => {
                 SetError(err);
-            }).finally(() => {
+            }).finally(()=>{
                 btnNuevo.innerHTML = 'Realizar campaña';
             });
     };

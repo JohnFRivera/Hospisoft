@@ -25,15 +25,16 @@ export const postUsuarios = (req, res) => {
     contraseña: req.body.contraseña,
     rol: req.body.rol,
   };
-
   pool.query("INSERT INTO usuarios set ?", frmData, (error, data) => {
     if (!error) {
       res.status(200).send({
+        success: true,
         title: "Agregado exitosamente",
         message: `Usuario <b class="text-primary">${frmData.usuario}</b> agregado correctamente.`,
       });
     } else {
       res.status(500).send({
+        success: false,
         title: error.code,
         message: error.message,
       });
@@ -54,11 +55,13 @@ export const putUsuarios = (req, res) => {
     (error, data) => {
       if (!error) {
         res.status(200).send({
+          success: true,
           title: "Felicidades",
-          message: `Editado ${frmData.usuario} Correctamente`,
+          message: `Editado <b class="text-info">${frmData.usuario}</b> Correctamente`,
         });
       } else {
         res.status(500).send({
+          success: false,
           title: error.code,
           message: error.message,
         });
@@ -75,11 +78,13 @@ export const deleteUsuario = (req, res) => {
       if (!error) {
         console.log(data);
         res.status(200).send({
+          success: true,
           title: "Felicidades",
-          message: `Usuario <b>${id}</b> Eliminado Correctamente`,
+          message: `Usuario <b class="text-danger">${id}</b> Eliminado Correctamente`,
         });
       } else {
         res.status(500).send({
+          success: false,
           title: error.code,
           message: error.message,
         });
@@ -87,6 +92,7 @@ export const deleteUsuario = (req, res) => {
     });
   } catch (error) {
     res.status(500).send({
+      success: false,
       title: 'Error Letal',
       message: error,
     });

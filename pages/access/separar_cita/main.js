@@ -1,5 +1,5 @@
 import { NavBarUnregister, cssStyles, spinCargando, FooterDefault } from '../../assets/helper/globals.helpers.js';
-import { CreateCss, SetError, SetNavbar, SetFooter, SetTitle, validForm, formToJson } from '../../assets/js/globals.functions.js';
+import { CreateCss, SetNavbar, SetFooter, SetTitle, validForm, formToJson, FillSelect } from '../../assets/js/globals.functions.js';
 import { SetAsideBar} from '../assets/js/access.globals.js';
 import { SetModal, ShowModal } from '../assets/js/modal.js';
 
@@ -9,6 +9,11 @@ SetNavbar(NavBarUnregister);
 SetAsideBar();
 SetFooter(FooterDefault);
 
+fetch('http://localhost:3000/medicos/select').then(response => response.json())
+.then(data => {
+    data
+    FillSelect('idmedico', data)
+})
 let btnAgendar = document.getElementById('btnAgendar');
 btnAgendar.addEventListener('click', ()=>{
     if (validForm('formCita')) {

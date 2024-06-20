@@ -70,6 +70,14 @@ const FillSelect = (id, data) => {
     `;
   });
 };
+const SetSelectOpt = (id, opt) => {
+  var select = document.getElementById(id);
+  select.childNodes.forEach(item => {
+      if (opt == item.innerText) {
+          select.selectedIndex = item.index;
+      };
+  });
+};
 const validForm = (id) => {
   var form = document.getElementById(id);
   return form.reportValidity();
@@ -114,6 +122,7 @@ export {
   SetNumberInput,
   SetConfirmPass,
   FillSelect,
+  SetSelectOpt,
   validForm,
   formToJson,
   SetNavbar,

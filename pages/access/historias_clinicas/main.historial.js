@@ -9,16 +9,16 @@ SetNavbar(NavBarUnregister);
 SetAsideBar();
 SetFooter(FooterDefault);
 
-fetch('Medicinas.json')
+fetch('http://localhost:3000/historial/gethistorial/'+window.location.hash.replace('#',''))
     .then(response => response.json())
     .then(data => {
-        data.forEach(item => {
+        document.getElementById('nombrePaciente').innerText = data.paciente;
+        data.data.forEach(item => {
             document.getElementById('dataTable').lastElementChild.innerHTML += `
             <tr>
-                <td class="align-content-center">${item.nombres} ${item.apellidos}</td>
                 <td class="align-content-center">${item.diagnostico}</td>
-                <td class="align-content-center">${item.medicamentos}</td>
-                <td class="align-content-center">${item.examenes}</td>
+                <td class="align-content-center">${item.medicinas}</td>
+                <td class="align-content-center">${item.examenes_medicos}</td>
             </tr>
             `;
         });

@@ -1,6 +1,8 @@
 import {Router} from 'express';
-import {getMedico,postMedico,putMedico, deleteMedico} from '../../medicos/controllers/medicos.controllers.js'
+import {getMedico,postMedico,putMedico, deleteMedico, getMedicoForSelect} from '../../medicos/controllers/medicos.controllers.js'
 const medico =Router();
+
+medico.get('/medicos/select', getMedicoForSelect);
 
 medico.get('/medicos/listing', getMedico);
 
